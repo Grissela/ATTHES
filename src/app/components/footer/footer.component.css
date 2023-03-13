@@ -1,0 +1,138 @@
+.footer{
+    height:720px;
+    background-image: url("../../../assets/IMG/piepagina.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    padding: .1px;
+}
+.footer__title{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 7.3rem;
+    color: #fff;
+    text-align: center;
+    text-decoration: line-through;
+    margin: 2.6rem 0;
+}
+
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.contenedor__box{
+    margin-bottom: 2rem;
+}
+.contenedor__subtitle{
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+.list__links{
+    text-align: center;
+}
+.list__link{
+    display: inline-block;
+    color: #a4b2ca;
+    text-decoration: none;
+    padding: .4rem 0;
+}
+.list__link:hover{
+    color: rgb(87, 201, 247);
+    transition: .3s;
+}
+.contenedor__follow{
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+.card__media{
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+}
+.card__icon:hover{
+    transition: .3s;
+    transform: scale(1.1); 
+}
+.card__icon--facebook{
+    color: #3b5998;   
+}
+.card__icon--twiter{
+    color: #55acee;
+}
+.card__icon--youtube{
+    color: #bb0000;
+}
+
+
+.contenedor__service{
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+.contenedor__paragraph{
+    color: #a4b2ca;
+}
+.parrafo{
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    padding: .4rem .2rem;
+}
+.correo{
+    padding: .4rem 0;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    padding: .4rem .2rem;
+}
+.copy{
+    color: #a4b2ca;
+    padding: .4rem 0;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    padding: .4rem .2rem;
+}
+
+@media (min-width: 768px) {
+    .contenedor{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+   
+}
+
+@media (min-width: 1200px) {
+    .footer{
+        height:480px;
+    }
+    .contenedor{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: baseline;
+    }
+    .contenedor__box{
+        width: 30%;
+    }
+    .card__media{
+        display: flex;
+        justify-content: center;
+        gap: 1.8rem;
+    }
+   
+}
+
+

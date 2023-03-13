@@ -1,0 +1,95 @@
+.fondo{
+    height: 88.5vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../../assets/IMG/nosotros.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+}
+.contenedor{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.title{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 5rem;
+    color: #fff;
+    text-decoration: line-through;
+}
+
+/*producto*/
+.contain{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.title__productos{
+    font-size: 1.8rem;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+    color: rgb(240, 165, 27);
+    text-align: center;
+    padding-bottom: 1rem;
+    justify-content: space-between;
+}
+
+.contain__products{
+    display: flex;
+    justify-content: center;
+    gap: 2.3rem;
+    flex-wrap: wrap;
+}
+.product{
+    width: 350px;
+    /* height: 550px; */
+    overflow: hidden;
+    gap: 10px;
+    
+}
+.products{
+   max-width: 100%;
+   object-fit: cover;
+}
+.subtitle{
+    font-size: 2rem;
+}
+/*parrafo*/
+.parrafo{
+    font-family: 'Roboto', sans-serif;
+    text-align: justify;
+    line-height: 1.7;
+
+}
+
+/*horario*/
+
+.horario{
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    line-height: 1.7;
+}
+
+
+
+
+
+/*RESPONSIVE TABLET*/
+
+/*RESPONSIVE DESKPTOP*/
+@media (min-width: 1200px) {
+    .title{
+        font-size: 11rem;
+        
+    }
+    .contain__products{
+        display: flex;
+        justify-content: center;
+        gap: 4rem;
+        flex-wrap: wrap;
+    }
+   
+}

@@ -1,0 +1,24 @@
+<div class="container__fruits flex flex-wrap justify-around ">
+    
+    <div *ngFor="let datos of zapatillas" class="container__fruit" >
+            <h3 class="text-center font-semibold py-3">{{datos.Nombre}}</h3>
+            <div class=""  (click)="goToDetalle(datos.Nombre)">
+                <img src="{{datos.Imagen}}" class="imagen" alt="">
+
+            </div>
+            
+            <div class="fruit__description">
+                <div>
+                  <p class="text-[#981352]">{{datos.Precio |currency:'S/. '}}</p>
+                </div>
+            
+            <!-- <div class="">
+                <p class="font-semibold text-center text-[1.1rem] py-2">S/. {{datos.Costo}}</p>
+            </div> -->
+            <div class="flex justify-between">
+                <button class="bg-red-500 text-white py-2 px-3 rounded-lg hover:bg-red-600" (click)="goToDetalle(datos.Nombre)"><i class="bi bi-cart-fill px-2"></i>Add</button>
+                <button class="bg-emerald-500 text-white py-2 px-3 rounded-lg hover:bg-emerald-600" (click)="goToDetalle(datos.Nombre)">Ver más</button>
+            </div>
+        </div> 
+    </div>
+</div>
