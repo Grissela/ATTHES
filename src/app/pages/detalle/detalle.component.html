@@ -1,4 +1,4 @@
-<div class="contenedor__body flex justify-center items-center">
+<!-- <div class="contenedor__body flex justify-center items-center">
     <div class="contain w-[60%] mx-auto">
         <div  *ngFor="let datos of zapatillas">
             <div class="contenedor bg-white" *ngIf="(datos.Nombre) === nombre" >
@@ -27,31 +27,135 @@
         </div>
     </div>
 </div>
+ -->
 
-<!-- Modal -->
 
-<!-- Small Modal -->
-<div id="small-modal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+
+
+<section class="container__detail">
+    <div class="detail">
+        <div *ngFor="let datos of zapatillas">
+            <div class="detail__flex" *ngIf="(datos.Nombre) === nombre" >
+
+                <div class="detail__img">                       
+                    <img class="img" src="{{datos.Imagen}}" alt="">
+                </div>
+
+                <div class="detail__descriptions" >
+                    <p class="detail__brand">{{datos.Marca}}</p>
+                    <h2 class="detail__name">{{nombre}}</h2>
+                    <p class="detail__detail">Descripcion:</p>
+                    <p class="detail__description">{{datos.Descripcion}}</p>            
+
+                    <p class="detail__price">{{datos.Precio | currency}}</p>
+                    
+                    <div class="mb-3">
+                        <label for="">Cantidad:</label>
+                        <input class="" type="number" [(ngModel)]="cantidad">
+                    </div>
+                    
+                        <div class="buton">
+                            <!-- <button data-modal-target="small-modal" data-modal-toggle="small-modal" class="btn__agregar" type="button">
+                                Agregar a carrito
+                            </button> -->
+                            
+                            <button data-modal-target="small-modal" data-modal-toggle="small-modal" class="btn__add" (click)="guardar({Nombre:datos.Nombre, Marca:datos.Marca,  Imagen:datos.Imagen, Cantidad:cantidad, Costo:datos.Precio})"><i class="bi bi-cart-fill px-1"></i>Agregar a Carrito</button>
+    
+                        </div>
+
+                  
+                        <div class="card__media">
+                            <a href="" class="card__icon card__icon--facebook"><i class="bi bi-facebook"></i></a>
+                            <a href="" class="card__icon card__icon--twiter"><i class="bi bi-twitter"></i></a>
+                            <a href="" class="card__icon card__icon--youtube"><i class="bi bi-youtube"></i></a>
+                                    
+                        </div>
+                    </div>   
+                </div>
+            </div>                   
+        </div>
+</section>
+<!-- <div id="small-modal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
     <div class="relative w-full h-full max-w-md md:h-auto">
-        <!-- Modal content -->
+        
         <div class="relative bg-white rounded-b-[1rem] shadow">
-            <!-- Modal header -->
+            
             <div class="flex items-center justify-between p-5 rounded-t text-center">
                 <h3 class="text-[1.6rem] font-bold text-gray-900 w-full text-center">Cantidad</h3>
                     <span class="sr-only">Close modal</span>
                 
             </div>
-            <!-- Modal body -->
+            
             <div class="text-center">
                 <input type="number" class="mt-1 py-3 px-[4rem] rounded-[1rem]" [(ngModel)]="cantidad">
             </div>
             
-            <!-- Modal footer -->
+            
             <div class="" *ngFor="let date of zapatillas">
                 <div class="flex justify-center items-center p-6 space-x-2 rounded-b text-center pb-[3.7rem]" *ngIf="(date.Nombre) === nombre">
-                    <button data-modal-hide="small-modal" type="button"  class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-[2.2rem] py-2.5 text-center" (click)="guardar({Nombre:date.Nombre, Cantidad:cantidad, Costo:date.Precio})">Agregar a carrito</button>
+                    <button data-modal-hide="small-modal" type="button"  class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-[2.2rem] py-2.5 text-center" (click)="guardar({Nombre:date.Nombre, Imagen:date.Imagen, Cantidad:cantidad, Costo:date.Precio})">Agregar a carrito</button>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</div> -->
+<!-- <section class="container__detail">
+    <div class="detail">
+        <div *ngFor="let datos of zapatillas">
+                
+            <div class="detail__flex" *ngIf="(datos.Nombre) === nombre" >
+                <div class="detail__descriptions">
+                    <p class="detail__brand">{{datos.Marca}}</p>
+                    <h2 class="detail__name">{{nombre}}</h2>
+                    <p class="detail__description">{{datos.Descripcion}}</p>            
+
+                    <p class="detail__price">S/. {{datos.Precio}}</p>   
+                    <div class="buton text-center">
+                        <button data-modal-target="small-modal" data-modal-toggle="small-modal" class="btn__agregar" type="button">
+                            Agregar a carrito
+                        </button>
+                    </div>
+
+                    <div class="card__media">
+                        <a href="" class="card__icon card__icon--facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="" class="card__icon card__icon--twiter"><i class="bi bi-twitter"></i></a>
+                        <a href="" class="card__icon card__icon--youtube"><i class="bi bi-youtube"></i></a>
+                                
+                    </div>
+                </div>
+                        
+                <div class="detail__img">                       
+                    <img class="img" src="{{datos.Imagen}}" alt="">
+                </div>
+
+            </div>
+        </div>
+    </div> -->
+
+    <!-- Modal -->
+
+    <!-- Small Modal -->
+    <!-- <div id="small-modal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+        <div class="relative w-full h-full max-w-md md:h-auto"> -->
+            <!-- Modal content -->
+            <!-- <div class="relative bg-white rounded-b-[1rem] shadow"> -->
+                <!-- Modal header -->
+                <!-- <div class="flex items-center justify-between p-5 rounded-t text-center">
+                    <h3 class="text-[1.6rem] font-bold text-gray-900 w-full text-center">Cantidad</h3>
+                        <span class="sr-only">Close modal</span>
+                    
+                </div> -->
+                <!-- Modal body -->
+                <!-- <div class="text-center">
+                    <input type="number" class="mt-1 py-3 px-[4rem] rounded-[1rem]" [(ngModel)]="cantidad">
+                </div> -->
+                
+                <!-- Modal footer -->
+                <!-- <div class="" *ngFor="let date of zapatillas">
+                    <div class="flex justify-center items-center p-6 space-x-2 rounded-b text-center pb-[3.7rem]" *ngIf="(date.Nombre) === nombre">
+                        <button data-modal-hide="small-modal" type="button"  class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-[2.2rem] py-2.5 text-center" (click)="guardar({Nombre:date.Nombre, Cantidad:cantidad, Costo:date.Precio})">Agregar a carrito</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->

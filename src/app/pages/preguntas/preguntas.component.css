@@ -1,0 +1,123 @@
+/*Imagen*/
+.medium{
+    height: 280px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("../../../assets/IMG/question3.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.medium__title{
+    color: #fff;
+    font-size: 2.6rem;
+}
+.medium__subtitle{
+    font-size: 1.2rem;
+    color: #cb3248;
+}
+/*container*/
+.supportCenter{
+    margin-bottom: 3rem;
+}
+.supportCenter__container{
+    padding: 0 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 2rem;
+}
+/* .supportCenter__title{
+    margin: 2.3rem 0 4rem 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2.1rem;
+    color: #3e1151;
+} */
+.supportCenter__title{
+  margin: 2.3rem 0 4rem 0;
+  text-align: center;
+  font-weight: bold;
+  font-size: 2.1rem;
+  color: #3e1151;
+  letter-spacing: 3px;
+}
+
+.supportCenter__subtitle{
+  margin: 2rem  2rem ;
+  text-align: left;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #3e1151;
+}
+
+.parrafo{
+  margin: 2.3rem  2rem ;
+  text-align: justify;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #000;
+}
+
+
+
+
+.contain__accordion {    
+    max-width: 820px;
+    margin: 0 auto;
+    margin-top: 3rem;
+  }
+
+  details { 
+    background-color: #f8f9fa;
+    width: 100%;
+    margin-bottom: 1.7rem;   
+    border-radius: 8px;  
+    border: 1px solid #d8e0e9;
+    color: #364f6b;
+    position: relative;  
+  }
+  details summary {  
+    font-weight: 400;
+    font-size: 1.25rem;
+    padding: 1rem;
+    cursor: pointer;
+    list-style: none;
+  }
+  details p {
+    padding: 1rem;
+    margin: 0 1rem 1rem 1rem;
+    background: #f6f8fa;
+    border-left: 4px solid #364f6b;
+  }
+  
+  details:hover,
+  details[open] {
+    box-shadow: 5px 5px 15px #d9d9d9;
+  }
+  
+  details[open] {
+    background: #ffffff;
+  }
+  
+  details[open] summary {
+    font-weight: 600;
+  }
+  
+
+  summary:before { 
+    color: #000;
+    content: "+";
+    padding-right: .9rem; 
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+  
+  details[open] > summary:before {
+    color: #000;
+    content: "-";
+    font-weight: 700;
+    font-size: 1.5rem;
+  }

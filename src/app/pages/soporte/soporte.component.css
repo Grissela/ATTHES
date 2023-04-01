@@ -1,0 +1,168 @@
+
+/*Imagen*/
+.medium{
+    height: 280px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("../../../assets/IMG/medium.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.medium__title{
+    color: #fff;
+    font-size: 2.6rem;
+}
+.medium__subtitle{
+    font-size: 1.2rem;
+    color: #cb3248;
+}
+/*Centro de Soporte*/
+.supportCenter{
+    margin-bottom: 3rem;
+}
+.supportCenter__container{
+    padding: 0 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 2rem;
+}
+.supportCenter__title{
+    margin: 2.3rem 0 4rem 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2.1rem;
+    color: #3e1151;
+}
+
+.supportCenter__icons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #3e1151;
+    background-color: #efefef;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+}
+.supportCenter__icons:hover{
+    cursor: pointer;
+    transition: .4s;
+    background-color: #3e1151;
+    color: #fff;
+}
+.bi{
+    font-size: 3.6rem;
+}
+
+.subtitle{
+    width: 70%;
+    text-align: center;
+    font-size: 1rem;
+    margin-top: .7rem;
+}
+/*Contacto*/
+.contact{
+    color: #3e1151;
+    margin-bottom: 2rem;
+}
+
+.contact__title{
+    text-align: center;   
+    font-weight: bold;
+    font-size: 2rem;
+}
+.contact__subtitle{
+    text-align: center;
+    font-size: 2rem;
+}
+/*Contenedor iconos*/
+.contact__container{
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2.5rem;
+    text-align: center;
+    gap: 2rem;
+}
+.icons__title{
+    margin: .7rem 0;
+    color: #ff0000;
+}
+.icons__subtitle, .icons__number, .icons__email{
+    margin-bottom: 1rem;
+}
+.icons__email, .icons__number{
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+@media (min-width: 768px) {
+    /*Imagen*/
+    .medium{
+        height: 400px;
+    }
+    .medium__title{
+        font-size: 2.7rem;
+    }
+    .medium__subtitle{
+        font-size: 1.3rem;
+    }
+    /*Contacto*/
+    .contact__container{
+        padding: 0 2rem;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: stretch;
+        margin-top: 2.5rem;
+        text-align: center;
+        gap: 2.4rem;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    /*Imagen*/
+    .medium{
+        height: 440px;
+    }
+    .medium__title{
+        font-size: 2.9rem;
+    }
+    .medium__subtitle{
+        font-size: 1.5rem;
+    }
+
+    /*Centro de contacto*/
+    .supportCenter{
+        margin-bottom: 5rem;
+    }
+
+    .supportCenter__title{
+        margin: 4rem 0;
+    }
+    .supportCenter__container{
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 3rem;
+    }
+    /*Contacto*/
+    .contact__container{
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        margin-top: 2.5rem;
+    }
+  }

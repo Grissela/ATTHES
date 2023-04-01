@@ -9,6 +9,8 @@ import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import {AngularFireModule} from '@angular/fire/compat';
+// import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+// import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 @NgModule({
   declarations: [

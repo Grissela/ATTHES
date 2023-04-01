@@ -3,22 +3,24 @@
         <div class="login__img">
             <img src="../../../assets/IMG/adidas.png" alt="Logo" class="img">
         </div>
-        <div class="mb-4">
-            <label for="email">Correo Eletrónico</label>
-            <input type="text" class="form-control" id="email" placeholder="Ingresa tu correo electrónico">
-        </div>
+        <form [formGroup]="login">
+            <div class="mb-4">
+                <label for="email">Correo Eletrónico</label>
+                <input type="email" class="form-control" name="email" formControlName="email"id="email" placeholder="Ingresa tu correo electrónico">
+            </div>
 
-        <div class="mb-4">
-            <label for="pass">Contraseña</label>
-            <input type="password" class="form-control" id="pass" placeholder="Ingresa tu contraseña">
-        </div>
+            <div class="mb-4">
+                <label for="pass">Contraseña</label>
+                <input type="password" class="form-control" name="password" formControlName="password" id="pass" placeholder="Ingresa tu contraseña">
+            </div>
 
-        <div class="mb-3">
-            <button class="btn__signIn">Iniciar Sesión</button>
-        </div>
+            <div class="mb-3">
+                <button class="btn__signIn" (click)="validacion()">Iniciar Sesión</button>
+            </div>
 
-        <div class="mb-2 text-center">
-            <a href="" class="link">Si no tienes cuenta registrate</a>
-        </div>
+            <div class="mb-2 text-center">
+                <a href="" class="link">Si no tienes cuenta registrate</a>
+            </div>
+        </form>
     </div>
 </div>

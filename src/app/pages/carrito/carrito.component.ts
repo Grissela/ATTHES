@@ -1,25 +1,29 @@
-import { Component } from '@angular/core';
+import { Component,OnInit  } from '@angular/core';
 import { Router } from '@angular/router';
 import { ZapatillasService } from 'src/app/service/zapatillas.service';
 import { Zapatillas } from 'src/app/interface/zapatillas';
+import { Car } from 'src/app/interface/car';
 import { CarService } from 'src/app/service/car.service';
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-carrito',
   templateUrl: './carrito.component.html',
   styleUrls: ['./carrito.component.css']
 })
-export class CarritoComponent {
+export class CarritoComponent implements OnInit  {
   data:any[]=[]
-
   zapatillas!:Zapatillas[];
+  car!:Car[]
   suma=0
-  constructor( private route:Router, public service:ZapatillasService, public car:CarService){}
-  ngOnInit(): void {
-    this.mostrar()
-  }
+  resultado=1
+  constructor( private route:Router, public service:ZapatillasService, public carrito:CarService){}
 
+  ngOnInit(): void {
+    this.mostrar();
+  }
+  
   mostrar(){
-    this.car.getCar().subscribe (res=>{
+    this.carrito.getCar().subscribe (res=>{
      this.data = res
      for(let result of this.data){
       const suma=result.Cantidad*result.Costo
@@ -27,4 +31,36 @@ export class CarritoComponent {
      }
     }) 
    }
+  //  reducircantidad(){
+  //     if(this.resultado == 1){
+  //     }
+  //     else{
+  //      this.resultado -=1
+  //     }
+  //    }
+  // aumentarcantidad(){
+  //     this.resultado +=1
+  // }
+
+  eliminar(car:Car){
+    Swal.fire({
+      title: 'Desea eliminar producto',
+      icon: 'error',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Si, Eliminar!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Exitoso!',
+          'Has Eliminado producto exitosamente',
+          'success'
+        )
+        this.carrito.deleteCar(car)
+        this.route.navigate(['carrito'])
+      }
+    })
+   }
+   
 }

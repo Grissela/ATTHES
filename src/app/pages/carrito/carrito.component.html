@@ -1,10 +1,11 @@
-<div class="contenedor__body flex justify-center">
+<!-- <div class="contenedor__body flex justify-center">
     <div class="contenedor__table bg-white p-5 px-[2rem] rounded-[1rem]">
         <h2 class="font-bold text-[1.5rem] py-5">Mis pedidos</h2>
         <table>
             <tr class="text-center font-bolder text-[1.2rem]" >
               <th class=" px-[2.7rem]">Item</th>
-              <th class=" px-[2.7rem]">Producto</th>
+              <th class=" px-[2.7rem]">Nombre del producto</th>
+              <th class=" px-[2.7rem]">Imagen</th>
               <th class=" px-[2.7rem]">Costo</th>
               <th class=" px-[2.7rem]">Cantidad</th>
               <th class=" px-[2.7rem]">Costo Total</th>
@@ -12,6 +13,7 @@
             <tr class="text-center text-[1.1rem]" *ngFor="let datos of data;let indice = index">
                 <td>{{indice+1}}</td>
                 <td>{{datos.Nombre}}</td>
+                <td><img src="{{datos.Imagen}}" alt=""></td>
                 <td>{{datos.Costo}}</td>
                 <td>{{datos.Cantidad}}</td>
                 <td>{{datos.Costo * datos.Cantidad}}</td>
@@ -24,4 +26,77 @@
     </div>
    
   </div>
+   -->
+
+
+
+<section class="container__cart">
+    <h2 class="cart__subtitle">Mis pedidos</h2>
+    <div class="cart__products">
+
+        <div class="cart__product" *ngFor="let datos of data">
+
+            <div class="cart__detail">
+                
+                    <div class="cart__img">
+                        <img src="{{datos.Imagen}}" alt=""  class="img">
+                        <!-- <img src="{{datas.Imagen}}"  class="img"> -->
+                    </div>
+                
+                <div class="card__description">
+                    <h3 class="cart__name">{{datos.Nombre}}</h3>
+                    <p class="cart__brand">{{datos.Marca}}</p>
+                    <p class="cart__price">{{datos.Costo | currency}}</p>
+                    <p>{{datos.Costo * datos.Cantidad}}</p>
+                </div>
+            </div>
+
+             <div class="cart__btn">
+                <!-- <button class="button btn__less" (click)="reducircantidad()">-</button>
+                <input class="amount" {{datos.Cantidad}}>
+                <button class="button btn__addition" (click)="aumentarcantidad()">+</button> -->
+                    <!-- <button class="button btn__less" (click)="reducircantidad()">-</button> -->
+                    <span class="amount">{{datos.Cantidad}}</span>
+                    <!-- <button class="button btn__addition" (click)="aumentarcantidad()">+</button> -->
+                
+                <button class="button btn__x" (click)="eliminar(datos)">x</button>
+            </div> 
+        </div>
+
+
+        <div class="cart__precioTotal">
+            <p class="cart__total">Total</p>
+            <p class="cart__totalPrice">{{suma | currency}}</p>
+        </div>
+
+       <div class="cart__buy">
+        <!-- <button class="button__buy">Comprar</button> -->
+        <button class="btn__add"><i class="bi bi-cart-fill px-1"></i>Comprar</button>
+       </div>
+    </div>
+</section>
+
+
+
+<!-- <table>
+            <tr class="" >
+              <th class="">Item</th>
+              <th class="">Producto</th>
+              <th class="">Costo</th>
+              <th class="">Cantidad</th>
+              <th class="">Costo Total</th>
+            </tr>
+
+            <tr class="" *ngFor="let datos of data;let indice = index">
+                <td>{{indice+1}}</td>
+                <td>{{datos.Nombre}}</td>
+                <td>{{datos.Costo}}</td>
+                <td>{{datos.Cantidad}}</td>
+                <td>{{datos.Costo * datos.Cantidad}}</td>
+            </tr>  
+        </table>
+        <div class="">
+            <p class="">Total </p>
+            <span class="">{{suma | currency}}</span>
+        </div> -->
   

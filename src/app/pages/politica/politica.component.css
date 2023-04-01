@@ -1,0 +1,35 @@
+.supportCenter{
+    margin-bottom: 3rem;
+}
+/* .supportCenter__contenedor{
+    padding: 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 2rem;
+} */
+
+.supportCenter__title{
+    margin: 2.3rem 0 4rem 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2.1rem;
+    color: #3e1151;
+    letter-spacing: 5px;
+}
+
+.supportCenter__subtitle{
+    margin: 2.3rem  4rem ;
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.6rem;
+    color: #3e1151;
+}
+
+.parrafo{
+    margin: 2.3rem  4rem ;
+    text-align: justify;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #000;
+}

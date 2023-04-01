@@ -27,11 +27,22 @@
           <li class="nav-item">
             <a class="nav-link"><i class="bi bi-person-circle"></i></a>
             <ul class="menu-vertical">
-              <li><a routerLink="/login">Iniciar Sesión</a></li>
-              <li><a routerLink="/registro">Registrarse</a></li>
-              <li><a routerLink="/login">Mi cuenta</a></li>
+              <div class="text-white" *ngIf="rol == '0' && login">
+                <a>Hola, {{nombre}}</a>
+                <a routerLink="/tableprod" class="mr-2 hover:text-orange-400">Agregar</a>
+              </div>
+              
+              <div class="text-white" *ngIf="rol == '1' && login">
+                <a>Hola, {{nombre}}</a>
+              </div>
+                <div class="" *ngIf="login, else falso">
+                  <li><button (click)="logout()" class="mr-4 hover:text-red-400">Cerrar sesión</button></li>
+                </div>
+                <ng-template #falso>
+                  <li><a routerLink="/login">Iniciar Sesión</a></li>
+                  <li><a routerLink="/registro">Registrarse</a></li>
+                </ng-template>
             </ul>
-          </li>
           <li class="nav-item">
             <a class="nav-link" routerLinkActive="link__active" routerLink="/carrito"><i class="bi bi-cart-fill"></i></a>
           </li>
@@ -39,23 +50,3 @@
       </div>
     </div>
   </nav>
-
-<!-- 
-  <nav>
-		<ul class="menu-horizontal">
-			
-			<li>
-				<a href="#"><i class="bi bi-person-circle"></i></a>
-				<ul class="menu-vertical">
-					<li><a href="curso-html.html">Iniciar Sesión</a></li>
-					<li><a href="#">Registrarse</a></li>
-					<li><a href="#">Mi cuenta</a></li>
-				</ul>
-			</li>
-			<li><a href="#">Mis compras</a></li>
-      <li>
-				<a href="#"><i class="bi bi-cart-fill"></i></a>
-			</li>
-
-		</ul>
-	</nav> -->

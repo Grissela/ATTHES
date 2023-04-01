@@ -10,6 +10,11 @@ import { DetalleComponent } from './detalle/detalle.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { SoporteComponent } from './soporte/soporte.component';
+import { PreguntasComponent } from './preguntas/preguntas.component';
+import { CambiosComponent } from './cambios/cambios.component';
+import { PagoComponent } from './pago/pago.component';
+import { PoliticaComponent } from './politica/politica.component';
 
 
 @NgModule({
@@ -22,6 +27,11 @@ import { RouterModule } from '@angular/router';
     RegistroComponent,
     DetalleComponent,
     CarritoComponent,
+    SoporteComponent,
+    PreguntasComponent,
+    CambiosComponent,
+    PagoComponent,
+    PoliticaComponent,
     
   ],
   imports: [
@@ -38,7 +48,12 @@ import { RouterModule } from '@angular/router';
     LoginComponent,
     RegistroComponent,
     DetalleComponent,
-    CarritoComponent
+    CarritoComponent,
+    SoporteComponent,
+    PreguntasComponent,
+    CambiosComponent,
+    PagoComponent,
+    PoliticaComponent,
   ],
 })
 export class PagesModule { }

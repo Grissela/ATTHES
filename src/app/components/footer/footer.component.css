@@ -116,7 +116,7 @@
 
 @media (min-width: 1200px) {
     .footer{
-        height:480px;
+        height:500px;
     }
     .contenedor{
         display: flex;
