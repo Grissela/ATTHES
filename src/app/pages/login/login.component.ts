@@ -39,7 +39,10 @@ export class LoginComponent {
       email: ['', [Validators.required]],
       password: ['', [Validators.required]]
     })
-  }
+  } 
+
+  
+
 
   async validacion(){
     if(this.login.valid){

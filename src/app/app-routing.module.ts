@@ -17,6 +17,7 @@ import { CambiosComponent } from './pages/cambios/cambios.component';
 import { PagoComponent } from './pages/pago/pago.component';
 import { PoliticaComponent } from './pages/politica/politica.component';
 
+
 const routes: Routes = [
   {path:'', component:HomeComponent},
   {path:'tienda', component:TiendaComponent},
@@ -33,7 +34,6 @@ const routes: Routes = [
   {path:'cambios', component:CambiosComponent},
   {path:'pagos', component:PagoComponent},
   {path:'politica', component:PoliticaComponent},
-  
 ];
 
 @NgModule({

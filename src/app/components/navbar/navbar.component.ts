@@ -23,7 +23,7 @@ export class NavbarComponent {
       if (res) {
         console.log("Estado ->",res);
         console.log('esta logeado');
-        // console.log('UID->', res.uid);
+        console.log('UID->', res.uid);
         this.login = true
         this.getUSerData(res.uid)
       } else {
@@ -45,12 +45,12 @@ export class NavbarComponent {
     const path = 'users'
     const id = uid
     this.service.getUsers(path).subscribe(res => {
-      // console.log('info ->', res)
+      console.log('info ->', res)
       this.array = res
-      // console.log("array ->",this.array);
+      console.log("array ->",this.array);
       
       if (this.array) {
-        // console.log(this.array);
+        console.log(this.array);
         
         for (let u of this.array) {
          if(u.id == id){

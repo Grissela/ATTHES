@@ -5,6 +5,7 @@ import { Zapatillas } from 'src/app/interface/zapatillas';
 import { Car } from 'src/app/interface/car';
 import { CarService } from 'src/app/service/car.service';
 import Swal from 'sweetalert2'
+import { AuthService } from 'src/app/service/auth.service';
 @Component({
   selector: 'app-carrito',
   templateUrl: './carrito.component.html',
@@ -16,10 +17,30 @@ export class CarritoComponent implements OnInit  {
   car!:Car[]
   suma=0
   resultado=1
-  constructor( private route:Router, public service:ZapatillasService, public carrito:CarService){}
+  login: boolean = false
+  constructor( private route:Router, public service:ZapatillasService, public carrito:CarService, public aut:AuthService){
+    this.aut.statusUser().subscribe(res => {
+      if (res) {
+        console.log("Estado ->",res);
+        console.log('esta logeado');
+        console.log('UID->', res.uid);
+        this.login = true
+      } else {
+        console.log('No esta logeado');
+        // Swal.fire({
+        //   icon: 'info',
+        //   text: 'No esta logeado!',
+        //   showConfirmButton: false,
+        //   timer: 1500
+        // })
+        this.login = false
+      }
+    })
+  }
 
   ngOnInit(): void {
-    this.mostrar();
+   this.mostrar()
+    
   }
   
   mostrar(){

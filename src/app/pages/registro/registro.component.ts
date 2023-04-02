@@ -35,6 +35,7 @@ export class RegistroComponent {
     
   }
 
+
   // agregar al servicio usuario
   async agregar(){  
     console.log("Datos del registro: ",this.register.value)

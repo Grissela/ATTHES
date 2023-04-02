@@ -10,7 +10,7 @@ import {query, where } from "firebase/firestore";
   providedIn: 'root'
 })
 export class AuthService {
-
+  
   uid!: string
   constructor(private firestore:Firestore,private auth:Auth, private aut:AngularFireAuth) { 
     
@@ -32,7 +32,7 @@ export class AuthService {
   //   const q = query(refUsers, where(this.uid, '==' ,this.uid));
   //  }
 
-  
+
   registerUser(user:Users){
     return createUserWithEmailAndPassword(this.auth, user.Correo, user.Contrasena);
   }
@@ -44,13 +44,18 @@ export class AuthService {
 
   isLogin({ email, password }: any) {
     return signInWithEmailAndPassword(this.auth, email, password)
+    
     //
   }
 
   logout(){
     return signOut(this.auth)
+    
   }
 
+  
+
+  
   // registrar({ Correo, Password }: any){
   //   return this.aut.createUserWithEmailAndPassword(Correo, Password)
   // }

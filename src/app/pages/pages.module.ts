@@ -33,6 +33,7 @@ import { PoliticaComponent } from './politica/politica.component';
     PagoComponent,
     PoliticaComponent,
     
+    
   ],
   imports: [
     CommonModule,
@@ -54,6 +55,7 @@ import { PoliticaComponent } from './politica/politica.component';
     CambiosComponent,
     PagoComponent,
     PoliticaComponent,
+    
   ],
 })
 export class PagesModule { }
