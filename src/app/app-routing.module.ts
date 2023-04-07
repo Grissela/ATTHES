@@ -16,6 +16,7 @@ import { PreguntasComponent } from './pages/preguntas/preguntas.component';
 import { CambiosComponent } from './pages/cambios/cambios.component';
 import { PagoComponent } from './pages/pago/pago.component';
 import { PoliticaComponent } from './pages/politica/politica.component';
+import { MicuentaComponent } from './pages/micuenta/micuenta.component';
 
 
 const routes: Routes = [
@@ -25,15 +26,17 @@ const routes: Routes = [
   {path:'contactos', component:ContactosComponent},
   {path:'login', component:LoginComponent,...canActivate(() => redirectLoggedInTo(['/']))},
   {path:'registro', component:RegistroComponent},
-  {path:'nuevoprod', component:NewzapatillaComponent},
-  {path:'tableprod', component:TableproductosComponent},
-  {path:'detalle/:nombre', component:DetalleComponent},
+  {path:'nuevoprod', component:NewzapatillaComponent,...canActivate(()=> redirectUnauthorizedTo('/login'))},
+  {path:'tableprod', component:TableproductosComponent,...canActivate(()=> redirectUnauthorizedTo('/login'))},
+  {path:'detalle/:nombre', component:DetalleComponent,...canActivate(()=> redirectUnauthorizedTo('/login'))},
   {path:'carrito', component:CarritoComponent},
   {path:'soporte', component:SoporteComponent},
   {path:'preguntas', component:PreguntasComponent},
   {path:'cambios', component:CambiosComponent},
   {path:'pagos', component:PagoComponent},
   {path:'politica', component:PoliticaComponent},
+  {path:'acount/:name', component:MicuentaComponent},
+  {path:'**', component:HomeComponent}
 ];
 
 @NgModule({

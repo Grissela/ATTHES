@@ -23,7 +23,6 @@ export class UserService {
    
    }
    
- 
 
    //mostrar usuarios 
   getUsers(path:string):Observable<Users[]>{

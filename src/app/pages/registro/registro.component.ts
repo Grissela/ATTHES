@@ -12,6 +12,7 @@ import Swal from 'sweetalert2'
 })
 export class RegistroComponent {
   public register !: FormGroup
+  roles= "1";
   data:any[]=[]
 
   constructor(private readonly Build:FormBuilder, private route:Router, public service:UserService,  private authUser:AuthService){}
@@ -19,8 +20,9 @@ export class RegistroComponent {
   ngOnInit(){
     this.register=this.initForm();
     console.log(this.register.value)
+    
   }
-
+  
   // inicializar
   initForm():FormGroup{
     return this.Build.group({
@@ -32,21 +34,31 @@ export class RegistroComponent {
       Contrasena2:['',[Validators.required]],
       Rol:['',[Validators.required]],
     })
-    
   }
 
 
+  
   // agregar al servicio usuario
   async agregar(){  
-    console.log("Datos del registro: ",this.register.value)
+    const pokemonData = {
+      Nombres:this.register.value.Nombres,
+      Apellidos:this.register.value.Apellidos,
+      Celular:this.register.value.Celular,
+      Correo:this.register.value.Correo,
+      Contrasena:this.register.value.Contrasena,
+      Rol:1
+    }
+
+    console.log(pokemonData)
+    console.log("Datos del registro: ",pokemonData)
     // para registrar al usuario y obtener su uid para que se haga un nuevo registro
-    const res = await this.authUser.registerUser(this.register.value)
+    const res = await this.authUser.registerUser(pokemonData)
     if(res){ 
       console.log("Exito a Registrar usuario");
       const path = 'users'
       const id = String(res.user?.uid)
       console.log("UID ->", res.user?.uid);
-      this.service.addUSer(this.register.value, path, id)
+      this.service.addUSer(pokemonData, path, id)
       this.route.navigate(['/login'])
     }
     console.log("Uid del usuario: ",res.user.uid)

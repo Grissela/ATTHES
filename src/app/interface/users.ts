@@ -1,5 +1,4 @@
 export interface Users {
-    payload: any;
     id?:string;
     Nombres:string;
     Apellidos:string;

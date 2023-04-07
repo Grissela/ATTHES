@@ -16,6 +16,7 @@ export class NavbarComponent {
   rol: string='3'
   nombre!: string
   array!:Users[]
+  id!:string;
   token=true;
   
   constructor(private router:Router, private service:UserService, private auth:AuthService){
@@ -41,6 +42,7 @@ export class NavbarComponent {
 
   ngOnInit(){}
 
+
   getUSerData(uid: string) {
     const path = 'users'
     const id = uid
@@ -59,6 +61,7 @@ export class NavbarComponent {
              this.nombre = u.Nombres
              console.log("name ->", this.nombre);
             //  console.log("id ->", u.id); 
+            this.id = u.id
              console.log("rol ->", u.Rol); 
              if(this.rol == '0'){
               localStorage.setItem('admin', 'true')
