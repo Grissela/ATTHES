@@ -40,7 +40,7 @@ export class RegistroComponent {
   
   // agregar al servicio usuario
   async agregar(){  
-    const pokemonData = {
+    const registers = {
       Nombres:this.register.value.Nombres,
       Apellidos:this.register.value.Apellidos,
       Celular:this.register.value.Celular,
@@ -49,16 +49,16 @@ export class RegistroComponent {
       Rol:1
     }
 
-    console.log(pokemonData)
-    console.log("Datos del registro: ",pokemonData)
+    console.log(registers)
+    console.log("Datos del registro: ",registers)
     // para registrar al usuario y obtener su uid para que se haga un nuevo registro
-    const res = await this.authUser.registerUser(pokemonData)
+    const res = await this.authUser.registerUser(registers)
     if(res){ 
       console.log("Exito a Registrar usuario");
       const path = 'users'
       const id = String(res.user?.uid)
       console.log("UID ->", res.user?.uid);
-      this.service.addUSer(pokemonData, path, id)
+      this.service.addUSer(registers, path, id)
       this.route.navigate(['/login'])
     }
     console.log("Uid del usuario: ",res.user.uid)

@@ -13,7 +13,7 @@ import Swal from 'sweetalert2'
 export class NavbarComponent {
 
   login: boolean = false
-  rol: string='3'
+  rol: string='0'
   nombre!: string
   array!:Users[]
   id!:string;

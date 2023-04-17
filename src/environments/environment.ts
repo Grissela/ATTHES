@@ -1,10 +1,10 @@
 export const environment = {
   firebase: {
-    projectId: 'athes-d96ec',
-    appId: '1:888556957907:web:8690024377369faf9b2426',
-    storageBucket: 'athes-d96ec.appspot.com',
-    apiKey: 'AIzaSyBE2aCmLiEJDSmAkEYJn7YgLV-MEy_IAVU',
-    authDomain: 'athes-d96ec.firebaseapp.com',
-    messagingSenderId: '888556957907',
-  },
+    projectId: 'bdatthecs',
+    appId: '1:90485604427:web:ed9e8a0550f27645d08dce',
+    storageBucket: 'bdatthecs.appspot.com',
+    apiKey: 'AIzaSyCrgZrmsReiQup5P1SdOhQc4kD3OTDcvmY',
+    authDomain: 'bdatthecs.firebaseapp.com',
+    messagingSenderId: '90485604427',
   }
+}

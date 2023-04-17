@@ -39,7 +39,6 @@ export class AuthService {
 
   statusUser(){
     return this.aut.authState
-    
   }
 
   isLogin({ email, password }: any) {

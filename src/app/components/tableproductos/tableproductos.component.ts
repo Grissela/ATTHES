@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ZapatillasService } from 'src/app/service/zapatillas.service';
 import { Zapatillas } from 'src/app/interface/zapatillas';
 import Swal from 'sweetalert2'
@@ -10,12 +10,16 @@ import Swal from 'sweetalert2'
 })
 export class TableproductosComponent {
   data:any[]=[]
-
   costoTotal!:number;
   zapatillas!:Zapatillas[];
-  constructor( private route:Router, public service:ZapatillasService){}
+  id!:string;
+  constructor( private route:Router, private router:ActivatedRoute, public service:ZapatillasService){}
   ngOnInit(): void {
     this.mostrar()
+    this.id = String(this.router.snapshot.paramMap.get('id'))
+    this.service.getZapatillas().subscribe(res => {
+      this.zapatillas = res
+    })
   }
 
   mostrar(){
@@ -29,6 +33,12 @@ export class TableproductosComponent {
     this.route.navigate(['nuevoprod'])
    }
 
+   goToDetalleProd(id:string){
+    this.route.navigate(['/edit', id]);
+  }
+  //  editar(){
+  //   this.route.navigate(['edit/:name'])
+  //  }
    eliminar(zapatillas:Zapatillas){
     Swal.fire({
       title: 'Desea eliminar producto',

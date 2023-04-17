@@ -38,13 +38,14 @@ export class DetalleComponent {
  enviar(){
  
  }
- guardar({Nombre,Imagen, Cantidad,Marca, Costo}:any){
+ guardar({Nombre,Imagen, Cantidad,Marca, Costo, Descripcion}:any){
   this.list = {
    Nombre:Nombre,
    Imagen:Imagen,
    Marca:Marca,
    Cantidad:Cantidad,
-   Costo:Costo
+   Costo:Costo,
+   Descripcion:Descripcion
    
  }
  console.log(this.list)

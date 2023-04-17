@@ -11,7 +11,8 @@ import { AuthService } from './auth.service';
 export class CarService {
   path = 'carrito/';
   uid='';
-
+ 
+  
   constructor(private firestore:Firestore, private auth:AuthService) {
     this.auth.statusUser().subscribe(res=>{
       console.log(res);
@@ -22,12 +23,12 @@ export class CarService {
         }
     })
   }
+  
   // mostrar carrito
   getCar():Observable<Car[]>{
     const refCar = collection(this.firestore, 'users/' + this.uid + '/'+ this.path);
     console.log(refCar )
     return collectionData(refCar , {idField:'id'}) as Observable<Car[]>
-
   }
   
   // agregue al carrito
@@ -36,6 +37,13 @@ export class CarService {
     return addDoc(refCar,car)
   }
   
+  // update carrito
+  // actualizarItem(item: any) {
+  //   const index = this.items.findIndex(i => i.id === item.id);
+  //   if (index !== -1) {
+  //     this.items[index] = item;
+  //   }
+  // }
   
 
   

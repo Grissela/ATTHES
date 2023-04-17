@@ -16,6 +16,7 @@ import { CambiosComponent } from './cambios/cambios.component';
 import { PagoComponent } from './pago/pago.component';
 import { PoliticaComponent } from './politica/politica.component';
 import { MicuentaComponent } from './micuenta/micuenta.component';
+import { BoletaComponent } from './boleta/boleta.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { MicuentaComponent } from './micuenta/micuenta.component';
     PagoComponent,
     PoliticaComponent,
     MicuentaComponent,
+    BoletaComponent,
     
     
   ],
@@ -58,6 +60,7 @@ import { MicuentaComponent } from './micuenta/micuenta.component';
     PagoComponent,
     PoliticaComponent,
     MicuentaComponent,
+    BoletaComponent,
   ],
 })
 export class PagesModule { }

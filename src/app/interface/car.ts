@@ -4,5 +4,6 @@ export interface Car {
     Imagen:string;
     Cantidad:number;
     Costo:number;
-    CostoTotal:number;
+    Marca:string;
+    Descripcion:string;
 }

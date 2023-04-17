@@ -17,6 +17,10 @@ import { CambiosComponent } from './pages/cambios/cambios.component';
 import { PagoComponent } from './pages/pago/pago.component';
 import { PoliticaComponent } from './pages/politica/politica.component';
 import { MicuentaComponent } from './pages/micuenta/micuenta.component';
+import { TableusersComponent } from './components/tableusers/tableusers.component';
+import { EditproductsComponent } from './components/editproducts/editproducts.component';
+import { BoletaComponent } from './pages/boleta/boleta.component';
+import { PermisosGuard } from './permisos.guard';
 
 
 const routes: Routes = [
@@ -28,13 +32,17 @@ const routes: Routes = [
   {path:'registro', component:RegistroComponent},
   {path:'nuevoprod', component:NewzapatillaComponent,...canActivate(()=> redirectUnauthorizedTo('/login'))},
   {path:'tableprod', component:TableproductosComponent,...canActivate(()=> redirectUnauthorizedTo('/login'))},
+  // ,canActivate:[PermisosGuard]
+  {path:'tableuser', component:TableusersComponent,...canActivate(()=> redirectUnauthorizedTo('/login'))},
   {path:'detalle/:nombre', component:DetalleComponent,...canActivate(()=> redirectUnauthorizedTo('/login'))},
+  {path:'edit/:id', component:EditproductsComponent,...canActivate(()=> redirectUnauthorizedTo('/login'))},
   {path:'carrito', component:CarritoComponent},
   {path:'soporte', component:SoporteComponent},
   {path:'preguntas', component:PreguntasComponent},
   {path:'cambios', component:CambiosComponent},
   {path:'pagos', component:PagoComponent},
   {path:'politica', component:PoliticaComponent},
+  {path:'boleta/:id', component:BoletaComponent},
   {path:'acount/:name', component:MicuentaComponent},
   {path:'**', component:HomeComponent}
 ];

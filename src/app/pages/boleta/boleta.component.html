@@ -1,0 +1,38 @@
+
+<div class="" *ngIf="login else otro">
+  <h3> BIENVENIDO GRACIAS POR SU COMPRA PUEDE IMPRIMIR SU BOLETA</h3>
+  <button type="submit" (click)="imprimir()">Exportar a PDF</button>
+</div>
+
+<ng-template #otro>
+  <div id="tabla">
+    <table>
+      <tr>
+        <td>Nombres y apellidos: {{nombres}} {{apellidos}}</td>
+      </tr>
+        <tr class="text-center font-bolder text-[1.1rem]" >
+          <th class="">Item</th>
+          <th class="">Nombre</th>
+          <th class="">Marca</th>
+          <th class="">Descripción</th>
+          <th class="">Precio</th>
+          <th class="">Cantidad</th>
+          <th class="">Subtotal</th>
+        </tr>
+            <tr class="text-center text-[.9rem]"*ngFor="let carrito of car, let indice = index">
+              <td>{{indice+1}}</td>
+              <td>{{carrito.Nombre}}</td>
+              <td>{{carrito.Marca}}</td> 
+              <td class="text-[.8rem]">{{carrito.Descripcion}}</td>
+              <td>{{carrito.Costo}}</td>
+              <td>{{carrito.Cantidad}}</td>
+              <td>{{carrito.Costo * carrito.Cantidad}}</td>
+        </tr> 
+        <tr>
+          <td>Total:{{suma}}</td>
+        </tr>  
+    </table>
+    
+  </div>  
+</ng-template>
+

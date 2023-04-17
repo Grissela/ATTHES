@@ -7,23 +7,28 @@
               <th class="">Producto</th>
               <th class="">Descripción</th>
               <th class="">Precio</th>
+              <th class="">Stock</th>
               <th class="">Marca</th>
+              <th class="">Imagen</th>
               <th class=""></th>
             </tr>
-            <tr class="text-center text-[.9rem]" *ngFor="let datos of data;let indice = index">
+            <tr class="text-center text-[.9rem]" *ngFor="let datos of data;let indice = index" >
               <td>{{indice+1}}</td>
               <td>{{datos.Nombre}}</td>
               <td class="text-[.8rem]">{{datos.Descripcion}}</td>
               <td>{{datos.Precio}}</td>
+              <td>{{datos.Cantidad}}</td>
               <td>{{datos.Marca}}</td>
+              <td><img src="{{datos.Imagen}}" alt="" width="50" height="50"></td>
               <td>
-                <button (click)="eliminar(datos)" class="bg-red-500 py-2 px-3 hover:bg-red-600 text-white"><i class="bi bi-trash-fill"></i></button>
+                <button (click)="eliminar(datos)" class="bg-red-500 py-2 px-3 hover:bg-red-600 text-black"><i class="bi bi-trash-fill"></i></button>
+                <button (click)="goToDetalleProd(datos.id)" class="bg-red-500 py-2 px-3 hover:bg-red-600 text-black"><i class="bi bi-pencil-fill"></i></button>
               </td>
             </tr>  
         </table>
         <div class=" mt-5 flex justify-end">
           <div class="mb-4">
-            <button class="bg-green-600 py-2 px-3 hover:bg-green-700 text-white" (click)="enviar()">Agregar</button>
+            <button class="bg-green-600 py-2 px-3 hover:bg-green-700 text-black" (click)="enviar()">Agregar</button>
           </div>
         </div>
     </div>

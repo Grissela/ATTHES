@@ -29,16 +29,16 @@
             <ul class="menu-vertical">
               <div class="text-white" *ngIf="rol == '0' && login">
                 <a>Hola, {{nombre}}</a>
-                <a routerLink="/tableprod" class="mr-2 hover:text-orange-400">Agregar</a>
-                <a [routerLink]="['acount/', id]" class="mr-2 hover:text-orange-400">Mi cuenta</a>
+                <a routerLink="/tableprod" class="acount">Agregar</a>
+                <a [routerLink]="['acount/', id]" class="acount">Mi cuenta</a>
               </div>
               
               <div class="text-white" *ngIf="rol == '1' && login">
                 <a>Hola, {{nombre}}</a>
-                <a [routerLink]="['acount/', id]" class="mr-2 hover:text-orange-400">Mi cuenta</a>
+                <a [routerLink]="['acount/', id]" class="acount">Mi cuenta</a>
               </div>
-                <div class="" *ngIf="login, else falso">
-                  <li><button (click)="logout()" class="mr-4 hover:text-red-400">Cerrar sesión</button></li>
+                <div class="text-white" *ngIf="login, else falso">
+                  <li><button  class="acount" (click)="logout()">Cerrar sesión</button></li>
                 </div>
                 <ng-template #falso>
                   <li><a routerLink="/login">Iniciar Sesión</a></li>

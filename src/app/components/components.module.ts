@@ -6,6 +6,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { NewzapatillaComponent } from './newzapatilla/newzapatilla.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TableproductosComponent } from './tableproductos/tableproductos.component';
+import { TableusersComponent } from './tableusers/tableusers.component';
+import { EditproductsComponent } from './editproducts/editproducts.component';
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import { TableproductosComponent } from './tableproductos/tableproductos.compone
     NavbarComponent,
     FooterComponent,
     NewzapatillaComponent,
-    TableproductosComponent
+    TableproductosComponent,
+    TableusersComponent,
+    EditproductsComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +29,9 @@ import { TableproductosComponent } from './tableproductos/tableproductos.compone
     NavbarComponent,
     FooterComponent,
     NewzapatillaComponent,
-    TableproductosComponent
+    TableproductosComponent,
+    TableusersComponent,
+    EditproductsComponent
   ]
 })
 export class ComponentsModule { }

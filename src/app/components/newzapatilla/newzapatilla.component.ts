@@ -25,6 +25,7 @@ export class NewzapatillaComponent {
       Nombre:['',[Validators.required]],
       Descripcion:['',[Validators.required]],
       Precio:['',[Validators.required]],
+      Cantidad:['',[Validators.required]],
       Marca:['',[Validators.required]],
       Imagen:['',[Validators.required]],
     })

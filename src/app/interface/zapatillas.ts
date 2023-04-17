@@ -5,4 +5,5 @@ export interface Zapatillas {
     Precio:number;
     Marca:string;
     Imagen:string;
+    Cantidad:number;
 }

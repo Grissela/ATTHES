@@ -1,44 +1,44 @@
 <section class="container__cart" *ngIf="login else otro">
-    <h2 class="cart__subtitle" >Mis pedidos</h2>
-    <div class="cart__products" >
+    <h2 class="cart__subtitle"  >Mis pedidos</h2>
+    <div class="" *ngFor="let datos of data">
+        <div class="cart__products" >
 
-        <div class="cart__product"  *ngFor="let datos of data">
-            <div class="cart__detail">
-                
-                    <div class="cart__img">
-                        <img src="{{datos.Imagen}}" alt=""  class="img">
-                        <!-- <img src="{{datas.Imagen}}"  class="img"> -->
+            <div class="cart__product"  >
+                <div class="cart__detail">
+                    
+                        <div class="cart__img">
+                            <img src="{{datos.Imagen}}" alt=""  class="img">
+                            <!-- <img src="{{datas.Imagen}}"  class="img"> -->
+                        </div>
+                    
+                    <div class="card__description">
+                        <h3 class="cart__name">{{datos.Nombre}}</h3>
+                        <p class="cart__brand">{{datos.Marca}}</p>
+                        <p class="cart__price">{{datos.Costo | currency}}</p>
+                        <p>{{datos.Costo * datos.Cantidad}}</p>
                     </div>
-                
-                <div class="card__description">
-                    <h3 class="cart__name">{{datos.Nombre}}</h3>
-                    <p class="cart__brand">{{datos.Marca}}</p>
-                    <p class="cart__price">{{datos.Costo | currency}}</p>
-                    <p>{{datos.Costo * datos.Cantidad}}</p>
                 </div>
+    
+                 <div class="cart__btn">
+                    <!-- <button class="button btn__less" (click)="reducircantidad()">-</button>
+                    <input class="amount" {{datos.Cantidad}}>
+                    <button class="button btn__addition" (click)="aumentarcantidad()">+</button> -->
+                        <!-- <button class="button btn__less" (click)="reducircantidad()">-</button> -->
+                        <span class="amount">{{datos.Cantidad}}</span>
+                        <!-- <button class="button btn__addition" (click)="aumentarcantidad()">+</button> -->
+                    
+                    <button class="button btn__x" (click)="eliminar(datos)">x</button>
+                </div> 
             </div>
-
-             <div class="cart__btn">
-                <!-- <button class="button btn__less" (click)="reducircantidad()">-</button>
-                <input class="amount" {{datos.Cantidad}}>
-                <button class="button btn__addition" (click)="aumentarcantidad()">+</button> -->
-                    <!-- <button class="button btn__less" (click)="reducircantidad()">-</button> -->
-                    <span class="amount">{{datos.Cantidad}}</span>
-                    <!-- <button class="button btn__addition" (click)="aumentarcantidad()">+</button> -->
-                
-                <button class="button btn__x" (click)="eliminar(datos)">x</button>
-            </div> 
         </div>
-
-        <div class="cart__precioTotal">
-            <p class="cart__total">Total</p>
-            <p class="cart__totalPrice">{{suma | currency}}</p>
-        </div>
-
-       <div class="cart__buy">
+    </div>
+    <div class="cart__precioTotal">
+        <p class="cart__total">Total</p>
+        <p class="cart__totalPrice">{{suma | currency}}</p>   
+    </div>
+    <div class="cart__buy" >
         <!-- <button class="button__buy">Comprar</button> -->
-        <button class="btn__add"><i class="bi bi-cart-fill px-1"></i>Comprar</button>
-       </div>
+         <button class="btn__add" (click)="goToBoleta(uid)"> <i class="bi bi-cart-fill px-1"></i>Comprar</button>
     </div>
 </section>
 <ng-template #otro>

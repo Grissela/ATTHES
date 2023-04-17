@@ -6,6 +6,7 @@ import { Car } from 'src/app/interface/car';
 import { CarService } from 'src/app/service/car.service';
 import Swal from 'sweetalert2'
 import { AuthService } from 'src/app/service/auth.service';
+import jsPDF from 'jspdf';
 @Component({
   selector: 'app-carrito',
   templateUrl: './carrito.component.html',
@@ -13,17 +14,24 @@ import { AuthService } from 'src/app/service/auth.service';
 })
 export class CarritoComponent implements OnInit  {
   data:any[]=[]
+  user:any[]=[]
+  info!:string
+  uid=""
   zapatillas!:Zapatillas[];
   car!:Car[]
   suma=0
   resultado=1
+  id!:string;
   login: boolean = false
+  
+  
   constructor( private route:Router, public service:ZapatillasService, public carrito:CarService, public aut:AuthService){
     this.aut.statusUser().subscribe(res => {
       if (res) {
         console.log("Estado ->",res);
         console.log('esta logeado');
         console.log('UID->', res.uid);
+        this.uid = res.uid
         this.login = true
       } else {
         console.log('No esta logeado');
@@ -40,7 +48,6 @@ export class CarritoComponent implements OnInit  {
 
   ngOnInit(): void {
    this.mostrar()
-    
   }
   
   mostrar(){
@@ -50,8 +57,19 @@ export class CarritoComponent implements OnInit  {
       const suma=result.Cantidad*result.Costo
       this.suma +=suma
      }
-    }) 
+     return this.suma;
+    })
+    
    }
+
+  goToBoleta(id:string){
+        this.route.navigate(['/boleta',id]);
+    }
+    
+  //  actualizarItem(item: any) {
+  //   this.carrito.actualizarItem(item);
+    
+  // }
   //  reducircantidad(){
   //     if(this.resultado == 1){
   //     }
@@ -61,8 +79,7 @@ export class CarritoComponent implements OnInit  {
   //    }
   // aumentarcantidad(){
   //     this.resultado +=1
-  // }
-
+  
   eliminar(car:Car){
     Swal.fire({
       title: 'Desea eliminar producto',
