@@ -1,26 +1,23 @@
-<div class="contenedor__login">
+<section class="login-contain">
     <div class="login">
-        <div class="login__img">
-            <img src="../../../assets/IMG/adidas.png" alt="Logo" class="img">
-        </div>
-        <form [formGroup]="login">
-            <div class="mb-4">
+        <img src="../../../assets/IMG/adidas.png" alt="Logo del login" class="login-image">
+
+        <form class="form" [formGroup]="login">
+            <div class="form-contain">
                 <label for="email">Correo Eletrónico</label>
                 <input type="email" class="form-control" name="email" formControlName="email"id="email" placeholder="Ingresa tu correo electrónico">
             </div>
 
-            <div class="mb-4">
+            <div class="form-contain">
                 <label for="pass">Contraseña</label>
                 <input type="password" class="form-control" name="password" formControlName="password" id="pass" placeholder="Ingresa tu contraseña">
             </div>
+            
+            <button class="btn-signIn" (click)="validacion()">Iniciar Sesión</button>
 
-            <div class="mb-3">
-                <button class="btn__signIn" (click)="validacion()">Iniciar Sesión</button>
-            </div>
-
-            <div class="mb-2 text-center">
+            <div class="text-center">
                 <a routerLink="/registro" class="link">Si no tienes cuenta registrate</a>
             </div>
         </form>
-    </div>
-</div>
+    </div>   
+</section>

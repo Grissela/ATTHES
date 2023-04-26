@@ -14,13 +14,14 @@ import { TiendaComponent } from './pages/tienda/tienda.component';
 import { canActivate, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { PreguntasComponent } from './pages/preguntas/preguntas.component';
 import { CambiosComponent } from './pages/cambios/cambios.component';
-import { PagoComponent } from './pages/pago/pago.component';
 import { PoliticaComponent } from './pages/politica/politica.component';
 import { MicuentaComponent } from './pages/micuenta/micuenta.component';
 import { TableusersComponent } from './components/tableusers/tableusers.component';
 import { EditproductsComponent } from './components/editproducts/editproducts.component';
 import { BoletaComponent } from './pages/boleta/boleta.component';
 import { PermisosGuard } from './permisos.guard';
+import { PedidoComponent } from './pages/pedido/pedido.component';
+import { TableordenesComponent } from './components/tableordenes/tableordenes.component';
 
 
 const routes: Routes = [
@@ -30,20 +31,21 @@ const routes: Routes = [
   {path:'contactos', component:ContactosComponent},
   {path:'login', component:LoginComponent,...canActivate(() => redirectLoggedInTo(['/']))},
   {path:'registro', component:RegistroComponent},
-  {path:'nuevoprod', component:NewzapatillaComponent,...canActivate(()=> redirectUnauthorizedTo('/login'))},
-  {path:'tableprod', component:TableproductosComponent,...canActivate(()=> redirectUnauthorizedTo('/login'))},
+  {path:'nuevoprod', component:NewzapatillaComponent,...canActivate(()=> redirectUnauthorizedTo('/login')),canActivate:[PermisosGuard]},
+  {path:'tableprod', component:TableproductosComponent,...canActivate(()=> redirectUnauthorizedTo('/login')),canActivate:[PermisosGuard]},
   // ,canActivate:[PermisosGuard]
-  {path:'tableuser', component:TableusersComponent,...canActivate(()=> redirectUnauthorizedTo('/login'))},
+  {path:'tableuser', component:TableusersComponent,...canActivate(()=> redirectUnauthorizedTo('/login')),canActivate:[PermisosGuard]},
+  {path:'tableord', component:TableordenesComponent,...canActivate(()=> redirectUnauthorizedTo('/login')),canActivate:[PermisosGuard]},
   {path:'detalle/:nombre', component:DetalleComponent,...canActivate(()=> redirectUnauthorizedTo('/login'))},
-  {path:'edit/:id', component:EditproductsComponent,...canActivate(()=> redirectUnauthorizedTo('/login'))},
+  {path:'edit/:id', component:EditproductsComponent,...canActivate(()=> redirectUnauthorizedTo('/login')),canActivate:[PermisosGuard]},
   {path:'carrito', component:CarritoComponent},
   {path:'soporte', component:SoporteComponent},
   {path:'preguntas', component:PreguntasComponent},
   {path:'cambios', component:CambiosComponent},
-  {path:'pagos', component:PagoComponent},
   {path:'politica', component:PoliticaComponent},
+  {path:'pedido', component:PedidoComponent},
   {path:'boleta/:id', component:BoletaComponent},
-  {path:'acount/:name', component:MicuentaComponent},
+  {path:'acount/:id', component:MicuentaComponent},
   {path:'**', component:HomeComponent}
 ];
 

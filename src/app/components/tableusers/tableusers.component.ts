@@ -11,15 +11,20 @@ import Swal from 'sweetalert2'
   styleUrls: ['./tableusers.component.css']
 })
 export class TableusersComponent {
-  data:any[]=[]
+    // VARIABLES A UTILIZAR--
+    data:any[]=[]
+    users!:Users[];
 
-  costoTotal!:number;
-  users!:Users[];
-  constructor( private route:Router, public service:UserService){}
+  constructor(
+    private route:Router, 
+    public service:UserService){}
+
+  
   ngOnInit(): void {
     this.mostrar()
   }
 
+  // Para mostrar la tabla  y sus registros------------
   mostrar(){
     const path = 'users'
     this.service.getUsers(path).subscribe (res=>{
@@ -28,10 +33,13 @@ export class TableusersComponent {
     }) 
    }
 
+  // Para redirigir a otro componente donde se editara el producto
    enviar(){
     this.route.navigate(['nuevoprod'])
    }
 
+
+  //  Para eliminar a usuarios-----------------------------
    eliminar(users:Users){
     Swal.fire({
       title: 'Desea eliminar producto',

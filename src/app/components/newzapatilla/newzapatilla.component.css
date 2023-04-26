@@ -1,8 +1,108 @@
-.contenedor__body{
-    background-color: #183d636e;
-    /* height: 100vh; */
-}
+
+/*FORMULARIO*/
 .form{
-    margin: 2rem 0;
-    width: 330px;
+    /* margin: 2rem 0;
+    padding: 0 1rem; */
+    width: 90%;
+    margin: 2rem auto;
 }
+.contact-form > *{
+    display: block;
+    width: 100%;
+    padding: 1.5rem 1rem;
+    margin: 1.3rem auto;
+}
+.contact-form textarea{
+    height: 250px;
+    text-align: justify;
+    line-height: 1.9;
+}
+.contact-form input,
+.contact-form textarea{
+    font-size: 1.04rem;
+    font-family: var(--font);
+    font-weight: bold;
+    color: var(--black-color);
+}
+.contact-form *::placeholder{
+    font-size: 1rem;
+    color: #adb5bd;
+ }
+
+.contact-form input{
+    padding-left: 1rem;
+    border: 1px solid #adb5bd;
+    outline: none;
+}
+
+.contact-form textarea{
+    border: 1px solid #adb5bd;
+    outline: none;
+    resize: none;
+ }
+
+ .contact-form .btn-send{
+    display: block;
+    width: 100%;
+    padding: 1.5rem 0;
+    font-size: 1.04rem;
+    font-weight: bold;
+    color: var(--white-color);
+    background-color: var(--button-nav-color);
+    border: 0;
+    cursor: pointer;
+    transition: opacity .1s ease;
+ }
+ .contact-form .btn-send:hover{
+    opacity: .85;
+ }
+ 
+.img-contact{
+    display: none;
+}
+
+ @media screen and (min-width:48rem){
+    .form{
+        width: 80%;
+        margin: 4rem auto;
+    }
+    .contact-form .btn-send{
+       font-size: 1.1rem;
+     }
+}
+ @media screen and (min-width:64rem) {
+    .form{
+        display: flex;
+        width: 100%;
+        margin: 3rem auto;
+    }
+    .contact-form > *{
+        padding: 1.5rem 1rem;
+        margin: 1rem auto;
+    }
+
+    .contact-form{
+       display: grid;
+       grid-template-columns: repeat(2,1fr);
+       column-gap: 1rem;
+       flex-grow: 1;
+       padding: 0 1rem;
+
+    }
+    .contact-form textarea{
+        height: inherit;
+        text-align: justify;
+        line-height: 1.9;
+    }
+    .contact-form textarea,
+    .contact-form-loader{
+       grid-column: span 2;
+    }
+    
+    .contact-form .btn-send{
+        width: 200px;
+        padding: 1.3rem 0;
+        grid-column: span 2;
+    }
+ }
+

@@ -15,7 +15,11 @@ export class EditproductsComponent {
   public editar !: FormGroup
   datos:any=[]
   id=""
-  constructor(private route: Router,private build:FormBuilder, private router:ActivatedRoute, private zapatillas:ZapatillasService){
+  constructor(
+    private route: Router,
+    private build:FormBuilder,
+    private router:ActivatedRoute,
+    private zapatillas:ZapatillasService){
     this.editar = this.build.group({
       Nombre:['',[Validators.required]],
       Descripcion:['',[Validators.required]],

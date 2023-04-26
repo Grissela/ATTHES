@@ -9,12 +9,20 @@ import Swal from 'sweetalert2'
   styleUrls: ['./tableproductos.component.css']
 })
 export class TableproductosComponent {
+  // VARIABLES A UTILIZAR---
   data:any[]=[]
   costoTotal!:number;
   zapatillas!:Zapatillas[];
   id!:string;
-  constructor( private route:Router, private router:ActivatedRoute, public service:ZapatillasService){}
+
+  constructor( 
+    private route:Router, 
+    private router:ActivatedRoute, 
+    public service:ZapatillasService){}
+
+  
   ngOnInit(): void {
+    // Para mostrar los registros y snapshot para redirigir a otro componente mediante su id
     this.mostrar()
     this.id = String(this.router.snapshot.paramMap.get('id'))
     this.service.getZapatillas().subscribe(res => {
@@ -22,6 +30,7 @@ export class TableproductosComponent {
     })
   }
 
+  // Mostrar todos los registros de los productos---------------
   mostrar(){
     this.service.getZapatillas().subscribe (res=>{
      this.data = res
@@ -29,16 +38,19 @@ export class TableproductosComponent {
     }) 
    }
 
+  //  Para enviar a nuevo producto para agregar un nuevo producto---------
    enviar(){
     this.route.navigate(['nuevoprod'])
    }
 
+
+  // Para editar los campos de el producto ya registrado---------------- 
    goToDetalleProd(id:string){
     this.route.navigate(['/edit', id]);
   }
-  //  editar(){
-  //   this.route.navigate(['edit/:name'])
-  //  }
+  
+
+  // Para eliminar cada producto de la  tabla de productos------------------
    eliminar(zapatillas:Zapatillas){
     Swal.fire({
       title: 'Desea eliminar producto',

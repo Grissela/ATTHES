@@ -1,4 +1,4 @@
-<header>
+<!-- <header>
     <div class="fondo">
         <div class="contenedor">
             <h1 class="title">atthes</h1>
@@ -36,9 +36,9 @@
                             <button class="btn__add" (click)="goToDetalle(datos.Nombre)"><i class="bi bi-cart-fill px-1"></i>Agregar</button>
                             <button class="btn__seeMore" (click)="goToDetalle(datos.Nombre)">Ver más</button>
     
-                        <!-- <div class="">
+                        <div class="">
                             <p class="font-semibold text-center text-[1.1rem] py-2">S/. {{datos.Costo}}</p>
-                        </div> -->
+                        </div> 
                     </div> 
                 </div>
             </div>
@@ -46,4 +46,52 @@
         </div>
     </div>
     
+</section> -->
+
+<!-- DE OSCAR--------------------------------------------------------------- -->
+<header>
+    <div class="bg-image">
+        <div class="bg-contain">
+            <h1 class="title">atthes</h1>
+            <button class="btn-buy" routerLink="/tienda">Comprar</button>
+        </div>
+
+    </div>
+</header>
+
+<section class="container section full-lg-screen">
+    <h2 class="sneaker-title">Colección</h2>
+    <div class="container-img">
+        <div class="image img-men">
+            <p class="subtitle">Coleccion para Hombres</p>
+        </div>
+        <div class="image img-women">
+            <p class="subtitle">Coleccion para Mujeres</p>
+        </div>
+    </div>
+</section>
+
+<section class="container section full-lg-screen">
+    <h2 class="sneaker-title">Productos Destacados</h2>
+        <div class="container-sneakers">
+        
+            <div *ngFor="let datos of zapatillas" class="container-sneaker" (click)="goToDetalle(datos.Nombre)">
+                <div class="card-sneaker">
+                    <h3 class="card-subtitle">{{datos.Marca}}</h3>
+                    <h3 class="card-name">{{datos.Nombre}}</h3>
+                    <div class="sneaker__containImg">
+                        <img src="{{datos.Imagen}}" class="card-image" alt="productos">
+                    </div>
+                    <h3 class="card-price">{{datos.Precio |currency:'S/. '}}</h3>
+                        <div class="card-description">
+                            <button class="btn-add" (click)="goToDetalle(datos.Nombre)"><i class="bi bi-cart-fill px-1"></i>Agregar</button>
+                            <button class="btn-seeMore" (click)="goToDetalle(datos.Nombre)">Ver más</button>
+    
+                        <!-- <div class="">
+                            <p class="font-semibold text-center text-[1.1rem] py-2">S/. {{datos.Costo}}</p>
+                        </div> -->
+                    </div> 
+                </div>
+            </div>
+        </div>
 </section>

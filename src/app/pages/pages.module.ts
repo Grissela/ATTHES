@@ -13,10 +13,10 @@ import { RouterModule } from '@angular/router';
 import { SoporteComponent } from './soporte/soporte.component';
 import { PreguntasComponent } from './preguntas/preguntas.component';
 import { CambiosComponent } from './cambios/cambios.component';
-import { PagoComponent } from './pago/pago.component';
 import { PoliticaComponent } from './politica/politica.component';
 import { MicuentaComponent } from './micuenta/micuenta.component';
 import { BoletaComponent } from './boleta/boleta.component';
+import { PedidoComponent } from './pedido/pedido.component';
 
 
 @NgModule({
@@ -32,10 +32,10 @@ import { BoletaComponent } from './boleta/boleta.component';
     SoporteComponent,
     PreguntasComponent,
     CambiosComponent,
-    PagoComponent,
     PoliticaComponent,
     MicuentaComponent,
     BoletaComponent,
+    PedidoComponent,
     
     
   ],
@@ -57,10 +57,10 @@ import { BoletaComponent } from './boleta/boleta.component';
     SoporteComponent,
     PreguntasComponent,
     CambiosComponent,
-    PagoComponent,
     PoliticaComponent,
     MicuentaComponent,
     BoletaComponent,
+    PedidoComponent,
   ],
 })
 export class PagesModule { }

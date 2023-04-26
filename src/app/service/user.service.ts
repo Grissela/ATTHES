@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { addDoc, collection, collectionData, deleteDoc, doc, Firestore, setDoc } from '@angular/fire/firestore';
+import { addDoc, collection, collectionData, deleteDoc, doc, Firestore, setDoc, updateDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import {Users} from '../interface/users'
 import { AuthService } from './auth.service';
@@ -38,6 +38,11 @@ export class UserService {
   }
   
 
+  //actualizar datos del usuario
+  updateUsers(_id:string, users:any) {
+    const refZapatillas = doc(this.firestore, 'users/'+ _id)
+    return updateDoc(refZapatillas, users)
+  }
   // Para agregar un nuevo usuario 
   addUSer(user: any, path: string, id: string): Promise<void> {
     const docRef = doc(this.firestore, path, id)

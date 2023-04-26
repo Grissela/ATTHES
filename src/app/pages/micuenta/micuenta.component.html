@@ -1,18 +1,35 @@
-<p>micuenta</p>
 
-<form action=""  *ngFor="let data of datos">
-    <div class="" *ngIf="data.id == name ">
-        <label for="">Nombres </label>
-        <input type="text" value={{data.Nombres}} placeholder={{data.Nombres}} disabled>
-        <label for="">Apellidos </label>
-        <input type="text" value={{data.Apellidos}} placeholder={{data.Apellidos}} disabled>
-        <label for="">Celular </label>
-        <input type="text" value={{data.Celular}} placeholder={{data.Celular}} disabled>
-        <label for="">Correo </label>
-        <input type="text" value={{data.Correo}} placeholder={{data.Correo}} disabled>
-        <label for="">Contraseña </label>
-        <input type="text" value={{data.Contrasena}} placeholder={{data.Contrasena}} disabled>
-    </div>
-    
+<!-- OSCAR----------------- -->
+<section class="container">
+    <h3 class="sneaker-title">Tu Perfil</h3>
+    <form class="form" [formGroup]="cuenta" >
+        <div class="form-none" *ngFor="let data of datos">
+            <div class="contact-form" *ngIf="data.id == id">
+                <div class="">
+                    <label for="">Nombres </label>
+                    <input type="text" value={{data.Nombres}} placeholder={{data.Nombres}} name="Nombres" formControlName="Nombres">
+                </div>
+                <div class="">
+                    <label for="">Apellidos </label>
+                    <input type="text" value={{data.Apellidos}} placeholder={{data.Apellidos}} name="Apellidos" formControlName="Apellidos">
+                </div>
+                <div class="">
+                    <label for="">Celular </label>
+                    <input type="text" value={{data.Celular}} placeholder={{data.Celular}} name="Celular" formControlName="Celular">
+                </div>
+                <div class="">
+                    <label for="">Correo </label>
+                    <input type="text" value={{data.Correo}} placeholder={{data.Correo}} name="Correo" formControlName="Correo">
+                </div>
+                <div class="">
+                    <label for="">Contraseña </label>
+                    <input type="text" value={{data.Contrasena}} placeholder={{data.Contrasena}} name="Contrasena" formControlName="Contrasena">
+                </div>
+                <button class="btn-send" type="submit" (click)="guardar()">Modificar</button>
+            </div>
+        </div>
+       
+    </form>
 
-</form>
+</section> 
+  

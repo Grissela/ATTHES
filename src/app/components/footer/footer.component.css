@@ -1,5 +1,5 @@
 .footer{
-    height:720px;
+    height: 55rem;
     background-image: url("../../../assets/IMG/piepagina.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -7,130 +7,131 @@
     background-attachment: fixed;
     padding: .1px;
 }
-.footer__title{
-    font-family: 'Roboto', sans-serif;
+.footer-title{
+    font-family: var(--font);
     font-weight: 700;
-    font-size: 7.3rem;
-    color: #fff;
+    font-size: 12.4vw;
+    color: var(--white-color);
     text-align: center;
     text-decoration: line-through;
     margin: 2.6rem 0;
 }
 
-.contenedor{
+.footer-contain{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 2.6rem 0;
 }
-.contenedor__box{
-    margin-bottom: 2rem;
-}
-.contenedor__subtitle{
+
+.footer-subtitle{
     font-size: 2rem;
     font-weight: 700;
-    color: #fff;
+    color: var(--white-color);
     margin-bottom: 1rem;
     text-align: center;
 }
-.list__links{
+.footer-links{
+    padding-left: 0;
     text-align: center;
 }
-.list__link{
+.link{
     display: inline-block;
-    color: #a4b2ca;
+    color: var(--footer-link-color);
     text-decoration: none;
     padding: .4rem 0;
+    transition: color .3s ease;
 }
-.list__link:hover{
-    color: rgb(87, 201, 247);
-    transition: .3s;
+.link:hover{
+    color: var(--white-color);
 }
-.contenedor__follow{
+.contain-follow{
     font-size: 2rem;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 1rem;
 }
-.card__media{
+.card-media{
     display: flex;
-    justify-content: space-around;
-    gap: 2rem;
+    justify-content: space-between;
+    gap: 0 2rem;
 }
-.card__icon:hover{
-    transition: .3s;
-    transform: scale(1.1); 
+.card-icon{
+    padding: 0 .5rem;
+    transition: transform .3s ease;
 }
-.card__icon--facebook{
+.card-icon:hover{
+    transform: scale(1.17); 
+}
+.icon-facebook{
     color: #3b5998;   
 }
-.card__icon--twiter{
+.icon-twiter{
     color: #55acee;
 }
-.card__icon--youtube{
+.icon-youtube{
     color: #bb0000;
 }
 
 
-.contenedor__service{
-    font-size: 2rem;
-    font-weight: 700;
-    color: #fff;
+.contain-service{
     margin-bottom: 1rem;
-    text-align: center;
 }
-.contenedor__paragraph{
-    color: #a4b2ca;
+.footer-text{
+    color: var(--footer-link-color);
 }
 .parrafo{
+    margin: 0 auto;
+    width: 80%;
     font-size: 1rem;
-    font-weight: 500;
     text-align: center;
-    padding: .4rem .2rem;
+    margin-bottom: 2rem;
 }
 .correo{
-    padding: .4rem 0;
-    font-size: 1rem;
-    font-weight: 500;
     text-align: center;
-    padding: .4rem .2rem;
 }
 .copy{
-    color: #a4b2ca;
+    color: var(--footer-link-color);
     padding: .4rem 0;
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: 1.1rem;
     text-align: center;
-    padding: .4rem .2rem;
+    margin: 0;
 }
 
-@media (min-width: 768px) {
-    .contenedor{
+@media screen and (min-width: 48rem) {
+    .footer{
+        height:50rem;
+    }
+    .footer-contain{
         display: flex;
         flex-direction: row;
         justify-content: space-around;
         flex-wrap: wrap;
+        align-items: baseline;
     }
    
 }
 
-@media (min-width: 1200px) {
+@media screen and (min-width: 64rem) {
     .footer{
-        height:500px;
+        height:44rem;
     }
-    .contenedor{
+    .footer-contain{
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-between;
         align-items: baseline;
+        gap: 0;
     }
-    .contenedor__box{
-        width: 30%;
+   
+    .footer-box{
+        flex-basis: 30%;
     }
-    .card__media{
+    .card-media{
         display: flex;
         justify-content: center;
-        gap: 1.8rem;
+        gap: 0 1.8rem;
+    }
+    .copy{
+        margin-top: 2rem;
     }
    
 }

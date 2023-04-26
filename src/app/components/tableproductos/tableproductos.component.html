@@ -1,37 +1,44 @@
-<div class="contenedor__body flex justify-center">
-    <div class="contenedor__table bg-white p-5 px-[2rem] rounded-[1rem] w-[70%] mx-auto">
-        <h2 class="font-bold text-[1.5rem] py-5">Productos</h2>
-        <table>
-            <tr class="text-center font-bolder text-[1.1rem]" >
-              <th class="">Item</th>
-              <th class="">Producto</th>
-              <th class="">Descripción</th>
-              <th class="">Precio</th>
-              <th class="">Stock</th>
-              <th class="">Marca</th>
-              <th class="">Imagen</th>
-              <th class=""></th>
-            </tr>
-            <tr class="text-center text-[.9rem]" *ngFor="let datos of data;let indice = index" >
-              <td>{{indice+1}}</td>
-              <td>{{datos.Nombre}}</td>
-              <td class="text-[.8rem]">{{datos.Descripcion}}</td>
-              <td>{{datos.Precio}}</td>
-              <td>{{datos.Cantidad}}</td>
-              <td>{{datos.Marca}}</td>
-              <td><img src="{{datos.Imagen}}" alt="" width="50" height="50"></td>
-              <td>
-                <button (click)="eliminar(datos)" class="bg-red-500 py-2 px-3 hover:bg-red-600 text-black"><i class="bi bi-trash-fill"></i></button>
-                <button (click)="goToDetalleProd(datos.id)" class="bg-red-500 py-2 px-3 hover:bg-red-600 text-black"><i class="bi bi-pencil-fill"></i></button>
-              </td>
-            </tr>  
-        </table>
-        <div class=" mt-5 flex justify-end">
-          <div class="mb-4">
-            <button class="bg-green-600 py-2 px-3 hover:bg-green-700 text-black" (click)="enviar()">Agregar</button>
-          </div>
-        </div>
-    </div>
-   
-  </div>
+<!-- TABLA DE PRODUCTOS-------------------------------------------------->
+<div class="table-contain container">
+  <h2 class="sneaker-title">Productos</h2>
+
+  <button class="btn-add-product" (click)="enviar()"><i class="fa-solid fa-plus fa-2xl"></i>Agregar</button>
+
+  <table class="table">
+    <thead>
+      <tr class="thead-tr">
+        <th><i class="bi bi-hash"></i></th>
+        <th>Producto</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Marca</th>
+        <th>Imagen</th>
+        <th></th>
+      </tr>
+    </thead>
+          
+    <tbody>
+      <tr class="tbody-tr" *ngFor="let datos of data;let indice = index" >
+        <td class="tbody-td" data-titulo="#">{{indice+1}}</td>
+        <td class="tbody-td" data-titulo="Nombre">{{datos.Nombre}}</td>
+        <td class="tbody-td" data-titulo="Descripcion">
+          
+          <textarea disabled>{{datos.Descripcion}}</textarea>
+        </td>
+        <td class="tbody-td" data-titulo="Precio">{{datos.Precio}}</td>
+        <td class="tbody-td" data-titulo="Cantidad">{{datos.Cantidad}}</td>
+        <td class="tbody-td" data-titulo="Marca">{{datos.Marca}}</td>
+        <td class="tbody-td" data-titulo="Imagen"><img src="{{datos.Imagen}}" class="td-image"></td>
+        <td class="tbody-td flex">
+          <button (click)="eliminar(datos)" title="Eliminar" class="btn-delete"><i class="bi bi-trash-fill"></i></button>
+
+          <button (click)="goToDetalleProd(datos.id)" title="Modificar" class="btn-update"><i class="bi bi-pencil-fill"></i></button>
+        </td>
+      </tr>  
+    </tbody>
+  </table>
+</div>
+
+
   

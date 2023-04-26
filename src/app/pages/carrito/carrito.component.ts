@@ -7,25 +7,30 @@ import { CarService } from 'src/app/service/car.service';
 import Swal from 'sweetalert2'
 import { AuthService } from 'src/app/service/auth.service';
 import jsPDF from 'jspdf';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-carrito',
   templateUrl: './carrito.component.html',
   styleUrls: ['./carrito.component.css']
 })
 export class CarritoComponent implements OnInit  {
+  // variables a usar
   data:any[]=[]
   user:any[]=[]
   info!:string
   uid=""
+  ide:any
   zapatillas!:Zapatillas[];
   car!:Car[]
-  suma=0
+  suma:any[]=[]
+  res=0
   resultado=1
   id!:string;
   login: boolean = false
   
   
-  constructor( private route:Router, public service:ZapatillasService, public carrito:CarService, public aut:AuthService){
+  constructor( private route:Router, private _location :Location, public service:ZapatillasService, public carrito:CarService, public aut:AuthService){
+    // Para autentificar el usuario logeado-----------------------------------------------
     this.aut.statusUser().subscribe(res => {
       if (res) {
         console.log("Estado ->",res);
@@ -33,6 +38,7 @@ export class CarritoComponent implements OnInit  {
         console.log('UID->', res.uid);
         this.uid = res.uid
         this.login = true
+        
       } else {
         console.log('No esta logeado');
         // Swal.fire({
@@ -49,23 +55,43 @@ export class CarritoComponent implements OnInit  {
   ngOnInit(): void {
    this.mostrar()
   }
+  reloadPage() {
+    this.route.navigateByUrl('/carrito', { skipLocationChange: true }).then(() => {
+      console.log(decodeURI(this._location.path()));
+      this.route.navigate([decodeURI(this._location.path())]);
+    });
+}
   
+  // Para mostrar todo lo que tiene el carrito--------------------------------------------
   mostrar(){
-    this.carrito.getCar().subscribe (res=>{
+    this.aut.statusUser().subscribe(res =>{
+    this.ide = res?.uid
+    console.log('Aqui ->',this.ide);
+    this.carrito.getMostrar(res?.uid).subscribe (res=>{
      this.data = res
-     for(let result of this.data){
-      const suma=result.Cantidad*result.Costo
-      this.suma +=suma
+     for(let i=0; i<this.data.length;i++){
+      //console.log('Al->',this.data[i].Costo);
+      
+     let sum:number = this.data[i].Cantidad*this.data[i].Costo 
+      console.log('Suma->',sum);
+      
+      this.suma.push(sum)
+      
      }
-     return this.suma;
+     console.log('px->',this.suma);
+     this.res = this.suma.reduce((acumulador, valorActual) => acumulador + valorActual, 0);
+     console.log(this.res);
+     
     })
-    
+  })
    }
 
+  // Para dirigir al componente boleta donde se vera los pedidos---------------------------
   goToBoleta(id:string){
         this.route.navigate(['/boleta',id]);
     }
     
+  // -----------------------actualizar-------------
   //  actualizarItem(item: any) {
   //   this.carrito.actualizarItem(item);
     
@@ -79,7 +105,9 @@ export class CarritoComponent implements OnInit  {
   //    }
   // aumentarcantidad(){
   //     this.resultado +=1
-  
+  // ----------------------------------------------------
+
+  // para eliminar uno por un pedido del carrito---------------------------
   eliminar(car:Car){
     Swal.fire({
       title: 'Desea eliminar producto',
@@ -96,7 +124,8 @@ export class CarritoComponent implements OnInit  {
           'success'
         )
         this.carrito.deleteCar(car)
-        this.route.navigate(['carrito'])
+        this.reloadPage()
+        //this.route.navigate(['carrito'])
       }
     })
    }

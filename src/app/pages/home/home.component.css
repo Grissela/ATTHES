@@ -1,232 +1,150 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
-
-.fondo{
-    height: 88.5vh;
+.bg-image{
+    min-height: 100vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../../assets/IMG/fondo1.jpg");
-    background-repeat: no-repeat;
     background-size: cover;
+    background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
 }
-.contenedor{
-    height: 100%;
+.bg-contain{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    min-height: inherit;
 }
 .title{
-    font-family: 'Roboto', sans-serif;
+    font-size: 15vw;
     font-weight: 700;
-    font-size: 7.3rem;
-    color: #fff;
+    color: var(--white-color);
     text-decoration: line-through;
 }
-.btn__comprar{
-    border: none;
-    padding: .8rem 1.5rem;
-    border-radius: .6rem;
-    font-weight: 600;
+
+.btn-buy{
     margin-top: 1rem;
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color .3s ease, transform .3s ease, color .3s ease;
 }
-.btn__comprar:hover{
+.btn-buy:hover{
+    color: var(--white-color);
     background-color: #ef233c;
-    color: #fff;
-    transition: .4s;
     transform: scale(1.1);
 }
 
 /*CONTENEDOR REFERENCIA DE CATEGORIA HOMBRE Y MUJER*/
-.contenedor__img{
+.container-img{
     overflow: hidden;
 }
-.imagen{
-    height: 650px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    transition: .5s;
+
+.image{
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 550px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: pointer;
+    transition: transform .4s ease-out;
 }
-.img__hombres{
+.img-men{
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../../assets/IMG/hombre.jpg");
 }
 
-.img__mujeres{
+.img-women{
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(" ../../../assets/IMG/mujer.jpg");
 }
 
-.imagen:hover{
-    transform: scale(1.1); 
-    cursor: pointer;
+.image:hover{
+    transform: scale(1.06); 
 }
 
-.subtitle{
-    color: #fff;
-    font-size: 1.8rem;
+.image .subtitle{
+    font-size: var(--step-3);
     font-weight: 600;
-}
-
-/**/
-
-/*PRODUCTOS*/
-.title__productos{
-    font-size: 1.8rem;
-    font-weight: 700;
-    font-family: 'Roboto', sans-serif;
-    color: rgb(240, 165, 27);
+    color: var(--white-color);
     text-align: center;
-    padding-bottom: 1rem;
-    justify-content: space-between;
 }
-.contain__products{
-    display: flex;
-    justify-content: center;
-    gap: 2.3rem;
-    flex-wrap: wrap;
+@media screen and (min-width:48rem){
+    .container-img{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .image{
+        flex-basis: 45%;
+    }
 }
-.product{
-    width: 350px;
-    height: 350px;
-    overflow: hidden;
-    gap: 10px;
-    
-}
-
-.products{
-   max-width: 100%;
-   object-fit: cover;
-    
-
+@media screen and (min-width:64rem){
+    .image{
+        height: 600px;
+        flex-basis: 40%;
+    }
 }
 
-.products:hover{
-    transform: scale(1.1); 
-    cursor: pointer;
-    transition: .5s;
-}
+/*PRODUCTOS----------------------------------------*/
 
-
-/*CONTAINER PRODUCTOS*/
-.sneaker__title{
-    text-align: center;
-    font-size: 3rem;
-    font-weight: 700;
-    margin: 3rem 0;
-    letter-spacing: 2px;
-    color: #023047;
-}
-/*CONTENEDOR GENERAL*/
-
-.container__sneakers{
-    max-width: 1200px;
-    margin: 0 auto;
+.container-sneakers{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    gap: 2rem;
+    gap: 3rem 0;
+}   
+
+/*CARDS*/
+.container-sneaker{
+    width: 300px;
+    padding: 1.2rem 2rem;
+    background-color: var(--white-color);
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 11px 17px 12px -3px rgba(0,0,0,0.1);
+    /* box-shadow: 0px 10px 15px -3px rgba(119, 119, 119, 0.26); */
+    transition: transform .3s ease-in-out, background-color .3s ease;
+}
+.container-sneaker:hover{
+    background-color: #f8f9fa;
+    transform: scale(1.034);
 }
 
-.sneaker__imagen{
+.card-subtitle{
+    margin-bottom: .7rem;
+    font-size: 1.6rem;
+    font-family: var(--font-2);
+}
+.card-name{
+    margin-bottom: .7rem;
+    font-size: .9rem;
+    font-weight: 300;
+    color: #8d99ae;
+}
+.card-image{
     display: block;
-    max-width: 100%;
-    width: 100%;
     height: 300px;
+    width: 100%;
     object-fit:cover;
+    object-position: center;
+}
+.card-price{
+    font-size: 1.2rem;
+    font-family: var(--font-2);
+    font-weight: 100;
+    color: #981352;
     margin: 1rem 0;
 }
 
-/*CARDS*/
-.container__sneaker{
-    padding: 1.7rem 2rem;
-    background-color: #fff;
-    border-radius: 10px;
-    width: 270px;
-    margin-bottom: 2.5rem;
-    box-shadow: 0px 10px 15px -3px rgba(119, 119, 119, 0.26);
-}
-.container__sneaker:hover{
-    transition: .4s;
-    background-color: #eeebee;
-    cursor: pointer;
-    transform: scale(1.06);
-}
-
-.sneaker__subtitle{
-    font-family: 'Tilt Warp', cursive;
-    font-size: 1.9rem;
-    margin: 0 0 .8rem 0;
-}
-.sneaker__name{
-    color: #8d99ae;
-    font-weight: 700;
-}
-.sneaker__price{
-    font-family: 'Tilt Warp', cursive;
-    color: #981352;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.sneaker__description{
+.card-description{
     display: flex;
     justify-content: space-between;
     gap: .4rem;
 }
-
-/*BOTONES*/
-.btn__add{
-    display: block;
-    width: 100%;
-    padding: .7rem 0;
-    outline: none;
-    border: none;
-    background-color: #e63946;
-    color: #fff;
-}
-.btn__add:hover{
-    background-color: #d90429;
-}
-.btn__seeMore{
-    display: block;
-    width: 100%;
-    padding: .7rem 0;
-    outline: none;
-    border: none;
-    background-color: #38a3a5;
-    color: #fff;
-}
-.btn__seeMore:hover{
-    background-color: #2f8a8b;
+.bi-cart-fill{
+    margin-right: .7rem;
 }
 
 
-/*RESPONSIVE TABLET*/
-@media (min-width: 768px) {
-    
-    /*CENTRAMIENTO DE LAS SECCIONES*/
-    .contain{
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-    .contenedor__img{
-        display: flex;
-        /* justify-content: space-around; */
-    }
-    .imagen{
-        height: 740px;
-        width: 100%;
-    }
-
-}
-/*RESPONSIVE DESKPTOP*/
-@media (min-width: 1200px) {
-    .title{
-        font-size: 11rem;
-        
-    }
-   
-}

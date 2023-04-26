@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-dark">
+<!-- <nav class="navbar navbar-expand-md navbar-light bg-dark">
     <div class="container-fluid">
 
       <button class="navbar-toggler bg-white text-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,4 +51,63 @@
         </ul>
       </div>
     </div>
-  </nav>
+  </nav> -->
+
+  <!-- de OSCAR ------------------------------------------------------------------ -->
+  
+<div class="navigation">
+  <div class="menu container">
+    <a class="" href="#">
+      <img src="../../../assets/IMG/logo.png"  alt="Logo de la página web atthes">
+    </a>
+    
+      <!-- <input type="checkbox" class="off-canvas-btn none" id="toggle">
+      <label for="toggle" class="off-canvas-burger"></label> -->
+      <input class="off-canvas-btn" type="checkbox" id="toggle">
+      <label class="burger" for="toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+    <nav class="nav off-canvas-menu">
+      <ul>
+        <li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="/">Inicio</a></li>
+        <li><a routerLinkActive="active" routerLink="/tienda">Tienda</a></li>
+        <li><a routerLinkActive="active" routerLink="/nosotros">Nosotros</a></li>
+        <li><a routerLinkActive="active" routerLink="/contactos">Contacto</a></li>
+        <li><a><i class="bi bi-person-circle"></i></a>
+          <ul>
+            <div *ngIf="rol == '0' && login">
+              <a>Hola, {{nombre}}</a>
+              <a [routerLink]="['acount/', id]">Mi cuenta</a>
+              <a routerLink="/tableprod">Productos</a>
+              <a routerLink="/tableuser">Usuarios</a>
+              <a routerLink="/tableord">Pedidos</a>
+            </div>
+            
+            <div *ngIf="rol == '1' && login">
+              <a>Hola, {{nombre}}</a>
+              <a [routerLink]="['acount/', id]">Mi cuenta</a>
+            </div>
+
+            <div *ngIf="login, else falso">
+              <li><button  class="acount" (click)="logout()">Cerrar sesión</button></li>
+            </div>
+
+            <ng-template #falso>
+              <li><a routerLink="/login">Iniciar Sesión</a></li>
+              <li><a routerLink="/registro">Registrarse</a></li>
+            </ng-template>
+
+            <!-- <li><a href="">Iniciar Sesion</a></li>
+            <li><a href="">Registrarse</a></li> -->
+          </ul>
+        </li>
+        <li><a outerLinkActive="link__active" routerLink="/carrito"><i class="bi bi-cart-fill"></i></a></li>
+      </ul>
+
+    </nav>
+
+  </div>
+</div>  

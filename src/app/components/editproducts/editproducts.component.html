@@ -1,29 +1,45 @@
-<p>Editar Productos</p>
+<div class="container">
+    <h2 class="sneaker-title">Editar Producto</h2>
+        <form [formGroup]="editar">
+            <div class="form" *ngFor="let data of datos">
+            
+                <div class="contact-form" *ngIf="data.id == id ">
+                    <div class="">
+                        <label for="">Nombre</label>
+                        <input type="text" name="Nombre" formControlName="Nombre">
+                    </div>
 
-<form [formGroup]="editar">
-    <div class="" *ngFor="let data of datos">
-        <div class="" *ngIf="data.id == id ">
-            <label for="name">Nombre </label>
-                <input type="text"  name="Nombre" formControlName="Nombre">
-            
-            <label for="">Descripcion </label>
-                <input type="text"  name="Descripcion"  formControlName="Descripcion" >
-            
-            <label for="">Precio </label>
-                <input type="text"   name="Precio" formControlName="Precio" >
-            
-            <label for="">Marca </label>
-                <input type="text"   name="Marca" formControlName="Marca" >
-            
-            <label for="">Imagen </label>
-                <input type="text"  name="Imagen" formControlName="Imagen" >
-                <img src="{{data.Imagen}}" alt="">
-            
-            <label for="">Cantidad </label>
-                <input type="text" name="Cantidad"  formControlName="Cantidad" >
-        </div>
-    </div>
-</form>
-<div class="">
-    <button type="submit" (click)="guardar()">Guardar</button>
+                    <div class="">
+                        <label for="">Precio</label>
+                        <input type="number" name="Precio" formControlName="Precio">
+
+                    </div>
+                    <div class="">
+                        <label for="">Marca</label>
+                        <input type="text" name="Marca" formControlName="Marca">
+
+                    </div>
+
+                    <div class="form-image">
+                        <label for="">Url Imagen</label>
+                        <img class="edit-image" src="{{data.Imagen}}" alt="">
+                    </div>
+                    <div class="">
+                        <label for="">Imagen</label>
+                        <input type="text" name="Imagen" formControlName="Imagen">
+                    </div>
+                    <div class="">
+                        <label for="">Cantidad</label>
+                        <input type="number" name="Cantidad"  formControlName="Cantidad">
+
+                    </div>
+                    <div class="textarea">
+                        <label for="">Descripcion</label>
+                        <textarea rows="3" name="Descripcion"  formControlName="Descripcion"></textarea>
+                    </div>
+                    
+                    <button class="btn-send" type="submit" (click)="guardar()">Modificar</button>
+                </div>
+            </div>
+        </form>
 </div>

@@ -1,95 +1,76 @@
-.fondo{
-    height: 88.5vh;
+.bg-image{
+    min-height: 100vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../../assets/IMG/nosotros.jpg");
-    background-repeat: no-repeat;
     background-size: cover;
+    background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
 }
-.contenedor{
-    height: 100%;
+.bg-contain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: inherit;
+}
+
+.title{
+    font-size: 15vw;
+    font-weight: 700;
+    color: var(--white-color);
+    text-decoration: line-through;
+}
+
+.us-contain{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-.title{
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700;
-    font-size: 5rem;
-    color: #fff;
-    text-decoration: line-through;
+    gap: 2rem 0;
+    padding: 0 .8rem;
 }
 
-/*producto*/
-.contain{
-    max-width: 1200px;
-    margin: 0 auto;
+.us-text{
+    margin-top: 0;
+    text-align: justify;    
 }
-
-.title__productos{
-    font-size: 1.8rem;
-    font-weight: 700;
-    font-family: 'Roboto', sans-serif;
-    color: rgb(240, 165, 27);
-    text-align: center;
-    padding-bottom: 1rem;
-    justify-content: space-between;
-}
-
-.contain__products{
-    display: flex;
-    justify-content: center;
-    gap: 2.3rem;
-    flex-wrap: wrap;
-}
-.product{
-    width: 350px;
-    /* height: 550px; */
-    overflow: hidden;
-    gap: 10px;
-    
-}
-.products{
-   max-width: 100%;
-   object-fit: cover;
-}
-.subtitle{
-    font-size: 2rem;
-}
-/*parrafo*/
-.parrafo{
-    font-family: 'Roboto', sans-serif;
-    text-align: justify;
-    line-height: 1.7;
-
-}
-
-/*horario*/
-
 .horario{
-    font-family: 'Roboto', sans-serif;
     text-align: center;
     line-height: 1.7;
 }
-
-
-
-
-
-/*RESPONSIVE TABLET*/
-
-/*RESPONSIVE DESKPTOP*/
-@media (min-width: 1200px) {
-    .title{
-        font-size: 11rem;
-        
-    }
-    .contain__products{
-        display: flex;
+@media screen and (min-width:48rem) {
+    .us-contain{
+        display: grid;
+        grid-template-columns: repeat(2,50%);
         justify-content: center;
-        gap: 4rem;
-        flex-wrap: wrap;
-    }
-   
+        column-gap: 1.3rem;
+        padding: 0 1rem;
+    } 
 }
+
+@media screen and (min-width:64rem) {
+    .us-img{
+        width: 500px;
+        height: 500px;
+    }
+    .us-contain{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 2.8rem;
+    }
+    .row-reverse{
+        flex-direction: row-reverse;
+    }
+    .us{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .us-store{
+        display: flex;
+        justify-content: space-around;
+    }
+  }
+

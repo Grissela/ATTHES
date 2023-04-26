@@ -1,4 +1,4 @@
-<div class="contenedor__login">
+<!-- <div class="contenedor__login">
     <div class="login">
         <div class="login__img">
             <img src="../../../assets/IMG/adidas.png" alt="Logo" class="img">
@@ -7,29 +7,35 @@
             <div class="form mb-4">
                 <div class="form__input">
                     <label for="nombres">Nombres</label>
-                    <input type="text" class="form-control" formControlName="Nombres" id="nombres" placeholder="Ingrese sus nombres">
+                    <input type="text" class="form-control" name="Nombres" formControlName="Nombres" id="nombres" placeholder="Ingrese sus nombres">
+                    <small *ngIf="nombreNoValido" class="text-danger">Ingrese el nombre con minimo de 6 letras</small>
                 </div>
                 <div class="form__input">
                     <label for="apellidos">Apellidos</label>
-                    <input type="text" class="form-control" formControlName="Apellidos" id="apellidos" placeholder="Ingrese sus apellidos">
+                    <input type="text" class="form-control" name="Apellidos" formControlName="Apellidos" id="apellidos" placeholder="Ingrese sus apellidos">
+                    <small *ngIf="apellidoNoValido" class="text-danger">Ingrese el apellido con minimo de 6 letras</small>
                 </div>
                 <div class="form__input">
                     <label for="celular">Celular</label>
-                    <input type="text" class="form-control" formControlName="Celular" id="celular" placeholder="999-999-999">
+                    <input type="text" class="form-control" name="Celular" formControlName="Celular" id="celular" placeholder="999-999-999">
+                    <small *ngIf="celularNoValido" class="text-danger">Ingrese solo 9 digitos</small>
                 </div>
                 <div class="form__input">
                     <label for="email">Correo Eletrónico</label>
-                    <input type="email" class="form-control" formControlName="Correo" id="email" placeholder="tucorreo@gmail.com">
+                    <input type="email" class="form-control" name="Correo" formControlName="Correo" id="email" placeholder="tucorreo@gmail.com">
+                    <small *ngIf="correoNoValido" class="text-danger">Ingrese un email valido</small>
                 </div>
         
                 <div class="form__input">
                     <label for="pass">Contraseña</label>
-                    <input type="password" class="form-control" formControlName="Contrasena" id="pass" placeholder="Ingresa tu contraseña">
+                    <input type="text" class="form-control" name="Contrasena" formControlName="Contrasena" id="pass" placeholder="Ingresa tu contraseña">
+                    <small *ngIf="password1NoValido" class="text-danger">Ingrese una contraseña con minimo de 6 caracteres</small>
                 </div>
         
                 <div class="form__input">
                     <label for="pass2">Confirmar Contraseña</label>
-                    <input type="password" class="form-control" formControlName="Contrasena2" id="pass2" placeholder="Ingresa tu contraseña">
+                    <input type="text" class="form-control" name="Contrasena2" formControlName="Contrasena2" id="pass2" placeholder="Ingresa tu contraseña">
+                    <small *ngIf="register.value.Contrasena != register.value.Contrasena2" class="text-danger">Las contraseñas no coinciden</small>
                 </div>
             </div>
            
@@ -37,5 +43,51 @@
         <div class="mb-3">
             <button class="btn__signIn" (click)="agregar()">Registrarse</button>
         </div>
+    </div>
+</div> -->
+
+<!-- DE OSCAR-------------------------- -->
+<div class="login-contain">
+    <div class="login">
+       
+        <img src="../../../assets/IMG/adidas.png" alt="Logo" class="login-image">
+       
+        <form class="form" [formGroup]="register">
+            <div class="form-record">
+                <div class="form-input">
+                    <label for="nombres">Nombres</label>
+                    <input type="text" formControlName="Nombres" id="nombres" placeholder="Ingrese sus nombres">
+                </div>
+                <div class="form-input">
+                    <label for="apellidos">Apellidos</label>
+                    <input type="text" formControlName="Apellidos" id="apellidos" placeholder="Ingrese sus apellidos">
+                </div>
+            </div>
+
+            <div class="form-record">
+                <div class="form-input">
+                    <label for="celular">Celular</label>
+                    <input type="text" formControlName="Celular" id="celular" placeholder="999-999-999">
+                </div>
+                <div class="form-input">
+                    <label for="email">Correo Eletrónico</label>
+                    <input type="email" formControlName="Correo" id="email" placeholder="tucorreo@gmail.com">
+                </div>
+            </div>
+            
+            <div class="form-record">
+                <div class="form-input">
+                    <label for="pass">Contraseña</label>
+                    <input type="password" formControlName="Contrasena" id="pass" placeholder="Ingresa tu contraseña">
+                </div>
+    
+                <div class="form-input">
+                    <label for="pass2">Confirmar Contraseña</label>
+                    <input type="password" formControlName="Contrasena2" id="pass2" placeholder="Ingresa tu contraseña">
+                </div>
+            </div>
+                
+            <button class="btn-signIn" (click)="agregar()">Registrarse</button>     
+        </form>
     </div>
 </div>

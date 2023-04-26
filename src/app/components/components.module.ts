@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TableproductosComponent } from './tableproductos/tableproductos.component';
 import { TableusersComponent } from './tableusers/tableusers.component';
 import { EditproductsComponent } from './editproducts/editproducts.component';
+import { TableordenesComponent } from './tableordenes/tableordenes.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { EditproductsComponent } from './editproducts/editproducts.component';
     NewzapatillaComponent,
     TableproductosComponent,
     TableusersComponent,
-    EditproductsComponent
+    EditproductsComponent,
+    TableordenesComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +33,8 @@ import { EditproductsComponent } from './editproducts/editproducts.component';
     NewzapatillaComponent,
     TableproductosComponent,
     TableusersComponent,
-    EditproductsComponent
+    EditproductsComponent,
+    TableordenesComponent
   ]
 })
 export class ComponentsModule { }

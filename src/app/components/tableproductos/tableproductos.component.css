@@ -1,25 +1,224 @@
 
-.contenedor__body{
-    background-color: #212529;
-    
+.table-contain{
+    padding: 0 2rem;
+    background-color: var(--white-color);
 }
-.contenedor__table{
+
+.btn-add-product{
+    padding: 1.2rem 2rem;
+    font-size: 1.1rem;
+    font-weight:bold;
+    color: var(--white-color);
+    background-color: #2d82f4;
+    border: 0;
+    border-radius: .2rem;
+    outline: none;
+    cursor: pointer;
+    transition: transform .2s ease-in-out;
+}
+ .btn-add-product:hover{
+    transform: scale(1.04);
+}
+.td-image{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+/*ICONS*/
+.fa-plus{
+    padding-right: .7rem;
+    font-size: 1.7rem;
+}
+.bi-hash{
+    font-size: 1.5rem;
+}
+
+/*botones*/
+.flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: .7rem;
+}
+.btn-update,
+.btn-delete{
+    display: block;
+    width: 150px;
+    padding: 1rem 0;
+    font-size: .9rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition:  opacity .3s ease;
+}
+.btn-update:hover,
+.btn-delete:hover{
+    opacity: .80;
+}
+.btn-update{
+    background-color: var(--button-nav-color);
+    color: var(--white-color);
+}
+.btn-delete{
+    background-color: var(--button-add-color);	
+    color: var(--white-color);
+}
+/*--------------------------*/
+.table{
+    width: 100%;
     margin: 2rem 0;
-    padding: 0 1.3rem;
 }
 
-th{
-    border-bottom: 4px solid pink;
-    padding: 1.5rem;
+.table tr{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border: 3px solid #e9ecef;
 }
-td{
-    border-bottom: 4px solid pink;
-    padding: .3rem 0;
+.tbody-tr .tbody-td textarea{
+    display: block;
+    height: 150px;
+    width: 100%;
+    padding-bottom: 1rem;
+    padding-right: 1rem;
+    font-size: 1rem;
+    font-family: var(--font);
+    text-align: justify;
+    line-height: 2;
+    background-color: inherit;
+    resize: none;
+    border: 0;
+    outline: none;
+}
+textarea::-webkit-scrollbar{
+    width: 7px;
+    background-color: #dee2e6;
+    border-radius: 20px;
+}
+textarea::-webkit-scrollbar-thumb{
+    background-color: var(--button-nav-color);
+}
+.tbody-tr .tbody-td:nth-child(3){
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+.tbody-tr .tbody-td:nth-child(8){
+   height: 90px;
+}
+.table td[data-titulo]{
+    display: flex;
+}
+.table td,
+.table th{
+    border: 0;
+}
+.table td[data-titulo]::before{
+    content: attr(data-titulo);
+    width: 100px;
+    height: 50px;
+    padding-right: .7rem;
+    font-weight: 600;
+    color: var(--button-nav-color);
 }
 
-span{
-    margin-right: 3.6rem;
+.table thead{
+    display: none;
 }
-.total{
-    margin-right: 3rem;
+
+
+
+@media screen and (min-width:48rem){
+    .tbody-tr .tbody-td textarea{  
+        height: 90px;
+        padding-bottom: 1rem;
+    }
+}
+/* 1250px */
+@media screen and (min-width:78.125rem){
+    .table thead{
+        display: table-header-group;
+    }
+     
+    .table tr{
+        display: table-row;
+        flex-direction: row;
+        padding: 0;
+        margin-bottom: 0;
+        border: 0;
+    }
+    .table td[data-titulo]{
+        display: table-cell;
+    }
+    .table td,
+    .table th{
+        border: 0;
+    }
+    .table td[data-titulo]::before{
+        display: none;
+    }
+    .tbody-tr .tbody-td:nth-child(8){
+        height: inherit;
+     }
+   
+
+    /*---------------------------------------------*/
+
+    .table-contain{
+        background-color: var(--white-color);
+        padding: 0;
+    }
+    .table{
+        margin: 2.7rem 0;
+        border: 2px solid #e9ecef;
+        border-radius: 1rem;
+        box-shadow: 5px 17px 16px -3px rgba(0,0,0,0.1);
+        box-shadow: 18px 23px 19px -3px rgba(0,0,0,0.1);
+    }
+    .table .thead-tr th{
+        padding: 2rem;
+        border-bottom: 1px solid #e9ecef;
+    }
+
+    .tbody-tr .tbody-td{
+        height: 120px;
+        text-align: center;
+        border-bottom: 1px solid #e9ecef;
+    }
+    .tbody-tr .tbody-td textarea{
+        height: 100%;
+        width: 398px;
+        padding-right: 1rem;
+        background-color: inherit;
+    }
+   
+    .tbody-tr .tbody-td:nth-child(1){
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+    .tbody-tr .tbody-td:nth-child(3){
+        padding: 1rem 0;
+        margin-bottom: 0;
+    }
+    .tbody-tr .tbody-td:nth-child(8){
+        width: 110px;
+        height: 120px;
+    }
+    .table .tbody-tr:nth-child(odd){
+        background-color: #f8f9fa;
+    } 
+    .flex{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: .7rem;
+    }
+    .btn-update,
+    .btn-delete{
+        width: 70%;
+        padding: .7rem 0;
+        font-size: .9rem;
+    }
 }

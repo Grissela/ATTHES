@@ -1,143 +1,19 @@
-<div class="contenedor__body flex justify-center items-center">
-    <div class="form block p-6 rounded-lg shadow-lg bg-white max-w-sm">
-      <h2 class="text-center font-bold text-[1.4rem] py-3">Formulario</h2>
-      <form [formGroup]="AddProductos">
-        <div class="form-group mb-4">
-          <label for="Nombre" class="form-label inline-block mb-2 text-gray-700">Nombre</label>
-          <input type="text" class="form-control
-            block
-            w-full
-            px-3
-            py-1.5
-            text-base
-            font-normal
-            text-gray-700
-            bg-white bg-clip-padding
-            border border-solid border-gray-300
-            rounded
-            transition
-            ease-in-out
-            m-0
-            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="Nombre"
-            placeholder="Nombre del producto" name="Nombre" formControlName="Nombre">
-        </div>
-  
-        <div class="form-group mb-4">
-          <label for="Descripcion" class="form-label inline-block mb-2 text-gray-700">Descripción</label>
-          <input type="text" class="form-control block
-            w-full
-            px-3
-            py-1.5
-            text-base
-            font-normal
-            text-gray-700
-            bg-white bg-clip-padding
-            border border-solid border-gray-300
-            rounded
-            transition
-            ease-in-out
-            m-0
-            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="Descripcion"
-            placeholder="Descripcion del producto" name="Descripcion" formControlName="Descripcion">
-        </div>
-  
-        <div class="form-group mb-4">
-          <label for="Precio" class="form-label inline-block mb-2 text-gray-700">Precio</label>
-          <input type="number" class="form-control block
-            w-full
-            px-3
-            py-1.5
-            text-base
-            font-normal
-            text-gray-700
-            bg-white bg-clip-padding
-            border border-solid border-gray-300
-            rounded
-            transition
-            ease-in-out
-            m-0
-            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="Precio"
-            placeholder="Precio del producto" name="Precio" formControlName="Precio">
-        </div>
+<div class="container">
+  <h2 class="sneaker-title">Agregar Nuevo Producto</h2>
+  <div class="form">
+    <form class="contact-form" [formGroup]="AddProductos">
+      <input type="text" id="Nombre" placeholder="Nombre del Producto*" name="Nombre" formControlName="Nombre">
+      <input type="number" id="Precio" placeholder="Precio del Producto*" name="Precio" formControlName="Precio">
 
-        <div class="form-group mb-4">
-          <label for="Cantidad" class="form-label inline-block mb-2 text-gray-700">Stock</label>
-          <input type="number" class="form-control block
-            w-full
-            px-3
-            py-1.5
-            text-base
-            font-normal
-            text-gray-700
-            bg-white bg-clip-padding
-            border border-solid border-gray-300
-            rounded
-            transition
-            ease-in-out
-            m-0
-            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="Cantidad"
-            placeholder="Stock del producto" name="Cantidad" formControlName="Cantidad">
-        </div>
-  
-        <div class="form-group mb-4">
-          <label for="Marca" class="form-label inline-block mb-2 text-gray-700">Marca</label>
-          <input type="text" class="form-control block
-            w-full
-            px-3
-            py-1.5
-            text-base
-            font-normal
-            text-gray-700
-            bg-white bg-clip-padding
-            border border-solid border-gray-300
-            rounded
-            transition
-            ease-in-out
-            m-0
-            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="Marca"
-            placeholder="Marca del producto" name="Marca" formControlName="Marca">
-        </div>
-  
-        <div class="form-group mb-4">
-          <label for="Imagen" class="form-label inline-block mb-2 text-gray-700">Imagen</label>
-          <input type="text" class="form-control block
-            w-full
-            px-3
-            py-1.5
-            text-base
-            font-normal
-            text-gray-700
-            bg-white bg-clip-padding
-            border border-solid border-gray-300
-            rounded
-            transition
-            ease-in-out
-            m-0
-            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="Imagen"
-            placeholder="Url" name="Imagen" formControlName="Imagen">
-        </div>
-  
-        <div class="text-center">
-          <button type="submit" class="
-          px-6
-          py-2.5
-          bg-blue-600
-          text-white
-          font-medium
-          text-xs
-          leading-tight
-          uppercase
-          rounded
-          shadow-md
-          hover:bg-blue-700 hover:shadow-lg
-          focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
-          active:bg-blue-800 active:shadow-lg
-          transition
-          duration-150
-          ease-in-out" (click)="agregar()">Enviar</button>
-        </div>
-        
-      </form>
-    </div>
+      <input type="number" id="Cantidad" placeholder="Stock del Producto*" name="Cantidad" formControlName="Cantidad">
+      <input type="text" id="Marca" placeholder="Marca del Producto*" name="Marca" formControlName="Marca">
+      <input type="text" id="Imagen" placeholder="Url*" name="Imagen" formControlName="Imagen">
+
+      <textarea rows="3" id="Descripcion" placeholder="Descripcion del Producto*" name="Descripcion" formControlName="Descripcion"></textarea>
+
+      <button type="submit" class="btn-send" (click)="agregar()">Enviar</button>            
+    </form>
   </div>
-  
+</div>
+
+
