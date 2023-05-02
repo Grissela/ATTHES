@@ -74,7 +74,7 @@ export class LoginComponent {
         Swal.fire({
           title: '¡Bienvenido!',
           text: 'Disfruta tu estadia.',
-          imageUrl: '../../../assets/ALERTAS/undraw_welcoming_re_x0qo.svg',
+          imageUrl: 'assets/ALERTAS/undraw_welcoming_re_x0qo.svg',
           imageWidth: 400,
           imageHeight: 200,
           imageAlt: 'Custom image',
