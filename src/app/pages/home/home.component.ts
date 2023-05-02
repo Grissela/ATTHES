@@ -22,7 +22,7 @@ export class HomeComponent {
   ngOnInit(): void {
     this.nombre = String(this.route.snapshot.paramMap.get('nombre'));
     this.service.getZapatillas().subscribe(zapatillas =>{
-      this.zapatillas = zapatillas.slice(0, 4)
+      this.zapatillas = zapatillas.slice(0, 6)
       // console.log(this.zapatillas)
     })
 
