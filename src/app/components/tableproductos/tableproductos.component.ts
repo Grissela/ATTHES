@@ -14,6 +14,7 @@ export class TableproductosComponent {
   costoTotal!:number;
   zapatillas!:Zapatillas[];
   id!:string;
+  nombre!:string;
 
   constructor( 
     private route:Router, 
@@ -38,6 +39,22 @@ export class TableproductosComponent {
     }) 
    }
 
+  //  para buscar 
+  buscar(nombre: string) {
+    if(nombre) {
+      this.data = this.data.filter((item) => {
+        return item.Nombre.toLowerCase().indexOf(nombre.toLowerCase()) > -1;
+      });
+    } else {
+      if (nombre === '') {
+        this.mostrar(); // vuelve a mostrar todos los datos
+      } else {
+          this.mostrar();
+        };
+      }
+    }
+  
+
   //  Para enviar a nuevo producto para agregar un nuevo producto---------
    enviar(){
     this.route.navigate(['nuevoprod'])
@@ -53,7 +70,7 @@ export class TableproductosComponent {
   // Para eliminar cada producto de la  tabla de productos------------------
    eliminar(zapatillas:Zapatillas){
     Swal.fire({
-      title: 'Desea eliminar producto',
+      title: '¿Desea eliminar producto?',
       icon: 'error',
       showCancelButton: true,
       confirmButtonColor: '#d33',

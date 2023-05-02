@@ -5,7 +5,7 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Zapatillas } from 'src/app/interface/zapatillas';
 import { ZapatillasService } from 'src/app/service/zapatillas.service';
-
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-editproducts',
   templateUrl: './editproducts.component.html',
@@ -34,7 +34,7 @@ export class EditproductsComponent {
     this.id = String(this.router.snapshot.paramMap.get('id'))
     this.zapatillas.getZapatillas().subscribe(res =>{
       this.datos = res
-      console.log(this.datos)
+      // console.log(this.datos)
       for(let data of this.datos){
         if(data.id == this.id){
           this.editar = this.build.group({
@@ -49,11 +49,18 @@ export class EditproductsComponent {
       }
     })
   }
-
+// Guardar mi nueva actualizacion y se vea en mi producto mediante su id
 guardar(){
 this.id = String(this.router.snapshot.paramMap.get('id')); 
 this.zapatillas.updateZapatillas(this.id, this.editar.value)
-  alert("Actualizado correcto")
+  // alert("Actualizado correcto")
+  Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Se actualizó tu producto correctamente',
+    showConfirmButton: false,
+    timer: 1500
+  })
   this.route.navigate(['/tableprod'])
 } 
 }

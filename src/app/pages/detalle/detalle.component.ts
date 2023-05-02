@@ -28,6 +28,7 @@ export class DetalleComponent {
   }
  
   ngOnInit(): void {
+    // aqui paso por parametro el nombre 
     this.nombre = String(this.route.snapshot.paramMap.get('nombre'));
     this.service.getZapatillas().subscribe(zapatillas=>{
       this.zapatillas = zapatillas
@@ -38,6 +39,7 @@ export class DetalleComponent {
  enviar(){
  
  }
+//  aca guardo mis datos del detalle y envio a mi carrito para que se agregue
  guardar({Nombre,Imagen, Cantidad,Marca, Costo, Descripcion}:any){
   this.list = {
    Nombre:Nombre,
@@ -48,7 +50,7 @@ export class DetalleComponent {
    Descripcion:Descripcion
    
  }
- console.log(this.list)
+//  console.log(this.list)
  this.carrito.loadcarrito(this.list)
  this.router.navigate(['/carrito'])
  

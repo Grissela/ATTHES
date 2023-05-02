@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Users } from 'src/app/interface/users';
 import { UserService } from 'src/app/service/user.service';
+import Swal from 'sweetalert2'
 
 
 @Component({
@@ -51,7 +52,14 @@ export class MicuentaComponent implements OnInit {
   guardar(){
     this.id = String(this.router.snapshot.paramMap.get('id')); 
     this.user.updateUsers(this.id, this.cuenta.value)
-      alert("Actualizado correcto")
+      // alert("Actualizado correcto")
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Se actualizó tus datos correctamente',
+        showConfirmButton: false,
+        timer: 1500
+      })
        this.route.navigate(['acount/:id'])
     } 
 }

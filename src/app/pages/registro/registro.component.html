@@ -54,46 +54,47 @@
        
         <form class="form" [formGroup]="register">
             <div class="form-record">
-                <div class="form-input">
+                <div class="form-input" >
                     <label for="nombres">Nombres</label>
-                    <input type="text" formControlName="Nombres" id="nombres" placeholder="Ingrese sus nombres">
+                    <input class="input-form" [ngClass]="{'border-danger': nombreNoValido}" type="text" formControlName="Nombres" id="nombres" placeholder="Ingrese sus nombres">
                     <small *ngIf="nombreNoValido" class="text-danger">Ingrese el nombre con minimo de 6 letras</small>
                 </div>
-                <div class="form-input">
+                <div class="form-input" >
                     <label for="apellidos">Apellidos</label>
-                    <input type="text" formControlName="Apellidos" id="apellidos" placeholder="Ingrese sus apellidos">
+                    <input class="input-form" [ngClass]="{'border-danger': apellidoNoValido}" type="text" formControlName="Apellidos" id="apellidos" placeholder="Ingrese sus apellidos">
                     <small *ngIf="apellidoNoValido" class="text-danger">Ingrese el apellido con minimo de 6 letras</small>
                 </div>
             </div>
-
+        
             <div class="form-record">
-                <div class="form-input">
+                <div class="form-input" >
                     <label for="celular">Celular</label>
-                    <input type="text" formControlName="Celular" id="celular" placeholder="999-999-999">
+                    <input class="input-form" [ngClass]="{'border-danger': celularNoValido}" type="text" formControlName="Celular" id="celular" placeholder="999-999-999">
                     <small *ngIf="celularNoValido" class="text-danger">Ingrese solo 9 digitos</small>
                 </div>
-                <div class="form-input">
+                <div class="form-input" >
                     <label for="email">Correo Eletrónico</label>
-                    <input type="email" formControlName="Correo" id="email" placeholder="tucorreo@gmail.com">
+                    <input class="input-form" [ngClass]="{'border-danger': correoNoValido}" type="email" formControlName="Correo" id="email" placeholder="tucorreo@gmail.com">
                     <small *ngIf="correoNoValido" class="text-danger">Ingrese un email valido</small>
                 </div>
             </div>
-            
+        
             <div class="form-record">
-                <div class="form-input">
+                <div class="form-input" >
                     <label for="pass">Contraseña</label>
-                    <input type="password" formControlName="Contrasena" id="pass" placeholder="Ingresa tu contraseña">
+                    <input class="input-form" [ngClass]="{'border-danger': password1NoValido}" type="password" formControlName="Contrasena" id="pass" placeholder="Ingresa tu contraseña">
                     <small *ngIf="password1NoValido" class="text-danger">Ingrese una contraseña con minimo de 6 caracteres</small>
                 </div>
-    
+        
                 <div class="form-input">
                     <label for="pass2">Confirmar Contraseña</label>
-                    <input type="password" formControlName="Contrasena2" id="pass2" placeholder="Ingresa tu contraseña">
+                    <input class="input-form" type="password" formControlName="Contrasena2" id="pass2" placeholder="Ingresa tu contraseña">
                     <small *ngIf="register.value.Contrasena != register.value.Contrasena2" class="text-danger">Las contraseñas no coinciden</small>
                 </div>
             </div>
-                
-            <button class="btn-signIn" (click)="agregar()">Registrarse</button>     
+        
+            <button class="btn-signIn" (click)="agregar()">Registrarse</button>
+           
         </form>
     </div>
 </div>

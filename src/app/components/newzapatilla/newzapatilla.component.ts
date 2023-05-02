@@ -36,7 +36,7 @@ export class NewzapatillaComponent {
       this.service.addZapatillas(this.AddProductos.value)
       Swal.fire({
         title: 'Agregado',
-        text: 'Estas registrado',
+        text: 'Esta agregado el nuevo producto',
         imageUrl: 'https://www.cyberdefendersprogram.com/assets/undraw-svgs/undraw_Security_on_s9ym.svg',
         imageWidth: 400,
         imageHeight: 200,

@@ -1,64 +1,13 @@
-<!-- <section class="container__cart" *ngIf="login else otro">
-    <h2 class="cart__subtitle"  >Mis pedidos</h2>
-    <div class="" *ngFor="let datos of data">
-        <div class="cart__products" >
 
-            <div class="cart__product"  >
-                <div class="cart__detail">
-                    
-                        <div class="cart__img">
-                            <img src="{{datos.Imagen}}" alt=""  class="img">
-                            
-                        </div>
-                    
-                    <div class="card__description">
-                        <h3 class="cart__name">{{datos.Nombre}}</h3>
-                        <p class="cart__brand">{{datos.Marca}}</p>
-                        <p class="cart__price">{{datos.Costo | currency}}</p>
-                        <p>{{datos.Costo * datos.Cantidad}}</p>
-                    </div>
-                </div>
-    
-                 <div class="cart__btn">
-                        <span class="amount">{{datos.Cantidad}}</span>                    
-                    <button class="button btn__x" (click)="eliminar(datos)">x</button>
-                </div> 
-            </div>
-        </div>
-    </div>
-    <div class="cart__precioTotal">
-        <p class="cart__total">Total</p>
-        <p class="cart__totalPrice">{{res | currency}}</p>   
-    </div>
-    <div class="cart__buy" >
-         <button class="btn__add" (click)="goToBoleta(uid)"> <i class="bi bi-cart-fill px-1"></i>Comprar</button>
-    </div>
-</section>
-<ng-template #otro>
-    <section class="container__cart">
-        <h2 class="cart__subtitle">Inicia sesi&oacute;n</h2>
-        <div class="">
-            <i class="bi bi-person-circle item"></i>
-        </div>
-        <p class="text-center">Para realizar un pedido de tu carrito de compras inicia sesión aqui</p>
-        <div class="text-center">
-            <button class="btn__comprar" routerLink="/login">Iniciar Sesión</button>
-        </div>
-    </section>
-</ng-template>
-   -->
-
-<!-- DE OSCAR ------------------------------------------------->
 <section class="cart container" *ngIf="login else otro">
     <h2 class="sneaker-title">Mis pedidos</h2>
+    <!-- EL FOR ME PERMITE RECORRER TODOS MIS DATOS DE MI CARRITO Y NOMBRAR SUS CAMPOS PARA MOSTRAR -->
     <div class="" *ngFor="let datos of data">
         <div class="cart-products" >
 
             <div class="cart-product"  >
                 <div class="cart-detail">
                     <img src="{{datos.Imagen}}" alt="Imagen del Producto de la Zapatilla" class="cart-image">
-                        <!-- <img src="{{datas.Imagen}}"  class="img"> -->
-                
                     
                     <div class="card-description">
                         <h3 class="cart-name">{{datos.Nombre}}</h3>
@@ -77,17 +26,20 @@
         </div>
     </div>
 
+    <!-- PARA OBTENER LA SUMA TOTAL DE LOS PRODUCTOS -->
     <div class="cart-totalPrice">
         <h3 class="cart-totalG">Total</h3>
-        <h3 class="cart-totalPriceG">{{res | currency}}</h3>   
+        <h3 class="cart-totalPriceG">{{suma | currency}}</h3>   
     </div>
 
     <div class="cart-buy" >
+        <!-- PARA IR A BOLETA MEDIANTE SU ID -->
          <button class="btn-add" (click)="goToBoleta(uid)"> <i class="bi bi-cart-fill px-1"></i>Comprar</button>
     </div>
 
 </section>
 
+<!-- ESTO ES SI NO ESTA LOGEADO MUESTRE ESTE TEMPLATE -->
 <ng-template #otro>
     <section class="other container">
         <h2 class="sneaker-title-login">Inicia sesi&oacute;n</h2>

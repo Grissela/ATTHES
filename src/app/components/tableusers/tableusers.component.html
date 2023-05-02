@@ -1,34 +1,49 @@
 <!-- TABLA DE USUARIOS Y SUS DATOS------------------------------------------------------->
-<div class="contenedor__body flex justify-center">
-    <div class="contenedor__table bg-white p-5 px-[2rem] rounded-[1rem] w-[70%] mx-auto">
-        <h2 class="font-bold text-[1.5rem] py-5">Usuarios Registrados</h2>
-        <table>
-            <tr class="text-center font-bolder text-[1.1rem]" >
-              <th class="">Item</th>
-              <th class="">Nombres</th>
-              <th class="">Apellidos</th>
-              <th class="">Celular</th>
-              <th class="">Correo</th>
-              <th class="">Contraseña</th>
-            </tr>
-            <tr class="text-center text-[.9rem]" *ngFor="let datos of data;let indice = index">
-              <td>{{indice+1}}</td>
-              <td>{{datos.Nombres}}</td>
-              <td class="text-[.8rem]">{{datos.Apellidos}}</td>
-              <td>{{datos.Celular}}</td>
-              <td>{{datos.Correo}}</td>
-              <td>{{datos.Contrasena}}</td>
-              <td>
-                <button (click)="eliminar(datos)" class="bg-red-500 py-2 px-3 hover:bg-red-600 text-white"><i class="bi bi-trash-fill"></i></button>
-              </td>
-            </tr>  
-        </table>
-        <div class=" mt-5 flex justify-end">
-          <div class="mb-4">
-            <button class="bg-green-600 py-2 px-3 hover:bg-green-700 text-white" (click)="enviar()">Agregar</button>
-          </div>
-        </div>
+<div class="table-contain container">
+  <h2 class="sneaker-title">Usuarios Registrados</h2>
+  <div class="table-user">
+    <div class="search-contain">
+    
+      <div class="form-search">
+        <input type="search" class="input-search" placeholder="Buscar Nombre" required [(ngModel)]="nombre">
+        <button type="button" class="btn-search" (click)="buscar(nombre)"><i class="bi bi-search"></i>Buscar</button>
+      </div>
     </div>
-   
+
+    <table class="table">
+      <thead>
+        <tr class="thead-tr">
+          <th><i class="bi bi-hash"></i></th>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>Celular</th>
+          <th>Correo</th>
+          <th>Contraseña</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="tbody-tr" *ngFor="let datos of data;let indice = index">
+            <td nowrap class="tbody-td" data-titulo="#">{{indice+1}}</td>
+            <td class="tbody-td" data-titulo="Nombre">{{datos.Nombres}}</td>
+            <td class="tbody-td" data-titulo="Apellidos">{{datos.Apellidos}}</td>
+            <td class="tbody-td" data-titulo="Celular">{{datos.Celular}}</td>
+            <td class="tbody-td" data-titulo="Correo">
+              <textarea>{{datos.Correo}}</textarea>
+            </td>
+            <td class="tbody-td" data-titulo="Contraseña">{{datos.Contrasena}}</td>
+            <td class="tbody-td">
+              <div class="flex">
+                <button (click)="eliminar(datos)" class="btn-delete"><i class="bi bi-trash-fill"></i></button>
+              </div>
+            </td>
+          </tr>  
+      </tbody>              
+    </table>        
   </div>
+    
+</div>
+  
+
+
+
   

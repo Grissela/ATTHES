@@ -29,12 +29,6 @@ export class NavbarComponent {
         this.getUSerData(res.uid)
       } else {
         console.log('No esta logeado');
-        Swal.fire({
-          icon: 'info',
-          text: 'No esta logeado!',
-          showConfirmButton: false,
-          timer: 1500
-        })
         this.login = false
       }
     })

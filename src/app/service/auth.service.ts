@@ -19,6 +19,7 @@ export class AuthService {
   ngOnInit(){
     
   }
+  // Obtener el id del usuario
   async getUid(){
     const user = await this.aut.currentUser;
     if(user === null){
@@ -27,36 +28,29 @@ export class AuthService {
       return user.uid
     }
   }
-  // mostrar(){
-  //   const refUsers= collection(this.firestore, "users"+this.uid);
-  //   const q = query(refUsers, where(this.uid, '==' ,this.uid));
-  //  }
-
-
+  
+  // Para registrar usuario
   registerUser(user:Users){
     return createUserWithEmailAndPassword(this.auth, user.Correo, user.Contrasena);
   }
 
+  // Para ver los usuarios
   statusUser(){
     return this.aut.authState
   }
 
+  // Para logear como email y password autentifique
   isLogin({ email, password }: any) {
     return signInWithEmailAndPassword(this.auth, email, password)
     
     //
   }
 
+  // Para cerrar sesion
   logout(){
     return signOut(this.auth)
     
   }
 
   
-
-  
-  // registrar({ Correo, Password }: any){
-  //   return this.aut.createUserWithEmailAndPassword(Correo, Password)
-  // }
-
 }

@@ -39,38 +39,24 @@ loadCarrito(){
   const refCar = collection(this.firestore, 'users/' + this.uid + '/'+ this.path);
 }
 
-//  PEDIDO
-// addPedido(producto: Pedido){
-//   this.pedido = {
-//     id:this.uid,
-//     cliente:[],
-//     DNI:'75412454',
-//     Direccion:'Calle',
-//     carrito:[],   
-//     fecha: new Date(),
-//   }
-
-  
-// }
-
 
   // MOSTRAR pedidos todos 
   getMostrar(id:any):Observable<any[]>{
     const refCar = collection(this.firestore, 'users/'+ id + '/'+ this.path) 
-    console.log('nav->',refCar);
+    // console.log('nav->',refCar);
     return collectionData(refCar, {idField:'id'} ) as Observable<any[]>
   }
   // mostrar carrito
   getCar():Observable<Car[]>{
     const refCar = collection(this.firestore, 'users/' + this.uid + '/'+ this.path);
-    console.log('nav->',refCar )
+    // console.log('nav->',refCar )
     return collectionData(refCar , {idField:'id'}) as Observable<Car[]>
   }
 
   // eliminar del carrito
   deleteCar(car:any){
     const refCar = doc(this.firestore, 'users/' + this.uid + '/'+ this.path + car.id)
-    console.log('Eliminar->',refCar);
+    // console.log('Eliminar->',refCar);
     
     return deleteDoc(refCar)
   }
@@ -88,7 +74,7 @@ loadCarrito(){
   // eliminar pedido
   deletePedido(ped:any, uid:string){
     const refPed = doc(this.firestore, 'users/' + uid + '/'+ this.referencia +'/'+ ped.id)
-    console.log();
+    // console.log();
     
     return deleteDoc(refPed)
   }
@@ -99,14 +85,14 @@ loadCarrito(){
   // mostrar clientes
   getClientesPedidos():Observable<any[]>{
     const refCliente = collection(this.firestore, 'users/' + this.uid + '/'+ this.referencia);
-    console.log(refCliente )
+    // console.log(refCliente )
     return collectionData(refCliente , {idField:'id'}) as Observable<any[]>
   }
 
   //Tabla de ordenes de pedidos
   getClientesPedido(id:any):Observable<any[]>{
     const refCliente = collection(this.firestore, 'users/' + id + '/'+ this.referencia);
-    console.log(refCliente )
+    // console.log(refCliente )
     return collectionData(refCliente , {idField:'id'}) as Observable<any[]>
   }
   
@@ -123,13 +109,6 @@ loadCarrito(){
     return addDoc(refCar,car)
   }
   
-  // update carrito
-  // actualizarItem(item: any) {
-  //   const index = this.items.findIndex(i => i.id === item.id);
-  //   if (index !== -1) {
-  //     this.items[index] = item;
-  //   }
-  // }
   
 
   

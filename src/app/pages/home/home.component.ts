@@ -23,7 +23,7 @@ export class HomeComponent {
     this.nombre = String(this.route.snapshot.paramMap.get('nombre'));
     this.service.getZapatillas().subscribe(zapatillas =>{
       this.zapatillas = zapatillas.slice(0, 4)
-      console.log(this.zapatillas)
+      // console.log(this.zapatillas)
     })
 
   }

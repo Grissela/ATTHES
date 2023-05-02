@@ -1,7 +1,7 @@
 
 /*Imagen*/
 .medium{
-    height: 280px;
+    min-height: 100vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("../../../assets/IMG/medium.jpg");
     background-size: cover;
     background-position: center center;
@@ -11,34 +11,28 @@
     justify-content: center;
     align-items: center;
 }
-.medium__title{
-    color: #fff;
-    font-size: 2.6rem;
+.medium-title{
+    color: var(--white-color);
+    font-size: var(--step-5);
+    text-align: center;
 }
-.medium__subtitle{
-    font-size: 1.2rem;
+.medium-subtitle{
+    font-size: var(--step-2);
     color: #cb3248;
+    text-align: center;
 }
 /*Centro de Soporte*/
-.supportCenter{
-    margin-bottom: 3rem;
-}
-.supportCenter__container{
+
+.supportCenter-contain{
     padding: 0 2rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     gap: 2rem;
 }
-.supportCenter__title{
-    margin: 2.3rem 0 4rem 0;
-    text-align: center;
-    font-weight: bold;
-    font-size: 2.1rem;
-    color: #3e1151;
-}
 
-.supportCenter__icons{
+.supportCenter-icons{
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -48,10 +42,9 @@
     width: 160px;
     height: 160px;
     border-radius: 50%;
+    transition: background-color .3s ease, color .3s ease;
 }
-.supportCenter__icons:hover{
-    cursor: pointer;
-    transition: .4s;
+.supportCenter-icons:hover{
     background-color: #3e1151;
     color: #fff;
 }
@@ -66,103 +59,92 @@
     margin-top: .7rem;
 }
 /*Contacto*/
-.contact{
-    color: #3e1151;
-    margin-bottom: 2rem;
+
+.sneaker-contact{
+    text-align: center;
+    font-size: var(--step-3);
+    font-weight: 700;
+    margin: 2rem 0;
+    color: var(--section-title);
 }
 
-.contact__title{
-    text-align: center;   
-    font-weight: bold;
-    font-size: 2rem;
-}
-.contact__subtitle{
+.sneaker-subtitle{
     text-align: center;
-    font-size: 2rem;
+    font-size: var(--step-3);
+    font-weight: 700;
+    margin: 2rem 0;
+    color: var(--section-title);
 }
+
 /*Contenedor iconos*/
-.contact__container{
-    padding: 0 2rem;
+.contact-contain{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin-top: 2.5rem;
     text-align: center;
     gap: 2rem;
 }
-.icons__title{
+.icons-title{
     margin: .7rem 0;
-    color: #ff0000;
+    color: var(--button-nav-color);
 }
-.icons__subtitle, .icons__number, .icons__email{
-    margin-bottom: 1rem;
+.icons-subtitle,
+.icons-number, 
+.icons-email{
+    line-height: 1.3;
 }
-.icons__email, .icons__number{
+.icons-email, 
+.icons-number{
     font-weight: 700;
     font-size: 1.1rem;
 }
 
-@media (min-width: 768px) {
-    /*Imagen*/
-    .medium{
-        height: 400px;
-    }
-    .medium__title{
-        font-size: 2.7rem;
-    }
-    .medium__subtitle{
-        font-size: 1.3rem;
-    }
+@media (min-width: 48rem) {
+    
     /*Contacto*/
-    .contact__container{
-        padding: 0 2rem;
+    .contact-contain{
+        padding: 0;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: space-around;
-        align-items: stretch;
-        margin-top: 2.5rem;
+        justify-content: center;
+        align-items: baseline;
         text-align: center;
-        gap: 2.4rem;
+    }
+    .contact-icons{
+        flex-basis: 25%;
     }
   }
 
-  @media (min-width: 1200px) {
+  @media (min-width: 64rem) {
     /*Imagen*/
-    .medium{
-        height: 440px;
-    }
-    .medium__title{
-        font-size: 2.9rem;
-    }
-    .medium__subtitle{
-        font-size: 1.5rem;
-    }
-
-    /*Centro de contacto*/
+    
     .supportCenter{
-        margin-bottom: 5rem;
-    }
-
-    .supportCenter__title{
-        margin: 4rem 0;
-    }
-    .supportCenter__container{
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 2rem;
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        gap: 3rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
-    /*Contacto*/
-    .contact__container{
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 2rem;
-        margin-top: 2.5rem;
+    .contact-container{
+        width: 1200px;
     }
+    .contact{
+       display: flex;
+       justify-content: center;
+       align-items: center;
+    }
+    .contact-contain{
+        margin-top: 4rem;
+        justify-content: space-between;
+    }
+    .contact-icons{
+        flex-basis: 20%;
+    }
+   
   }
+
+
+
+  

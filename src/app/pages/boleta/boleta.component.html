@@ -1,87 +1,127 @@
-<div>
 
+<section class="ticket container">
   <!-- REGISTRO DEL PEDIDO DEL CLIENTE -->
-  <form [formGroup]="pedido">
-    <div class="form mb-4">
-      <div class="form__input">
+  <div class="ticket-contain">
+    <form [formGroup]="pedido">
+
+      <div class="form-contain">
         <label for="dni">DNI</label>
-        <input type="text" class="form-control" formControlName="dni" id="dni" placeholder="Ingrese sus nombres">
+        <input type="text" class="" formControlName="dni" id="dni" placeholder="Ingrese su DNI*">
       </div>
 
-      <div class="form__input">
+      <div class="form-contain">
         <label for="pass">Direcci&oacute;n</label>
-        <input type="text" class="form-control" formControlName="Direccion" id="direccion"
-          placeholder="Ingresa tu contraseña">
+        <input type="text" class="" formControlName="Direccion" id="direccion" placeholder="Ingresa tu Direccion*">
       </div>
-    </div>
-  </form>
-
-  <button type="submit" (click)="agregar()">ENVIAR</button>
-  <!-- Button trigger modal -->
-  <button *ngFor="let xy of cliente let j=index" type="button" (click)="mostrarCarrito(xy.id)" class="btn btn-primary"
-    data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Mostrar Pedido {{j+1}}
-  </button>
-
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Mostrar Pedido</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-
-      <div class="modal-body">
-        <div class="" id="tabla">
-          <div>
-            <p style="color:red" class="">Nombres y Apellidos: {{nombres}}{{apellidos}}</p>
-          </div>
-          <div *ngFor="let xy of pedidos let y=index">
-            <div class="" *ngIf="xy.id ==idp ">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Item</th>
-                    <th>Nombre</th>
-                    <th>Marca</th>
-                    <th>Descripcion</th>
-                    <th>Cantidad</th>
-                    <th>Costo</th>
-                    <th>Imagen</th>
-                    <th>Sub Total</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let p of xy.carrito let i=index">
-                    <td>{{i+1}}</td>
-                    <td>{{p.Nombre}}</td>
-                    <td>{{p.Marca}}</td>
-                    <td>{{p.Descripcion}}</td>
-                    <td>{{p.Costo}}</td>
-                    <td>{{p.Cantidad}}</td>
-                    <td><img src="{{p.Imagen}}" alt="" width="50"></td>
-                    <td>{{p.Costo * p.Cantidad}}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <table>
-            <tr>
-              <td>Total:{{suma}}</td>
-            </tr>
-          </table>
-        </div>
-
-      </div>
-      <div class="modal-footer">
-        <p>Es una previsualizacion, por favor para ver completo su boleta imprimir</p>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" (click)="imprimir()" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
+      
+      <button type="submit" class="btn-add" (click)="agregar()">Enviar</button>
+      
+    </form>
   </div>
+
+
+  <!-- Para ver los pedidos y dar click al pedido---------- -->
+  <h2 class="ticket-subtitle">Tus Pedidos</h2>
+  <div class="order-flex">
+    <label for="btn-modal" *ngFor="let xy of fechas let j=index" type="button" (click)="mostrarCarrito(xy)" class="btn-yourOrder">
+      Mostrar Pedido {{j+1}}
+    </label>
+  </div>
+
+</section>
+
+
+
+<!--Ventana Modal-->
+<input type="checkbox" id="btn-modal">
+
+<div class="container-modal">
+  <div class="content-modal">
+    <div class="modal-header">
+      <h2 class="modal-title">Mostrar Pedido</h2>
+    </div>
+    
+    <div class="modal-body">
+      <div class="modal-descriptions" id="datos">
+          <div class="modal-description">
+            <h4 class="modal-name">
+              <small>Nombres y Apellidos : </small>{{nombres}} {{apellidos}}
+            </h4>
+          </div>
+          <div class="modal-description-flex">
+
+            <div class="modal-description" *ngFor="let c of pedidos let y=index">
+              <h4 class="modal-name" *ngIf="c.fecha.toDate().toLocaleTimeString() ==idp">
+                <small>Dni / Ruc :</small> {{c.DNI}}
+              </h4>
+            </div>
+  
+            <div class="modal-description" *ngFor="let r of pedidos let y=index">
+              <h4 class="modal-name" *ngIf="r.fecha.toDate().toLocaleTimeString() ==idp">
+                <small>Direccion : </small>{{r.Direccion}}
+              </h4>
+            </div>
+  
+            <div class="modal-description" *ngFor="let f of pedidos let y=index">
+              <h4 class="modal-name" *ngIf="f.fecha.toDate().toLocaleTimeString() ==idp">
+                <small>Fecha : </small>{{f.fecha.toDate()| date:'dd/MM/yyyy'}}
+              </h4>
+          </div>
+          </div>
+      </div>   
+
+      <ng-template #other>
+        <p>No Tiene pedidos</p>
+      </ng-template>
+              
+      
+      <div class="modal-order" >
+        <div *ngFor="let xy of pedidos let y=index" >
+          <div class="" *ngIf="xy.fecha.toDate().toLocaleTimeString()== idp" >
+            <table class="modal-table fixed-width" id="tabla">
+              <thead>
+                <tr class="modal-thead-tr">
+                  <th><i class="bi bi-hash"></i></th>
+                  <th>Nombre</th>
+                  <th>Marca</th>
+                  <th>Descripcion</th>
+                  <th>Cantidad</th>
+                  <th>Costo</th>
+                  <th>Sub Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="modal-tbody-tr" *ngFor="let p of xy.carrito let i=index">
+                  <td class="modal-tbody-td" data-titulo="#">{{i+1}}</td>
+                  <td class="modal-tbody-td" data-titulo="Nombre">{{p.Nombre}}</td>
+                  <td class="modal-tbody-td" data-titulo="Marca">{{p.Marca}}</td>
+                  <td class="modal-tbody-td" data-titulo="Descripcion">
+                    {{p.Descripcion}}
+                  </td>
+                  <td class="modal-tbody-td" data-titulo="Cantidad">{{p.Cantidad}}</td>
+                  <td class="modal-tbody-td" data-titulo="Costo">{{p.Costo}}</td>
+                  <td class="modal-tbody-td" data-titulo="Total">{{p.Costo * p.Cantidad}}</td>
+                </tr>
+                <tr class="text-center">
+                  <td colspan="6" class="modal-price">Total:</td>
+                  <td class="modal-total">{{xy.total}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    <div class="modal-footer" class="no-pdf">
+      <p>Es una previsualizacion, por favor para ver completo su boleta imprimir</p>
+      <button type="button" (click)="imprimir()" class="btn-print">Imprimir</button>
+
+      <div class="btn-cerrar">
+        <label for="btn-modal" class="">Cerrar</label>
+      </div>
+    </div>
+
+      
+  </div>
+  <label for="btn-modal" class="cerrar-modal"></label>
 </div>
+<!--Fin de Ventana Modal-->

@@ -1,86 +1,130 @@
 <!-- MOSTRAR LA TABLA DE PEDIDO DE LAS ORDENES DEL CLIENTE Y ENRUTAR A PEDIDO QUE SE VEA SU PEDIDO-->
-<div class="contenedor__body flex justify-center">
-  <div class="contenedor__table bg-white p-5 px-[2rem] rounded-[1rem] w-[70%] mx-auto">
-    <h2 class="font-bold text-[1.5rem] py-5">Productos</h2>
-    <table>
-      <tr class="text-center font-bolder text-[1.1rem]">
-        <th class="">Item</th>
-        <th class="">Nombres</th>
-        <th class="">Apellidos</th>
-        <th class="">Celular</th>
-        <th class=""></th>
-      </tr>
-      <tr class="text-center text-[.9rem]" *ngFor="let datos of data;let indice = index">
-        <td>{{indice+1}}</td>
-        <td class="text-[.8rem]">{{datos.Nombres}}</td>
-        <td>{{datos.Apellidos}}</td>
-        <td>{{datos.Celular}}</td>
-        <td><button type="button" (click)="irpedidos(datos.id)" class="btn btn-primary" data-bs-toggle="modal"
-            data-bs-target="#exampleModal">
-            Mostrar pedido</button></td>
-      </tr>
+<div class="order container">
+  <h2 class="sneaker-title">Pedidos</h2>
+  <div class="order-contain">
+    <div class="form-search">
+      <input type="search" class="input-search" placeholder="Buscar Nombre" required [(ngModel)]="nombre">
+      <span></span>
+      <button type="button" class="btn-search" (click)="buscar(nombre)"><i class="bi bi-search"></i>Buscar</button>
+    </div>
+    <table class="table">
+      <thead>
+        <tr class="thead-tr">
+          <th><i class="bi bi-hash"></i></th>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>Celular</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="tbody-tr"  *ngFor="let datos of data;let indice = index">
+          <div *ngIf="(datos.Nombres | uppercase) === nombre"></div>
+          <td class="tbody-td" data-titulo="#">{{indice+1}}</td>
+          <td class="tbody-td" data-titulo="Nombres">{{datos.Nombres}}</td>
+          <td class="tbody-td" data-titulo="Apellidos">{{datos.Apellidos}}</td>
+          <td class="tbody-td" data-titulo="Celular">{{datos.Celular}}</td>
+          <td class="tbody-td">
+            <!-- <button type="button" > -->
+              <div class="flex">
+                <div class="boton-modal">
+                  <label for="btn-modal" (click)="irpedidos(datos.id)" class="btn-showOrder">
+                    Mostrar pedido
+                  </label>
+                </div>
+              </div>
+          </td>
+        </tr>
+
+      </tbody>
     </table>
   </div>
-  <!-- Button trigger modal -->
+</div>
 
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div *ngIf="pos>=0; else other">
-            <div *ngFor="let ped of ress, let i=index">
-              <button class=" float-start m-2" (click)="mostrarCarrito(ped.id)">Pedido {{i+1}}</button>
-              <button class=" float-start m-2" (click)="eliminarCarrito(ped)">delete {{i+1}}</button>
-            </div>
-          </div>
-          <ng-template #other>
-            <p>No Tiene pedidos</p>
-          </ng-template>
-          
-          <div id="tabla">
-            <div *ngFor="let car of resc">
-              <div class="" *ngIf="car.id == idcp ">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Item</th>
-                      <th>Nombre</th>
-                      <th>Marca</th>
-                      <th>Descripcion</th>
-                      <th>Cantidad</th>
-                      <th>Costo</th>
-                      <th>Imagen</th>
-                      <th>Sub Total</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let p of car.carrito let i=index">
-                      <td>{{i+1}}</td>
-                      <td>{{p.Nombre}}</td>
-                      <td>{{p.Marca}}</td>
-                      <td>{{p.Descripcion}}</td>
-                      <td>{{p.Costo}}</td>
-                      <td>{{p.Cantidad}}</td>
-                      <td><img src="{{p.Imagen}}" alt="" width="50"></td>
-                      <td>{{p.Costo * p.Cantidad}}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="reloadPage()">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+<!--Boton-->
+<!-- <div class="boton-modal">
+  <label for="btn-modal">
+      Abrir Modal
+  </label>
+</div> -->
+<!--Fin de Boton-->
+
+<!--Ventana Modal-->
+<input type="checkbox" id="btn-modal">
+
+<div class="container-modal">
+  <div class="content-modal">
+    <div class="modal-header">
+      <h2 class="modal-title">Pedido</h2>
+    </div>
+    
+    <div class="modal-body">
+      <div class="modal-contain-flex" *ngIf="pos >= 0; else other">
+        <div class="modal-flex" *ngFor="let ped of ress, let i=index">
+          <button class="btn-show" (click)="mostrarCarrito(ped.id)">Pedido {{i+1}}</button>
+          <button class="btn-delete" (click)="eliminarPedido(ped)">Eliminar {{i+1}}</button>
         </div>
       </div>
+
+      <ng-template #other>
+        <p>No Tiene pedidos</p>
+      </ng-template>
+              
+      
+      <div class="modal-order">
+        <div *ngFor="let car of resc">
+          <div class="" *ngIf="car.id == idcp ">
+            <table class="modal-table">
+              <thead>
+                <tr class="modal-thead-tr">
+                  <th><i class="bi bi-hash"></i></th>
+                  <th>Nombre</th>
+                  <th>Marca</th>
+                  <th>Descripcion</th>
+                  <th>Cantidad</th>
+                  <th>Costo</th>
+                  <th>Imagen</th>
+                  <th>Sub Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="modal-tbody-tr" *ngFor="let p of car.carrito let i=index">
+                  <td class="modal-tbody-td" data-titulo="#">{{i+1}}</td>
+                  <td class="modal-tbody-td" data-titulo="Nombre">{{p.Nombre}}</td>
+                  <td class="modal-tbody-td" data-titulo="Marca">{{p.Marca}}</td>
+                  <td class="modal-tbody-td" data-titulo="Descripcion">
+                    <textarea>{{p.Descripcion}}</textarea>
+                  </td>
+                  <td class="modal-tbody-td" data-titulo="Costo">{{p.Costo}}</td>
+                  <td class="modal-tbody-td" data-titulo="Cantidad">{{p.Cantidad}}</td>
+                  <td class="modal-tbody-td" data-titulo="Imagen"><img src="{{p.Imagen}}" class="td-image" alt="Imagen del Producto" width="50"></td>
+                  <td class="modal-tbody-td" data-titulo="Total">{{p.Costo * p.Cantidad}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>     
     </div>
+    
+    <div class="modal-footer">
+      <div class="btn-cerrar">
+        <label for="btn-modal" class="" (click)="reloadPage()">Cerrar</label>
+      </div>
+    </div>
+
   </div>
+  <label for="btn-modal" class="cerrar-modal"></label>
 </div>
+<!--Fin de Ventana Modal-->
+
+
+
+
+
+<!-- /**/ -->
+<!-- MOSTRAR LA TABLA DE PEDIDO DE LAS ORDENES DEL CLIENTE Y ENRUTAR A PEDIDO QUE SE VEA SU PEDIDO-->
+
+  
+ 

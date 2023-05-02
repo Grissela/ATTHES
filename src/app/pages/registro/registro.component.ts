@@ -19,7 +19,7 @@ export class RegistroComponent {
 
   ngOnInit(){
     this.register=this.initForm();
-    console.log(this.register.value)
+    // console.log(this.register.value)
     
   }
 
@@ -89,21 +89,21 @@ export class RegistroComponent {
       Contrasena:this.register.value.Contrasena,
       Rol:1
     }
-    console.log(registers)
-    console.log("Datos del registro: ",registers)
+    // console.log(registers)
+    // console.log("Datos del registro: ",registers)
     
     // para registrar al usuario y obtener su uid para que se haga un nuevo registro
     const res = await this.authUser.registerUser(registers)
     
     if(res){ 
-      console.log("Exito a Registrar usuario");
+      // console.log("Exito a Registrar usuario");
       const path = 'users'
       const id = String(res.user?.uid)
-      console.log("UID ->", res.user?.uid);
+      // console.log("UID ->", res.user?.uid);
       this.service.addUSer(registers, path, id)
       this.route.navigate(['/login'])
     }
-    console.log("Uid del usuario: ",res.user.uid)
+    // console.log("Uid del usuario: ",res.user.uid)
     this.limpiar()
     
   }

@@ -11,6 +11,7 @@ import { EditproductsComponent } from './editproducts/editproducts.component';
 import { TableordenesComponent } from './tableordenes/tableordenes.component';
 
 
+
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -19,7 +20,8 @@ import { TableordenesComponent } from './tableordenes/tableordenes.component';
     TableproductosComponent,
     TableusersComponent,
     EditproductsComponent,
-    TableordenesComponent
+    TableordenesComponent,
+  
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,8 @@ import { TableordenesComponent } from './tableordenes/tableordenes.component';
     TableproductosComponent,
     TableusersComponent,
     EditproductsComponent,
-    TableordenesComponent
+    TableordenesComponent,
+   
   ]
 })
 export class ComponentsModule { }

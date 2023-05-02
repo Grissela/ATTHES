@@ -2,38 +2,39 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { ZapatillasService } from 'src/app/service/zapatillas.service';
 import { Zapatillas } from 'src/app/interface/zapatillas';
-import { Car } from 'src/app/interface/car';
+import { Car, Pedido } from 'src/app/interface/car';
 import { Users } from 'src/app/interface/users';
 import { CarService } from 'src/app/service/car.service';
 import Swal from 'sweetalert2';
 import { AuthService } from 'src/app/service/auth.service';
 import { UserService } from 'src/app/service/user.service';
-// import jsPDF from 'jspdf';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import domtoimage from 'dom-to-image';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { formatDate } from '@angular/common';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-boleta',
   templateUrl: './boleta.component.html',
   styleUrls: ['./boleta.component.css'],
 })
 export class BoletaComponent {
-  @ViewChild('tabla', { static: false })
-  tabla!: ElementRef;
-
   public pedido!: FormGroup;
   pedidos: any;
   clientes: any;
   cliente: any;
+  ress: any[] = [];
   register: any;
   data!: Users[];
+  fecha!: string;
+  dni!: string;
+  direccion!: string;
   suma = 0;
   car!: Car[];
   id = '';
   uid = '';
-  idp=""
+  idp = '';
   user_cliente: any;
   nombres = '';
   apellidos = '';
@@ -41,6 +42,9 @@ export class BoletaComponent {
   id_cliente!: string;
   login: boolean = false;
   dato: any;
+  sumaCarrito = 0;
+  fechas: any[] = [];
+  fech: any[] = [];
   constructor(
     private ZapaService: ZapatillasService,
     private UserService: UserService,
@@ -48,56 +52,36 @@ export class BoletaComponent {
     private aut: AuthService,
     private readonly Build: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private elementRef: ElementRef,
+    public _location: Location
   ) {
+    // autentificar al usuario su id 
     this.aut.statusUser().subscribe((res) => {
       if (res) {
-        console.log('Estado ->', res);
-        console.log('esta logeado');
-        console.log('UID->', res.uid);
+        // console.log('Estado ->', res);
+        // console.log('esta logeado');
+        // console.log('UID->', res.uid);
         this.uid = res.uid;
         this.login = true;
       } else {
-        console.log('No esta logeado');
+        // console.log('No esta logeado');
         this.login = false;
       }
     });
   }
 
   ngOnInit(): void {
-    console.log('ssssssssssss');
-
+    // INICIALIZAR EL FORMULARIO
     this.pedido = this.initForm();
     const path = 'users';
     this.id = String(this.route.snapshot.paramMap.get('id'));
     this.UserService.getUsers(path).subscribe((res) => {
       this.data = res;
-      console.log('Es esto:' + this.data);
+      // console.log('Es esto:' + this.data);
     });
     this.show();
     this.mostrar();
-  }
-
-  mostrarCarrito(id: string) {
-    alert(id);
-    this.idp = id
-    this.pedidos;
-
-    this.carrito.getClientesPedido(this.id).subscribe((res) => {
-      this.pedidos = res;
-      console.log(this.pedidos);
-
-      for (let items of this.pedidos) {
-        console.log('is->', items);
-        this.dato = items;
-        this.suma = items.total;
-
-        for (let x of this.clientes) {
-          const suma = x.Cantidad * x.Costo;
-          //this.suma +=suma
-        }
-      }
-    });
   }
 
   initForm(): FormGroup {
@@ -107,20 +91,8 @@ export class BoletaComponent {
     });
   }
 
+  // PARA ENVIAR EL PEDIDO
   async agregar() {
-    /*const orden = {
-      dni:this.pedido.value.dni,
-      Direccion:this.pedido.value.Direccion,
-      Nombre:this.nombres,
-      Apellidos:this.apellidos,
-
-      
-      Imagen:string;
-      Cantidad:number;
-      Costo:number;
-      Marca:string;
-      Descripcion:string;*/
-
     const Pedido = {
       cliente: this.user_cliente,
       DNI: this.pedido.value.dni,
@@ -129,111 +101,193 @@ export class BoletaComponent {
       fecha: new Date(),
       total: this.suma,
     };
-
     this.carrito.addCliente(Pedido);
-    console.log('Pedido -> ', Pedido);
+    // console.log('Pedido -> ', Pedido);
     this.carrito.eliminarDocumentos();
   }
 
-  imprimir() {
-    const doc = new jsPDF('p', 'pt', 'a4');
-    document.querySelectorAll('#tabla');
-    doc.save('Boleta de atthes');
-    // const DATA: any = document.getElementById('tabla');
-    // const DATA: any = document.querySelectorAll("#tabla");
-    // const doc = new jsPDF('p','pt','a4');
-    // const options = {
-    //   background: 'white',
-    //   scale: 3
-    // };
+  // para que se vea el carrito
+  mostrarCarrito(id: string) {
+    // alert(id);
+    this.idp = id;
+    this.pedidos;
 
-    // html2canvas(DATA, options)
-    // .then((canvas) => {
-    //   const img = canvas.toDataURL('image/PNG');
-
-    //     // Add image Canvas to PDF
-    //   const bufferX = 15;
-    //   const bufferY = 15;
-    //   const imgProps = (doc as any).getImageProperties(img);
-    //   const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
-    //   const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-    //   doc.addImage(
-    //     img,
-    //     'PNG',
-    //     bufferX,
-    //     bufferY,
-    //     pdfWidth,
-    //     pdfHeight,
-    //     undefined,
-    //     'FAST');
-    //   return doc;
-    // })
-    // .then((docResult) => {
-    //   docResult.save(`${new Date().toISOString()}_tutorial.pdf`);
-    // });
+    this.carrito.getClientesPedido(this.id).subscribe((res) => {
+      this.pedidos = res;
+      // console.log(this.pedidos);
+    });
   }
 
-  //  doc.text('tabla' ,10,10);
-  //  doc.save('Boleta de atthes')
-  // html2canvas(this.tabla.nativeElement).then(canvas => {
-  //   const imgData = canvas.toDataURL('image/png');
-  //   const imgWidth = 210; // Anchura de la página A4 (en mm)
-  //   const pageHeight = 295; // Altura de la página A4 (en mm)
-  //   const imgHeight = canvas.height * imgWidth / canvas.width;
-  //   let position = 0;
+  // PARA IMPRIMIR
+  imprimir() {
+    // Extraemos la tabla
+    const DATA = document.getElementById('tabla');
 
-  //   doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-  //   position = imgHeight;
+    // Obtenemos el alto y ancho de la tabla
+    const totalTableHeight = DATA!.clientHeight;
+    const totalTableWidth = 500;
 
-  //   doc.save('boleta factura.pdf');
-  // const doc = new jsPDF();
+    // Creamos el documento PDF con las dimensiones de la tabla
+    const doc = new jsPDF('p', 'pt', [1000, 1000]);
 
-  // const table = document.getElementById('tabla');
+    // Agregamos la cabecera manualmente
+    const header = ['No.', 'Nombre', 'Marca', 'Descripcion', 'Cantidad',  'Costo', 'Sub Total'];
+    const headWidths = [30, 120, 80, 300, 70, 80, 80];
+    const startY = 50;
+    const startX = 30;
+    let currX = startX;
+    let currY = startY;
+    header.forEach((title, index) => {
+        doc.setFontSize(12);
+        currX += headWidths[index];
+    });
 
-  // doc.html (document.getElementById('tabla'),10);
-  // doc.save('Factura Atthes');
-  // Extraemos el
-  // const DATA: HTMLElement | null = document.getElementById('tabla');
-  // const doc = new jsPDF('p', 'pt', 'a4');
-  // const options = {
-  //   background: 'white',
-  //   scale: 3
-  // };
-  // html2canvas(DATA, options).then((canvas) => {
+    // Opciones de html2canvas
+    const options = {
+        background: 'white',
+        scale: 3,
+    };
 
-  //   const img = canvas.toDataURL('image/PNG');
+    // Convertimos la tabla a imagen con html2canvas
+    html2canvas(DATA!, {
+        ignoreElements: (element) => {
+            return element.classList.contains('no-pdf');
+        },
+    }).then((canvas) => {
+        const img = canvas.toDataURL('image/PNG');
+        const bufferX = 30;
+        const bufferY = 100;
+        const imgProps = (doc as any).getImageProperties(img);
+        const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
+        const pdfHeight = totalTableHeight + bufferY * 2;
 
-  //   // Add image Canvas to PDF
-  //   const bufferX = 15;
-  //   const bufferY = 15;
-  //   const imgProps = (doc as any).getImageProperties(img);
-  //   const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
-  //   const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-  //   doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
-  //   return doc;
-  // }).then((docResult) => {
-  //   docResult.save(`${new Date().toISOString()}_tutorial.pdf`);
-  // });
-  // });
+        // Ajustamos el tamaño de la página PDF para que se adapte a la tabla completa
+        const pageHeight = doc.internal.pageSize.getHeight();
+        const pageWidth = doc.internal.pageSize.getWidth();
+        const position = pdfHeight + bufferY * 2;
 
+        if (position < totalTableHeight) {
+            doc.addPage();
+        }
+
+        // Agregamos la imagen al PDF
+        doc.addImage(
+            img,
+            'PNG',
+            bufferX,
+            bufferY,
+            pdfWidth,
+            pdfHeight,
+            undefined,
+            'FAST',
+            0
+        );
+        // Llamamos a la segunda función para imprimir los datos
+        this.imprimirDatos(doc);
+
+        // Agregamos el estilo de impresión
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @media print {
+                .modal-table{
+                    max-width: 1300px;
+                    width: 100%;
+                    font-size: 5pt;
+                    font-family: serif;
+                    background-color: #000;
+                    color: #fff;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    });
+}
+
+// PARA IMPRIMIR DATOS PERSONALES
+imprimirDatos(doc: any) {
+  const DATA1 = document.getElementById('datos');
+  const totalTableHeight = DATA1!.clientHeight;
+
+  const options = {
+    background: 'white',
+    scale: 3,
+  };
+
+  html2canvas(DATA1!, {
+    ignoreElements: (element) => {
+      return element.classList.contains('no-pdf');
+    },
+  }).then((canvas) => {
+    const img = canvas.toDataURL('image/PNG');
+    const bufferX = 30;
+    const bufferY = 30;
+    const imgProps = (doc as any).getImageProperties(img);
+    const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
+    const pdfHeight = totalTableHeight + bufferY * 2;
+
+    // Ajustar el tamaño de la página PDF para que se adapte a la tabla completa
+    const pageHeight = doc.internal.pageSize.getHeight();
+    const position = pdfHeight + bufferY * 2;
+    if (position < totalTableHeight) {
+      doc.addPage();
+    }
+
+    doc.addImage(
+      img,
+      'PNG',
+      bufferX,
+      bufferY,
+      pdfWidth,
+      pdfHeight,
+      undefined,
+      'FAST',
+      0,
+    );
+    
+
+    // Descargamos el PDF con ambas secciones
+    doc.save(`${new Date().toISOString()}_boleta_de_atthes.pdf`);
+  });
+}
+  // PARA MOSTRAR
   mostrar() {
     this.carrito.getClientesPedido(this.id).subscribe((res) => {
       this.cliente = res;
-      console.log(this.cliente);
+      // console.log(this.cliente);
 
       for (let items of this.cliente) {
-        console.log('is->', items);
+        // console.log('is->', items);
         this.dato = items;
         this.clientes = items.carrito;
         this.suma = items.total;
-
-        for (let x of this.clientes) {
-          const suma = x.Cantidad * x.Costo;
-          //this.suma +=suma
-        }
+        let fech = this.dato.fecha.toDate();
+        this.fechas.push(fech.toLocaleTimeString());
+        this.fechas.sort((a, b) => {
+          const fechaA = new Date(`2000-01-01 ${a}`);
+          const fechaB = new Date(`2000-01-01 ${b}`);
+          return fechaA.getTime() - fechaB.getTime();
+        });
       }
+      this.fech = this.fechas;
+      // console.log(this.fech);
     });
+    // this.reloadPage()
+
   }
+
+// PARA RECARGAR LA PAGINA Y ACTUALIZAR
+reloadPage() {
+  this.router
+  .navigateByUrl('boleta/' + this.id, { skipLocationChange: true })
+  .then(() => {
+    console.log(decodeURI(this._location.path()));
+
+    this.router.navigate([decodeURI(this._location.path())]);
+    this.carrito.getClientesPedido(this.id);
+  });
+  }
+
+  // PARA MOSTRAR EL CARRITO O PEDIDOS DEL USUARIOS
   show() {
     const path = 'users';
     this.UserService.getUsers(path).subscribe((res) => {
@@ -242,21 +296,22 @@ export class BoletaComponent {
         // console.log(info)
         if (this.id == info.id) {
           this.user_cliente = info;
-          console.log('Cliente -> ' + this.user_cliente);
+          // console.log('Cliente -> ' + this.user_cliente);
           this.id_cliente = info.id;
           this.nombres = info.Nombres;
           this.apellidos = info.Apellidos;
         }
       }
-      this.carrito.getCar().subscribe((res) => {
+      this.carrito.getMostrar(this.id).subscribe((res) => {
         this.car = res;
-        console.log('carritos' + this.car);
-        for (let desc of this.car) {
-          const suma = desc.Cantidad * desc.Costo;
-          this.suma += suma;
-          console.log('Carro ->' + desc.Nombre);
+        // console.log('carritos' + this.car);
+        let total = 0;
+        for (let i = 0; i < this.car.length; i++) {
+          //console.log('Al->',this.data[i].Costo);
+          let sum: number = this.car[i].Cantidad * this.car[i].Costo;
+          total += sum;
         }
-        return this.suma;
+        this.suma = total;
       });
     });
   }

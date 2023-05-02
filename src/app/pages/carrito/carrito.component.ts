@@ -22,7 +22,7 @@ export class CarritoComponent implements OnInit  {
   ide:any
   zapatillas!:Zapatillas[];
   car!:Car[]
-  suma:any[]=[]
+  suma:number =0
   res=0
   resultado=1
   id!:string;
@@ -33,14 +33,14 @@ export class CarritoComponent implements OnInit  {
     // Para autentificar el usuario logeado-----------------------------------------------
     this.aut.statusUser().subscribe(res => {
       if (res) {
-        console.log("Estado ->",res);
-        console.log('esta logeado');
-        console.log('UID->', res.uid);
+        // console.log("Estado ->",res);
+        // console.log('esta logeado');
+        // console.log('UID->', res.uid);
         this.uid = res.uid
         this.login = true
         
       } else {
-        console.log('No esta logeado');
+        // console.log('No esta logeado');
         // Swal.fire({
         //   icon: 'info',
         //   text: 'No esta logeado!',
@@ -66,21 +66,23 @@ export class CarritoComponent implements OnInit  {
   mostrar(){
     this.aut.statusUser().subscribe(res =>{
     this.ide = res?.uid
-    console.log('Aqui ->',this.ide);
+    // console.log('Aqui ->',this.ide);
     this.carrito.getMostrar(res?.uid).subscribe (res=>{
-     this.data = res
+     this.data = res;
+    //  console.log('**************************************');
+     let total = 0;
      for(let i=0; i<this.data.length;i++){
       //console.log('Al->',this.data[i].Costo);
-      
      let sum:number = this.data[i].Cantidad*this.data[i].Costo 
-      console.log('Suma->',sum);
+     total +=sum
       
-      this.suma.push(sum)
+      
+      //this.suma.push(sum)
       
      }
-     console.log('px->',this.suma);
-     this.res = this.suma.reduce((acumulador, valorActual) => acumulador + valorActual, 0);
-     console.log(this.res);
+     this.suma = total
+    //  console.log('Suma->',this.suma);
+     //console.log('px->',this.suma);
      
     })
   })

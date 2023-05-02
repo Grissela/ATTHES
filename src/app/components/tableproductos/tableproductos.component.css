@@ -1,24 +1,76 @@
 
 .table-contain{
-    padding: 0 2rem;
+    padding: 0 1.4rem;
     background-color: var(--white-color);
 }
-
+.search-contain{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: .9rem 0;
+}
 .btn-add-product{
-    padding: 1.2rem 2rem;
-    font-size: 1.1rem;
-    font-weight:bold;
+    width: 140px;
+    padding: 1rem 0;
+    font-size: 1rem;
     color: var(--white-color);
-    background-color: #2d82f4;
+    background-color: #2c8efd;
     border: 0;
-    border-radius: .2rem;
+    border-radius: .3rem;
     outline: none;
     cursor: pointer;
-    transition: transform .2s ease-in-out;
+    transition: transform .3s ease;
 }
  .btn-add-product:hover{
     transform: scale(1.04);
 }
+
+.form-search{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: .9rem .5rem;
+}
+.input-search{
+    width: 240px;
+    padding: 1rem;
+    font-size: .9rem;
+    font-family: var(--font);
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: var(--black-color);
+    outline: none;
+    border: 1px solid #adb5bd;
+    border-radius: .3rem;
+}
+.input-search::placeholder{
+    color: #adb5bd;
+ }
+
+.input-search:focus{
+    outline: 1px solid #4cc9f0;
+}
+.bi-search{
+    font-size: 1rem;
+    margin-right: .5rem;
+}
+.btn-search{
+    width: 120px;
+    padding: 1rem 0;
+    font-size: 1rem;
+    color: var(--white-color);
+    background-color: #2c8efd;
+    border: 0;
+    border-radius: .3rem;
+    outline: none;
+    cursor: pointer;
+    transition: opacity .3s ease;
+}
+.btn-search:hover{
+    opacity: .75;
+}
+
 .td-image{
     width: 60px;
     height: 60px;
@@ -27,7 +79,7 @@
 /*ICONS*/
 .fa-plus{
     padding-right: .7rem;
-    font-size: 1.7rem;
+    font-size: 1.4rem;
 }
 .bi-hash{
     font-size: 1.5rem;
@@ -130,6 +182,13 @@ textarea::-webkit-scrollbar-thumb{
 
 
 @media screen and (min-width:48rem){
+    .table-contain{
+        padding: 0;
+    }
+    .table-products{
+        width: 80%;
+        margin: 2rem auto;
+    }
     .tbody-tr .tbody-td textarea{  
         height: 90px;
         padding-bottom: 1rem;
@@ -164,10 +223,9 @@ textarea::-webkit-scrollbar-thumb{
    
 
     /*---------------------------------------------*/
-
-    .table-contain{
-        background-color: var(--white-color);
-        padding: 0;
+    .table-products{
+        width: 100%;
+        margin: 2rem auto;
     }
     .table{
         margin: 2.7rem 0;
@@ -208,6 +266,9 @@ textarea::-webkit-scrollbar-thumb{
     .table .tbody-tr:nth-child(odd){
         background-color: #f8f9fa;
     } 
+    .table .tbody-tr:hover{
+        background-color: #eef0f1; 
+    }
     .flex{
         display: flex;
         flex-direction: column;
@@ -221,4 +282,7 @@ textarea::-webkit-scrollbar-thumb{
         padding: .7rem 0;
         font-size: .9rem;
     }
+    /* .table{
+        border-spacing: 2px 0;
+    } */
 }

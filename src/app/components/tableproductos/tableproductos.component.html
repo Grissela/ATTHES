@@ -1,43 +1,54 @@
 <!-- TABLA DE PRODUCTOS-------------------------------------------------->
 <div class="table-contain container">
   <h2 class="sneaker-title">Productos</h2>
+  <div class="table-products">
+    <div class="search-contain">
+      <button class="btn-add-product" (click)="enviar()"><i class="fa-solid fa-plus fa-2xl"></i>Agregar</button>
+    
+      <div class="form-search">
+        <input type="search" class="input-search" placeholder="Buscar Nombre" required [(ngModel)]="nombre">
+        <button type="button" class="btn-search" (click)="buscar(nombre)"><i class="bi bi-search"></i>Buscar</button>
+      </div>
+    </div>
+    
 
-  <button class="btn-add-product" (click)="enviar()"><i class="fa-solid fa-plus fa-2xl"></i>Agregar</button>
-
-  <table class="table">
-    <thead>
-      <tr class="thead-tr">
-        <th><i class="bi bi-hash"></i></th>
-        <th>Producto</th>
-        <th>Descripción</th>
-        <th>Precio</th>
-        <th>Stock</th>
-        <th>Marca</th>
-        <th>Imagen</th>
-        <th></th>
-      </tr>
-    </thead>
-          
-    <tbody>
-      <tr class="tbody-tr" *ngFor="let datos of data;let indice = index" >
-        <td class="tbody-td" data-titulo="#">{{indice+1}}</td>
-        <td class="tbody-td" data-titulo="Nombre">{{datos.Nombre}}</td>
-        <td class="tbody-td" data-titulo="Descripcion">
-          
-          <textarea disabled>{{datos.Descripcion}}</textarea>
-        </td>
-        <td class="tbody-td" data-titulo="Precio">{{datos.Precio}}</td>
-        <td class="tbody-td" data-titulo="Cantidad">{{datos.Cantidad}}</td>
-        <td class="tbody-td" data-titulo="Marca">{{datos.Marca}}</td>
-        <td class="tbody-td" data-titulo="Imagen"><img src="{{datos.Imagen}}" class="td-image"></td>
-        <td class="tbody-td flex">
-          <button (click)="eliminar(datos)" title="Eliminar" class="btn-delete"><i class="bi bi-trash-fill"></i></button>
-
-          <button (click)="goToDetalleProd(datos.id)" title="Modificar" class="btn-update"><i class="bi bi-pencil-fill"></i></button>
-        </td>
-      </tr>  
-    </tbody>
-  </table>
+    <table class="table">
+      <thead>
+        <tr class="thead-tr">
+          <th><i class="bi bi-hash"></i></th>
+          <th>Producto</th>
+          <th>Descripción</th>
+          <th>Precio</th>
+          <th>Stock</th>
+          <th>Marca</th>
+          <th>Imagen</th>
+          <th></th>
+        </tr>
+      </thead>
+            
+      <tbody>
+        <tr class="tbody-tr" *ngFor="let datos of data;let indice = index" >
+          <div *ngIf="(datos.Nombre | uppercase) === nombre"></div>
+          <td class="tbody-td" data-titulo="#">{{indice+1}}</td>
+          <td class="tbody-td" data-titulo="Nombre">{{datos.Nombre}}</td>
+          <td class="tbody-td" data-titulo="Descripcion">
+            
+            <textarea disabled>{{datos.Descripcion}}</textarea>
+          </td>
+          <td class="tbody-td" data-titulo="Precio">{{datos.Precio}}</td>
+          <td class="tbody-td" data-titulo="Cantidad">{{datos.Cantidad}}</td>
+          <td class="tbody-td" data-titulo="Marca">{{datos.Marca}}</td>
+          <td class="tbody-td" data-titulo="Imagen"><img src="{{datos.Imagen}}" class="td-image"></td>
+          <td class="tbody-td flex">
+            <button (click)="eliminar(datos)" title="Eliminar" class="btn-delete"><i class="bi bi-trash-fill"></i></button>
+  
+            <button (click)="goToDetalleProd(datos.id)" title="Modificar" class="btn-update"><i class="bi bi-pencil-fill"></i></button>
+          </td>
+        </tr>  
+      </tbody>
+    </table>
+  </div>
+  
 </div>
 
 

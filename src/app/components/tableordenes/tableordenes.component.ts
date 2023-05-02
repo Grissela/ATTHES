@@ -34,6 +34,8 @@ export class TableordenesComponent {
   idc = '';
   idcp = '';
   pos!: number;
+  nombre!:string;
+
   constructor(
     public carrito: CarService,
     private router: Router,
@@ -45,13 +47,30 @@ export class TableordenesComponent {
     this.mostrar();
   }
 
+  // Mostrar mis usuarios
   mostrar() {
     this.user.getUsers('users').subscribe((resu) => {
       this.data = resu;
-      console.log('Datos->', this.data);
+      // console.log('Datos->', this.data);
     });
   }
 
+  // Buscar por nombre de usuario
+  buscar(nombre: string) {
+    if(nombre) {
+      this.data = this.data.filter((item) => {
+        return item.Nombres.toLowerCase().indexOf(nombre.toLowerCase()) > -1;
+      });
+    } else {
+      if (nombre === '') {
+         this.mostrar(); // vuelve a mostrar todos los datos 
+      } else {
+          this.mostrar();
+      };
+      }
+    }
+
+  // Recargar o actualizar los pedidos
   reloadPage() {
     this.router
       .navigateByUrl('/tableprod', { skipLocationChange: true })
@@ -63,16 +82,17 @@ export class TableordenesComponent {
       });
   }
 
+  // Para ver los pedidos de cada usuario autentificar
   irpedidos(id: any) {
-    console.log(id);
+    // console.log(id);
     this.idc = id;
     for (let user of this.data) {
       if (user.id == id) {
         let ide: any = user.id;
-        console.log('ID', user.id);
+        // console.log('ID', user.id);
         this.carrito.getClientesPedido(ide).subscribe((res) => {
           this.ress = res;
-          console.log('Res->', res);
+          // console.log('Res->', res);
           for (let item = 0; item < res.length; item++) {
             const element = res[item];
           }
@@ -86,15 +106,18 @@ export class TableordenesComponent {
     }
   }
 
+
+  // Mostrar el carrito de cada usuario
   mostrarCarrito(id: string) {
     this.idcp = id;
     this.carrito.getClientesPedido(this.idc).subscribe((res) => {
       this.resc = res;
-      console.log('Carro->', this.resc);
+      // console.log('Carro->', this.resc);
     });
   }
 
-  eliminarCarrito(ped: Pedido) {
+  // Eliminar el pedido
+  eliminarPedido(ped: Pedido) {
     this.carrito.deletePedido(ped, this.idc);
   }
 }

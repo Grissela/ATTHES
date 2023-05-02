@@ -20,7 +20,6 @@ import { TableusersComponent } from './components/tableusers/tableusers.componen
 import { EditproductsComponent } from './components/editproducts/editproducts.component';
 import { BoletaComponent } from './pages/boleta/boleta.component';
 import { PermisosGuard } from './permisos.guard';
-import { PedidoComponent } from './pages/pedido/pedido.component';
 import { TableordenesComponent } from './components/tableordenes/tableordenes.component';
 
 
@@ -43,7 +42,6 @@ const routes: Routes = [
   {path:'preguntas', component:PreguntasComponent},
   {path:'cambios', component:CambiosComponent},
   {path:'politica', component:PoliticaComponent},
-  {path:'pedido', component:PedidoComponent},
   {path:'boleta/:id', component:BoletaComponent},
   {path:'acount/:id', component:MicuentaComponent},
   {path:'**', component:HomeComponent}
