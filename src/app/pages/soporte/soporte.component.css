@@ -2,7 +2,7 @@
 /*Imagen*/
 .medium{
     min-height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("../../../assets/IMG/medium.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("assets/IMG/medium.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;

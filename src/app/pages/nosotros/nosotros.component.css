@@ -1,6 +1,6 @@
 .bg-image{
     min-height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../../assets/IMG/nosotros.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("assets/IMG/nosotros.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
