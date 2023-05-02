@@ -1,6 +1,6 @@
 .bg-image{
     min-height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("assets/IMG/fondo1.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../../assets/IMG/fondo1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -107,11 +107,11 @@
     transition: transform .4s ease-out;
 }
 .img-men{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("assets/IMG/hombre.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../../assets/IMG/hombre.jpg");
 }
 
 .img-women{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(" assets/IMG/mujer.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(" ../../../assets/IMG/mujer.jpg");
 }
 
 .image:hover{
