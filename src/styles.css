@@ -138,6 +138,8 @@
 	border-radius: 50%;
 	width: 150px;
 	height: 150px;
+	object-fit: cover;
+	object-position: center;
  }
  
  .bg-gray-light{
@@ -248,4 +250,7 @@
 	.btn-seeMore:hover{
 		opacity: .75;
 	}
-		
+	.text-color{
+		margin: .7rem 0;
+		color: var(--button-nav-color);
+	}

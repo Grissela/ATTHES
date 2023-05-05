@@ -149,84 +149,148 @@
 }
 
 /*BANER DE PROMOCION*/
+
+/* carrusel promociones */
+.carousell{
+    position: relative;
+    max-width: 100%;
+    text-align: center;
+    overflow-x: hidden; /*esconder en forma horizontal lo q sobra*/
+}
+
+.carousell .banner-container{
+    /* 100% por cada slide */
+    width: 300%;
+    display: flex;
+    /* overflow-x: hidden; */
+    transition: transform .5s ease-in-out;
+}
+.slides-nav-position{
+    margin-top: .6rem;
+}
+
+
+.carousell input{
+    display: none;
+}
+
+.carousell label{
+    border:medium solid var(--button-nav-color);
+    border-radius: 50%; 
+    margin: .8rem .45rem;
+    display: inline-block;
+    width: .9rem;
+    height: .9rem;
+    cursor: pointer;
+
+}
+
+#column-1:checked ~ .banner-container{
+    /* se modifica por el numero de slides
+    si esta en el slide 1 devuelve a su origen por eso es 0%  */
+    transform: translateX(0%);
+}
+
+#column-2:checked ~ .banner-container{
+    /* se modifica por el numero de slides
+    si esta en el slide 1 devuelve a su origen por eso es 0%  */
+    transform: translateX(-33.33333333333333%);
+}
+
+#column-3:checked ~ .banner-container{
+    /* se modifica por el numero de slides
+    si esta en el slide 1 devuelve a su origen por eso es 0%  */
+    transform: translateX(-66.66666666666666%);
+}
+
+#column-1:checked ~ .slides-nav-position label#dat-1,
+#column-2:checked ~ .slides-nav-position label#dat-2,
+#column-3:checked ~ .slides-nav-position label#dat-3
+{
+    background-color: var(--button-nav-color);
+}
+
+
 .banner-container{
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.banner-container .banner{
-    background: #bdc3c7;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    border-radius: 5px;
-    margin: 10px;
+.banner-container .banner{    
     display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+    width: 100%;
+    height: 700px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
     box-shadow: 0 5px 10px #0005;
     overflow: hidden;
 }
+.banner-container .banner1{
+    background-image: url('../../../assets/IMG/layered-waves-haikei.svg');
+}
+.banner-container .banner2{
+    background-image: url('../../../assets/IMG/low-poly-grid-haikei.svg');
+}
+.banner-container .banner3{
+    background-image: url('../../../assets/IMG/blob-scene-haikei.svg');
+}
 
 .banner-container .banner .shoe{
-    flex: 1 1 250px;
-    padding: 15px;
-    text-align: center;
+  
 }
-
 .banner-container .banner .shoe img{
-    width: 80%;
+    width: 250px;
 }
-
 .banner-container .banner .content{
-    flex: 1 1 250px;
+    flex-basis: 45%;
     text-align: center;
-    padding: 10px;
     text-transform: uppercase;
 }
+
+
+
 .banner-container .banner .content span{
     color: #663cc9;
-    /* color: #ef233c; */
-    font-size: 25px;
+    font-weight: bold;
+    font-size: 1.9rem;
 }
 
 .banner-container .banner .content h3{
     color: #fff;
-    font-size: 40px;
+    font-size: 2.1rem;
 }
 
 .banner-container .banner .content p{
     color: #663cc9;
-    /* color: #ef233c; */
-    font-size: 20px;
-    padding: 10px 0;
+    color: #e7c6ff;
+    font-weight: bold;
+    font-size: 1.4rem;
 }
 
 .banner-container .banner .content .boton{
     display: block;
-    height: 40px;
     width: 150px;
-    line-height: 40px;
+    padding: 1.3rem;
+    font-weight: bold;
     background-color: #fff;
     color: #d63031;
     margin: 5px auto;
     text-decoration: none;
+    transition: transform .3s ease, color .3s ease-in-out, background-color .3s ease;
 }
 .banner-container .banner .content .boton:hover{
-    display: block;
-    height: 40px;
-    width: 150px;
-    line-height: 40px;
-    background-color: #d63031;
     color: #fff;
-    margin: 5px auto;
-    text-decoration: none;
-    transition: .2s;
+    background-color: #d63031;
     transform: scale(1.1);
+
 }
 
-.banner-container .banner .woman{
+/* .banner-container .banner .woman{
     position: relative;
     bottom: -33px;
     padding: 10px;
@@ -235,14 +299,76 @@
 
 .banner-container .banner .woman img{
     width: 100%;
+} */
+.banner-container .banner .woman{
+    display: none;
 }
 
-@media (max-width:768px){
+@media (min-width:48rem){
     .banner-container .banner .woman{
-        display: none;
+        display: block;
+    }
+    .banner-container .banner{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .banner-container .banner .shoe,
+    .banner-container .banner .content,
+    .banner-container .banner .woman{
+        flex-basis: 30%;
+    }
+    
+    .banner-container .banner .woman img{
+        width: 100%;
+    }
+    .slides-nav-position{
+        margin-top: 0;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+    .carousell label{
+        border:medium solid var(--white-color);
+    
+    }
+
+    #column-1:checked ~ .slides-nav-position label#dat-1,
+    #column-2:checked ~ .slides-nav-position label#dat-2,
+    #column-3:checked ~ .slides-nav-position label#dat-3
+    {
+        background-color: var(--white-color);
+    }
+    .shoe{
+        /* background-color: red; */
+    }
+    .banner-container .banner .shoe img{
+        /* filter: drop-shadow(6px 6px  5px rgba(248, 249, 250, 0.74)); */
+        animation: shoe 2s linear infinite alternate;
+    }
+    @keyframes shoe {
+        0%{
+            transform: translateY(-3%);
+        }
+        100%{
+            transform: translateY(3%);
+
+        }
     }
 }
 /*----------------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*PRODUCTOS----------------------------------------*/
 
@@ -305,3 +431,101 @@
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**/
+/*Carrusel testimonio*/
+.carousel{
+    margin: 2rem auto;
+    padding: 2rem 0;
+    max-width: 800px;
+    text-align: center;
+    overflow-x: hidden; /*esconder en forma horizontal lo q sobra*/
+    background-color: rgb(241, 241, 241);
+}
+
+.carousel .slides{
+    padding-left: 0;
+    /* 100% por cada slide */
+    width: 400%;
+    display: flex;
+    list-style: none;
+    transition: transform .5s ease-in-out;
+}
+
+.carousel input{
+    display: none;
+}
+blockquote{
+    line-height: 1.8;
+}
+.carousel label{
+    border:medium solid var(--button-nav-color);
+    border-radius: 50%; 
+    margin: .8rem .36rem;
+    display: inline-block;
+    width: .8rem;
+    height: .8rem;
+    cursor: pointer;
+
+}
+
+/* signo equivalencia, tilde alt+126 
+este simbolo se usa para seleccionar a su hermano siguiente
+*/
+#slide-1:checked ~ .slides{
+    /* se modifica por el numero de slides
+    si esta en el slide 1 devuelve a su origen por eso es 0%  */
+    transform: translateX(0%);
+}
+#slide-2:checked ~ .slides{
+    /* se modifica por el numero de slides
+    si esta en el slide 2 a la derecha por eso signo -25%  */
+    transform: translateX(-25%);
+}
+
+#slide-3:checked ~ .slides{
+    /* se modifica por el numero de slides
+    si esta en el slide 3 a la derecha por eso signo -50%  */
+    transform: translateX(-50%);
+}
+#slide-4:checked ~ .slides{
+    /* se modifica por el numero de slides sube de 25 a 25
+    si esta en el slide 4 a la derecha por eso signo -50%  */
+    transform: translateX(-75%);
+}
+
+/* ctrl+shift+flecha abajo copiar sin resaltar */
+#slide-1:checked ~ .slides-nav label#dot-1,
+#slide-2:checked ~ .slides-nav label#dot-2,
+#slide-3:checked ~ .slides-nav label#dot-3,
+#slide-4:checked ~ .slides-nav label#dot-4
+{
+    background-color: var(--button-nav-color);
+}
+
+/*----------------*/
