@@ -10,6 +10,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.2rem 1.7rem;
+
 }
 
 .menu label{
@@ -47,22 +48,10 @@
   display: initial;
  }
 
-
-.nav{
-  background-color: var(--nav-color);
-  /* display: none; */
-}
 #toggle:checked ~ .nav{
   display: block;
 }
 
-.navigation .nav{
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  background-color: var(--nav-color);
-}
 
 .burger {
   position: relative;
@@ -126,11 +115,21 @@ input:checked ~ .burger > span:nth-of-type(3) {
 
 
 /*barra*/
+.navigation .nav{
+  /* position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--nav-color); */
+}
 .off-canvas-menu{
   position: absolute;
   top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--nav-color);
   z-index: 997;
-  transform: translate(100%,0);
+  transform: translate(-100%,0);
   /* transform: translate(0,-100%); */
   /* transform: translate(0,100%); */
   /* transform: translate(-100%,0); */

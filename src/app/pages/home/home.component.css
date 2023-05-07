@@ -86,9 +86,8 @@
     color: var(--section-title);
 }
 
-.sneaker-subtitle P{
-    text-align: left;
-    font-size: 2.8rem;
+.aboutUs > p{
+    text-align: justify;
     line-height: 2;
 }
 .aboutUs{
