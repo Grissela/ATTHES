@@ -115,13 +115,13 @@ input:checked ~ .burger > span:nth-of-type(3) {
 
 
 /*barra*/
-.navigation .nav{
+/* .navigation .nav{
   /* position: absolute;
   top: 100%;
   left: 0;
   width: 100%;
-  background-color: var(--nav-color); */
-}
+  background-color: var(--nav-color); 
+} */
 .off-canvas-menu{
   position: absolute;
   top: 100%;

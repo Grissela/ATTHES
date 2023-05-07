@@ -239,9 +239,9 @@
     background-image: url('../../../assets/IMG/blob-scene-haikei.svg');
 }
 
-.banner-container .banner .shoe{
+/* .banner-container .banner .shoe{
   
-}
+} */
 .banner-container .banner .shoe img{
     width: 250px;
 }
@@ -358,9 +358,9 @@
     {
         background-color: var(--white-color);
     }
-    .shoe{
-        /* background-color: red; */
-    }
+    /* .shoe{
+        /* background-color: red; 
+    } */
     .banner-container .banner .shoe img{
         /* filter: drop-shadow(6px 6px  5px rgba(248, 249, 250, 0.74)); */
         animation: shoe 2s linear infinite alternate;
@@ -376,19 +376,6 @@
     }
 }
 /*----------------------------------------------*/
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*PRODUCTOS----------------------------------------*/
 
