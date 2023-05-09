@@ -23,7 +23,7 @@
   <!-- Para ver los pedidos y dar click al pedido---------- -->
   <h2 class="ticket-subtitle">Tus Pedidos</h2>
   <div class="order-flex">
-    <label for="btn-modal" *ngFor="let xy of fechas let j=index" type="button" (click)="mostrarCarrito(xy)" class="btn-yourOrder">
+    <label for="btn-modal" *ngFor="let xy of fech let j=index" type="button" (click)="mostrarCarrito(xy)" class="btn-yourOrder">
       Mostrar Pedido {{j+1}}
     </label>
   </div>
@@ -85,6 +85,7 @@
                   <th>Nombre</th>
                   <th>Marca</th>
                   <th>Descripcion</th>
+                  <th class ="no-pdf">Imagen</th>
                   <th>Cantidad</th>
                   <th>Costo</th>
                   <th>Sub Total</th>
@@ -97,6 +98,9 @@
                   <td class="modal-tbody-td" data-titulo="Marca">{{p.Marca}}</td>
                   <td class="modal-tbody-td" data-titulo="Descripcion">
                     {{p.Descripcion}}
+                  </td>
+                  <td class ="no-pdf" style="text-align: center;">
+                    <img src="{{p.Imagen}}" alt="" width="50" height="50" class ="no-pdf">
                   </td>
                   <td class="modal-tbody-td" data-titulo="Cantidad">{{p.Cantidad}}</td>
                   <td class="modal-tbody-td" data-titulo="Costo">{{p.Costo}}</td>

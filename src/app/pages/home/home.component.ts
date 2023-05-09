@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class HomeComponent {
   array!:any[]
-  nombre=""
+  
   zapatillas!:Zapatillas[];
   id=""
 
@@ -20,16 +20,14 @@ export class HomeComponent {
 
 
   ngOnInit(): void {
-    this.nombre = String(this.route.snapshot.paramMap.get('nombre'));
     this.service.getZapatillas().subscribe(zapatillas =>{
       this.zapatillas = zapatillas.slice(0, 6)
       // console.log(this.zapatillas)
     })
 
   }
-  
-  goToDetalle(nombre:string){
-    this.router.navigate(['/detalle', nombre]);
+  goToDetalle(id:string){
+    this.router.navigate(['/detalle', id]);
   }
 
   

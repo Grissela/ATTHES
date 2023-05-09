@@ -14,13 +14,20 @@ export class TiendaComponent {
   id=""
   constructor(private route:ActivatedRoute,private service:ZapatillasService, private router:Router){}
   ngOnInit(): void {
-    this.nombre = String(this.route.snapshot.paramMap.get('nombre'));
+    this.id = String(this.route.snapshot.paramMap.get('id'));
     this.service.getZapatillas().subscribe(zapatillas =>{
       this.zapatillas = zapatillas
+      console.log("esto es ->",this.zapatillas);
+      for(let zap of this.zapatillas){
+        zap.id 
+        console.log("el id es ->",zap.id);
+        
+      }
+      
     })
   }
-  goToDetalle(nombre:string){
-    this.router.navigate(['/detalle', nombre]);
+  goToDetalle(id:string){
+    this.router.navigate(['/detalle', id]);
   }
 
 }

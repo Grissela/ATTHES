@@ -3,7 +3,7 @@
     <h2 class="sneaker-title">Productos Destacados</h2>
         <div class="container-sneakers">
         
-            <div *ngFor="let datos of zapatillas" class="container-sneaker" (click)="goToDetalle(datos.Nombre)">
+            <div *ngFor="let datos of zapatillas" class="container-sneaker" (click)="goToDetalle(datos.id)">
                 <div class="card-sneaker">
                     <h3 class="card-subtitle">{{datos.Marca}}</h3>
                     <h3 class="card-name">{{datos.Nombre}}</h3>
@@ -12,12 +12,9 @@
                     </div>
                     <h3 class="card-price">{{datos.Precio |currency:'S/. '}}</h3>
                         <div class="card-description">
-                            <button class="btn-add" (click)="goToDetalle(datos.Nombre)"><i class="bi bi-cart-fill px-1"></i>Agregar</button>
-                            <button class="btn-seeMore" (click)="goToDetalle(datos.Nombre)">Ver más</button>
+                            <button class="btn-add" (click)="goToDetalle(datos.id)"><i class="bi bi-cart-fill px-1"></i>Agregar</button>
+                            <button class="btn-seeMore" (click)="goToDetalle(datos.id)">Ver más</button>
     
-                        <!-- <div class="">
-                            <p class="font-semibold text-center text-[1.1rem] py-2">S/. {{datos.Costo}}</p>
-                        </div> -->
                     </div> 
                 </div>
             </div>

@@ -28,8 +28,8 @@ export class DetalleComponent {
   }
  
   ngOnInit(): void {
-    // aqui paso por parametro el nombre 
-    this.nombre = String(this.route.snapshot.paramMap.get('nombre'));
+    // aqui paso por parametro el id 
+    this.id = String(this.route.snapshot.paramMap.get('id'));
     this.service.getZapatillas().subscribe(zapatillas=>{
       this.zapatillas = zapatillas
     })

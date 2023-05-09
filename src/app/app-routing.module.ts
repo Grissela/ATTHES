@@ -35,7 +35,7 @@ const routes: Routes = [
   // ,canActivate:[PermisosGuard]
   {path:'tableuser', component:TableusersComponent,...canActivate(()=> redirectUnauthorizedTo('/login')),canActivate:[PermisosGuard]},
   {path:'tableord', component:TableordenesComponent,...canActivate(()=> redirectUnauthorizedTo('/login')),canActivate:[PermisosGuard]},
-  {path:'detalle/:nombre', component:DetalleComponent,...canActivate(()=> redirectUnauthorizedTo('/login'))},
+  {path:'detalle/:id', component:DetalleComponent,...canActivate(()=> redirectUnauthorizedTo('/login'))},
   {path:'edit/:id', component:EditproductsComponent,...canActivate(()=> redirectUnauthorizedTo('/login')),canActivate:[PermisosGuard]},
   {path:'carrito', component:CarritoComponent},
   {path:'soporte', component:SoporteComponent},

@@ -82,6 +82,7 @@ export class BoletaComponent {
     });
     this.show();
     this.mostrar();
+    this.reloadPage()
   }
 
   initForm(): FormGroup {
@@ -261,15 +262,20 @@ imprimirDatos(doc: any) {
         this.clientes = items.carrito;
         this.suma = items.total;
         let fech = this.dato.fecha.toDate();
-        this.fechas.push(fech.toLocaleTimeString());
-        this.fechas.sort((a, b) => {
-          const fechaA = new Date(`2000-01-01 ${a}`);
-          const fechaB = new Date(`2000-01-01 ${b}`);
-          return fechaA.getTime() - fechaB.getTime();
-        });
+        console.log('xcxcx->',fech);
+        this.fechas.push(fech);
       }
-      this.fech = this.fechas;
-      // console.log(this.fech);
+      
+      //esta es la variable para que se ordene la fecha
+      // console.log(this.fechas);
+       let fecr = this.fechas.sort((a, b) => a.getTime() - b.getTime());
+        // console.log('FEchas->',fecr); 
+        for(let f of fecr){
+          // console.log('www->', f);
+          
+          this.fech.push(f.toLocaleTimeString())
+          // console.log('ultimi_>', this.fech);
+      }
     });
     // this.reloadPage()
 

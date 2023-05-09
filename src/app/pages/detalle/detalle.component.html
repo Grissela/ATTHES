@@ -3,7 +3,7 @@
     <div class="detail-contain container">
         <div *ngFor="let datos of zapatillas">
             <!-- MOSTRAR LA ZAPATILLA SI ES IGUAL AL NOMBRE QUE SE PASA POR PARAMETRO -->
-            <div class="detail-flex" *ngIf="(datos.Nombre) === nombre" >
+            <div class="detail-flex" *ngIf="datos.id == id" >
 
                                   
                 <img class="detail-img" src="{{datos.Imagen}}" alt="Imagen del Producto">

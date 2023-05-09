@@ -1,5 +1,6 @@
 export interface Zapatillas {
-    id?:string;
+    //id?:string;
+    id:string;
     Nombre:string;
     Descripcion:string;
     Precio:number;
