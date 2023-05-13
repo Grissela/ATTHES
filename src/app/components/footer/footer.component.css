@@ -8,13 +8,14 @@
     padding: .1px;
 }
 .footer-title{
+    margin: 2.6rem 0;
+    font-size: 10vw;
     font-family: var(--font);
     font-weight: 700;
-    font-size: 12.4vw;
-    color: var(--white-color);
     text-align: center;
-    text-decoration: line-through;
-    margin: 2.6rem 0;
+    color: var(--white-color);
+
+    
 }
 
 .footer-contain{
@@ -66,6 +67,9 @@
 }
 .icon-twiter{
     color: #55acee;
+}
+.icon-instagram{
+    color: #D43089;
 }
 .icon-youtube{
     color: #bb0000;
