@@ -132,7 +132,7 @@ export class BoletaComponent {
     const doc = new jsPDF('p', 'pt', [1000, 1000]);
 
     // Agregamos la cabecera manualmente
-    const header = ['No.', 'Nombre', 'Marca', 'Descripcion', 'Cantidad',  'Costo', 'Sub Total'];
+    const header = ['No.', 'Modelo', 'Marca', 'Descripcion', 'Cantidad',  'Costo', 'Sub Total'];
     const headWidths = [30, 120, 80, 300, 70, 80, 80];
     const startY = 50;
     const startX = 30;

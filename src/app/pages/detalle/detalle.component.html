@@ -12,6 +12,9 @@
                 <div class="detail-descriptions">
                     <h3 class="detail-brand">{{datos.Marca}}</h3>
                     <h3 class="detail-name">{{nombre}}</h3>
+                    <h3 class="detail-name">Modelo: {{datos.Modelo}}</h3>
+                    <h3 class="detail-name">Código: {{datos.Codigo}}</h3>
+                    <h3 class="detail-name">Serie: {{datos.Serie}}</h3>
                     <h3 class="detail-detail">Descripcion:</h3>
                     <p class="detail-description">{{datos.Descripcion}}</p>            
 
@@ -23,7 +26,7 @@
                     </div>
                     
                     <div class="buton">                 
-                        <button data-modal-target="small-modal" data-modal-toggle="small-modal" class="btn-add" (click)="guardar({Nombre:datos.Nombre, Marca:datos.Marca,  Imagen:datos.Imagen, Cantidad:cantidad, Costo:datos.Precio, Descripcion:datos.Descripcion})"><i class="bi bi-cart-fill px-1"></i>Agregar a Carrito</button>
+                        <button data-modal-target="small-modal" data-modal-toggle="small-modal" class="btn-add" (click)="guardar({Nombre:datos.Nombre, Marca:datos.Marca, Modelo:datos.Modelo, Codigo:datos.Codigo, Serie:datos.Serie,  Imagen:datos.Imagen, Cantidad:cantidad, Costo:datos.Precio, Descripcion:datos.Descripcion})"><i class="bi bi-cart-fill px-1"></i>Agregar a Carrito</button>
                     </div>
 
                 </div>   

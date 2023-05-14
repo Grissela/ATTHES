@@ -438,33 +438,6 @@
     margin-right: .7rem;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /**/
 /*Carrusel testimonio*/
 .carousel{
@@ -484,7 +457,9 @@
     list-style: none;
     transition: transform .5s ease-in-out;
 }
-
+.carousel .slides .slide{
+    width: 100%;
+}
 .carousel input{
     display: none;
 }
@@ -537,3 +512,5 @@ este simbolo se usa para seleccionar a su hermano siguiente
 }
 
 /*----------------*/
+
+

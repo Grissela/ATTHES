@@ -8,6 +8,9 @@ export interface Car {
     Costo:number;
     Marca:string;
     Descripcion:string;
+    Modelo:string;
+    Codigo:string;
+    Serie:string;
 }
 
 export interface Pedido {
@@ -17,5 +20,8 @@ export interface Pedido {
     Direccion:string;
     carrito:String  
     fecha:Date; 
-    total:number
+    total:number;
+    Modelo:string;
+    Codigo:string;
+    Serie:string;
 }

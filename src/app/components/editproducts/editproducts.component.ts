@@ -25,6 +25,9 @@ export class EditproductsComponent {
       Descripcion:['',[Validators.required]],
       Precio:['',[Validators.required]],
       Marca:['',[Validators.required]],
+      Modelo:['',[Validators.required]],
+      Codigo:['',[Validators.required]],
+      Serie:['',[Validators.required]],
       Imagen:['',[Validators.required]],
       Cantidad:['',[Validators.required]],
     })
@@ -42,6 +45,9 @@ export class EditproductsComponent {
             Descripcion:[data.Descripcion],
             Precio:[data.Precio],
             Marca:[data.Marca],
+            Modelo:[data.Modelo],
+            Codigo:[data.Codigo],
+            Serie:[data.Serie],
             Imagen:[data.Imagen],
             Cantidad:[data.Cantidad],
           })

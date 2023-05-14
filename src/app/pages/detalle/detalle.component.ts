@@ -40,11 +40,14 @@ export class DetalleComponent {
  
  }
 //  aca guardo mis datos del detalle y envio a mi carrito para que se agregue
- guardar({Nombre,Imagen, Cantidad,Marca, Costo, Descripcion}:any){
+ guardar({Nombre,Imagen, Cantidad,Marca,Modelo,Codigo,Serie, Costo, Descripcion}:any){
   this.list = {
    Nombre:Nombre,
    Imagen:Imagen,
    Marca:Marca,
+   Modelo:Modelo,
+   Codigo:Codigo,
+   Serie:Serie,
    Cantidad:Cantidad,
    Costo:Costo,
    Descripcion:Descripcion

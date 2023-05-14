@@ -21,6 +21,9 @@
           <th>Precio</th>
           <th>Stock</th>
           <th>Marca</th>
+          <th>Modelo</th>
+          <th>Codigo</th>
+          <th>Serie</th>
           <th>Imagen</th>
           <th></th>
         </tr>
@@ -38,6 +41,9 @@
           <td class="tbody-td" data-titulo="Precio">{{datos.Precio}}</td>
           <td class="tbody-td" data-titulo="Cantidad">{{datos.Cantidad}}</td>
           <td class="tbody-td" data-titulo="Marca">{{datos.Marca}}</td>
+          <td class="tbody-td" data-titulo="Modelo">{{datos.Modelo}}</td>
+          <td class="tbody-td" data-titulo="Codigo">{{datos.Codigo}}</td>
+          <td class="tbody-td" data-titulo="Serie">{{datos.Serie}}</td>
           <td class="tbody-td" data-titulo="Imagen"><img src="{{datos.Imagen}}" class="td-image"></td>
           <td class="tbody-td flex">
             <button (click)="eliminar(datos)" title="Eliminar" class="btn-delete"><i class="bi bi-trash-fill"></i></button>
