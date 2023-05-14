@@ -1,4 +1,6 @@
-
+.table-products{
+    overflow: scroll;
+}
 .table-contain{
     padding: 0 1.4rem;
     background-color: var(--white-color);
