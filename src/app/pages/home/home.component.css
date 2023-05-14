@@ -1,25 +1,26 @@
-.bg-image{
-    min-height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../../assets/IMG/fondo1.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-}
-.bg-contain{
+
+.bg-home{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-
-    min-height: inherit;
+    min-height: 45rem;
+    padding: 2rem 1rem;
+}
+.bg-text{
+    flex-basis: 45%;
+    text-align: center;
+}
+.bg-paragraph{
+    text-align: justify;
 }
 .title{
-    font-size: 15vw;
-    font-weight: 700;
+    margin: 0 0 1.7rem;
+    font-size: 3.7rem;
     text-align: center;
-    line-height: .9;
-    color: var(--white-color);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--section-title);
 }
 
 .btn-buy{
@@ -38,6 +39,105 @@
     transform: scale(1.1);
 }
 
+.bg-background{
+    position: relative;
+    width: 290px;
+}
+.bg-img{
+    animation: image 2s linear infinite alternate;
+    filter: drop-shadow(8px 8px #cad4d0);
+}
+@keyframes image {
+    0%{
+        transform: translateY(-3%);
+    }
+    100%{
+        transform: translateY(3%);
+
+    }
+}
+
+.bg-blob{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+    margin-bottom: 1rem;
+    background-image: url("../../../assets/IMG/blob.svg");
+    background-size: 600px;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 0;
+}
+.circle{
+    height: 13px;
+    width: 100px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background-color: #ced4da;
+}
+
+
+
+
+@media screen and (min-width:48rem) {
+    .header{
+        min-height: 90vh;
+        background-image: url("../../../assets/IMG/circle-bg.svg");
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        
+    }
+    .bg-home{
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        min-height: 90vh;
+        padding: 2rem 1rem;
+    }
+    .bg-text{
+        text-align: left;
+    }
+    .title{
+        font-size: 4.4rem;
+        text-align: left;
+        line-height: .98;
+    }
+    
+}
+@media screen and (min-width:64rem) {
+   
+    
+    .bg-home{
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 90vh;
+        padding: 2rem 1rem;
+    }
+    
+    .title{
+        margin: 0;
+        font-size: 6.6rem;
+        text-align: left;
+        
+    }
+    .bg-background{
+        position: relative;
+        width: 440px;
+    }
+    .bg-blob{
+        width: 430px;
+        height: 430px; 
+        margin-bottom: 0;
+        background-size: 700px;
+    }
+}
+
+
+
 .btn-detail{
     position: relative;
     padding: 1rem 2.5rem;
@@ -49,7 +149,6 @@
     background: none;
     border: 2px solid  rgb(207, 207, 207) ;
     cursor: pointer;
-  /* transition: color 0.4s linear; */
 }
 .btn-detail:hover{
     color: var(--white-color);
@@ -122,7 +221,7 @@
 }
 
 .image:hover{
-    transform: scale(1.06); 
+    transform: scale(1.06);
 }
 
 .image .subtitle{
@@ -176,7 +275,7 @@
 
 .carousell label{
     border:medium solid var(--button-nav-color);
-    border-radius: 50%; 
+    border-radius: 50%;
     margin: .8rem .45rem;
     display: inline-block;
     width: .9rem;
@@ -217,7 +316,7 @@
     justify-content: center;
 }
 
-.banner-container .banner{    
+.banner-container .banner{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -241,7 +340,7 @@
 }
 
 /* .banner-container .banner .shoe{
-  
+
 } */
 .banner-container .banner .shoe img{
     width: 250px;
@@ -338,7 +437,7 @@
     .banner-container .banner .woman{
         flex-basis: 30%;
     }
-    
+
     .banner-container .banner .woman img{
         width: 100%;
     }
@@ -350,7 +449,7 @@
     }
     .carousell label{
         border:medium solid var(--white-color);
-    
+
     }
 
     #column-1:checked ~ .slides-nav-position label#dat-1,
@@ -360,7 +459,7 @@
         background-color: var(--white-color);
     }
     /* .shoe{
-        /* background-color: red; 
+        /* background-color: red;
     } */
     .banner-container .banner .shoe img{
         /* filter: drop-shadow(6px 6px  5px rgba(248, 249, 250, 0.74)); */
@@ -385,7 +484,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
     gap: 3rem 0;
-}   
+}
 
 /*CARDS*/
 .container-sneaker{
@@ -468,7 +567,7 @@ blockquote{
 }
 .carousel label{
     border:medium solid var(--button-nav-color);
-    border-radius: 50%; 
+    border-radius: 50%;
     margin: .8rem .36rem;
     display: inline-block;
     width: .8rem;
@@ -477,7 +576,7 @@ blockquote{
 
 }
 
-/* signo equivalencia, tilde alt+126 
+/* signo equivalencia, tilde alt+126
 este simbolo se usa para seleccionar a su hermano siguiente
 */
 #slide-1:checked ~ .slides{

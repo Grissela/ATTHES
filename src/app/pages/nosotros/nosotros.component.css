@@ -1,25 +1,3 @@
-.bg-image{
-    min-height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../../assets/IMG/nosotros.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-}
-.bg-contain{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    min-height: inherit;
-}
-
-.title{
-    font-size: 15vw;
-    font-weight: 700;
-    color: var(--white-color);
-   
-}
 
 .us-contain{
     display: flex;
