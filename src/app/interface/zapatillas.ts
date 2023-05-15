@@ -10,4 +10,5 @@ export interface Zapatillas {
     Modelo:string;
     Codigo:string;
     Serie:string;
+    Talla: string[];
 }

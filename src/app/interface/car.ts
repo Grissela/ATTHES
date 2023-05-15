@@ -11,6 +11,7 @@ export interface Car {
     Modelo:string;
     Codigo:string;
     Serie:string;
+    Talla: string[];
 }
 
 export interface Pedido {

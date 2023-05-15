@@ -30,6 +30,7 @@
     .us-img{
         width: 500px;
         height: 500px;
+        object-fit: contain;
     }
     .us-contain{
         display: flex;

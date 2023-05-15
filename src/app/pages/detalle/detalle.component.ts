@@ -14,15 +14,17 @@ import { getFirestore } from "firebase/firestore";
 })
 export class DetalleComponent {
 
-  
+  tallaSeleccionada: string = '';
   nombre=""
   data:any[]=[]
   zapatillas!:Zapatillas[];
   car!:Car[];
   id = "";
   list!:any
+  tallas:any[] = [];
   cantidad!:number;
   resultado=1;
+  parseInt = window.parseInt;
   constructor(private service:ZapatillasService, private route:ActivatedRoute,private router:Router,private carrito:CarService){
     const firebase = getFirestore();
   }
@@ -32,31 +34,26 @@ export class DetalleComponent {
     this.id = String(this.route.snapshot.paramMap.get('id'));
     this.service.getZapatillas().subscribe(zapatillas=>{
       this.zapatillas = zapatillas
+      console.log(this.zapatillas);
     })
-
   }
 
- enviar(){
+  guardar({Nombre, Imagen, Cantidad, Marca, Modelo, Codigo, Serie, Costo, Descripcion}:any){
+    this.list = {
+      Nombre: Nombre,
+      Imagen: Imagen,
+      Marca: Marca,
+      Modelo: Modelo,
+      Talla: [this.tallaSeleccionada], // Aquí asignamos la talla seleccionada
+      Codigo: Codigo,
+      Serie: Serie,
+      Cantidad: Cantidad,
+      Costo: Costo,
+      Descripcion: Descripcion
+    };
  
- }
-//  aca guardo mis datos del detalle y envio a mi carrito para que se agregue
- guardar({Nombre,Imagen, Cantidad,Marca,Modelo,Codigo,Serie, Costo, Descripcion}:any){
-  this.list = {
-   Nombre:Nombre,
-   Imagen:Imagen,
-   Marca:Marca,
-   Modelo:Modelo,
-   Codigo:Codigo,
-   Serie:Serie,
-   Cantidad:Cantidad,
-   Costo:Costo,
-   Descripcion:Descripcion
-   
- }
-//  console.log(this.list)
- this.carrito.loadcarrito(this.list)
- this.router.navigate(['/carrito'])
- 
-}
-
+    this.carrito.loadcarrito(this.list);
+    this.router.navigate(['/carrito']);
+  
+  }
 }

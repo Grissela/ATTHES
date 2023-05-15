@@ -1,14 +1,11 @@
-
 <section class="detail full-lg-screen">
     <div class="detail-contain container">
         <div *ngFor="let datos of zapatillas">
             <!-- MOSTRAR LA ZAPATILLA SI ES IGUAL AL NOMBRE QUE SE PASA POR PARAMETRO -->
             <div class="detail-flex" *ngIf="datos.id == id" >
-
                                   
                 <img class="detail-img" src="{{datos.Imagen}}" alt="Imagen del Producto">
                 
-
                 <div class="detail-descriptions">
                     <h3 class="detail-brand">{{datos.Marca}}</h3>
                     <h3 class="detail-name">{{nombre}}</h3>
@@ -19,16 +16,45 @@
                     <p class="detail-description">{{datos.Descripcion}}</p>            
 
                     <h3 class="detail-price">{{datos.Precio | currency}}</h3>
-                    
+
+                    <label for="tallas">Tallas:</label>
+                        <select id="tallas" [(ngModel)]="tallaSeleccionada">
+                            <ng-container *ngIf="parseInt(datos.Serie) == 27 && parseInt(datos.Serie) <=32">
+                                <option value="27">27</option>
+                                <option value="28">28</option>
+                                <option value="29">29</option>
+                                <option value="30">30</option>
+                                <option value="31">31</option>
+                                <option value="32">32</option>
+                                
+                              </ng-container>
+                              <ng-container *ngIf="parseInt(datos.Serie) == 37 && parseInt(datos.Serie) <=43">
+                                <option value="37">37</option>
+                                <option value="38">38</option>
+                                <option value="39">39</option>
+                                <option value="40">40</option>
+                                <option value="41">41</option>
+                                <option value="42">42</option>
+                                <option value="43">43</option>
+                              </ng-container>
+                              <ng-container  *ngIf="parseInt(datos.Serie) == 35 && parseInt(datos.Serie) <=39">
+                                <option value="35">35</option>
+                                <option value="36">36</option>
+                                <option value="37">37</option>
+                                <option value="38">38</option>
+                                <option value="39">39</option>
+                              </ng-container>
+                              
+                        </select>
+
                     <div class="amount-flex">
                         <label for="">Cantidad:</label>
                         <input class="" type="number" [(ngModel)]="cantidad">
                     </div>
-                    
-                    <div class="buton">                 
-                        <button data-modal-target="small-modal" data-modal-toggle="small-modal" class="btn-add" (click)="guardar({Nombre:datos.Nombre, Marca:datos.Marca, Modelo:datos.Modelo, Codigo:datos.Codigo, Serie:datos.Serie,  Imagen:datos.Imagen, Cantidad:cantidad, Costo:datos.Precio, Descripcion:datos.Descripcion})"><i class="bi bi-cart-fill px-1"></i>Agregar a Carrito</button>
-                    </div>
 
+                    <div class="buton">                 
+                        <button data-modal-target="small-modal" data-modal-toggle="small-modal" class="btn-add" (click)="guardar({Nombre:datos.Nombre, Marca:datos.Marca, Modelo:datos.Modelo, Codigo:datos.Codigo, Serie:datos.Serie, Imagen:datos.Imagen, Cantidad:cantidad,Talla:datos.Talla, Costo:datos.Precio, Descripcion:datos.Descripcion})"><i class="bi bi-cart-fill px-1"></i>Agregar a Carrito</button>
+                    </div>                  
                 </div>   
             </div>
         </div>                   

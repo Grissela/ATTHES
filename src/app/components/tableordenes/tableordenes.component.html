@@ -80,13 +80,12 @@
                 <tr class="modal-thead-tr">
                   <th><i class="bi bi-hash"></i></th>
                   <th>Modelo</th>
-                  <th>Marca</th>
                   <th>Codigo</th>
-                  <th>Serie</th>
+                  <th>Talla</th>
                   <th>Descripcion</th>
-                  <th>Cantidad</th>
-                  <th>Costo</th>
                   <th>Imagen</th>
+                  <th>Cantidad</th>
+                  <th>Precio Unitario</th>
                   <th>Sub Total</th>
                 </tr>
               </thead>
@@ -94,15 +93,14 @@
                 <tr class="modal-tbody-tr" *ngFor="let p of car.carrito let i=index">
                   <td class="modal-tbody-td" data-titulo="#">{{i+1}}</td>
                   <td class="modal-tbody-td" data-titulo="Nombre">{{p.Nombre}}</td>
-                  <td class="modal-tbody-td" data-titulo="Marca">{{p.Marca}}</td>
                   <td class="modal-tbody-td" data-titulo="Codigo">{{p.Codigo}}</td>
-                  <td class="modal-tbody-td" data-titulo="Serie">{{p.Serie}}</td>
+                  <td class="modal-tbody-td" data-titulo="Serie">{{p.Talla}}</td>
                   <td class="modal-tbody-td" data-titulo="Descripcion">
                     <textarea>{{p.Descripcion}}</textarea>
                   </td>
-                  <td class="modal-tbody-td" data-titulo="Costo">{{p.Costo}}</td>
-                  <td class="modal-tbody-td" data-titulo="Cantidad">{{p.Cantidad}}</td>
                   <td class="modal-tbody-td" data-titulo="Imagen"><img src="{{p.Imagen}}" class="td-image" alt="Imagen del Producto" width="50"></td>
+                  <td class="modal-tbody-td" data-titulo="Cantidad">{{p.Cantidad}}</td>
+                  <td class="modal-tbody-td" data-titulo="Costo">{{p.Costo}}</td>
                   <td class="modal-tbody-td" data-titulo="Total">{{p.Costo * p.Cantidad}}</td>
                 </tr>
               </tbody>
