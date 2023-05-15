@@ -17,10 +17,10 @@ export class TiendaComponent {
     this.id = String(this.route.snapshot.paramMap.get('id'));
     this.service.getZapatillas().subscribe(zapatillas =>{
       this.zapatillas = zapatillas
-      console.log("esto es ->",this.zapatillas);
+      // console.log("esto es ->",this.zapatillas);
       for(let zap of this.zapatillas){
         zap.id 
-        console.log("el id es ->",zap.id);
+        // console.log("el id es ->",zap.id);
         
       }
       
