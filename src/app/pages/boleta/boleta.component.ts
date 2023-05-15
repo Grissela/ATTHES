@@ -119,175 +119,91 @@ export class BoletaComponent {
     });
   }
 
-//   // PARA IMPRIMIR
-//   imprimir() {
-//     // Extraemos la tabla
-//     const DATA = document.getElementById('tabla');
+  // PARA IMPRIMIR
+  imprimir() {
+    // Extraemos la tabla
+    const DATA = document.getElementById('tabla');
 
-//     // Obtenemos el alto y ancho de la tabla
-//     const totalTableHeight = DATA!.clientHeight;
-//     const totalTableWidth = 500;
+    // Obtenemos el alto y ancho de la tabla
+    const totalTableHeight = DATA!.clientHeight;
+    const totalTableWidth = 500;
 
-//     // Creamos el documento PDF con las dimensiones de la tabla
-//     const doc = new jsPDF('p', 'pt', [1000, 1000]);
+    // Creamos el documento PDF con las dimensiones de la tabla
+    const doc = new jsPDF('p', 'pt', [1000, 1000]);
 
-//     // Agregamos la cabecera manualmente
-//     const header = ['No.', 'Modelo', 'Codigo', 'Talla', 'Descripcion','Cantidad',  'Precio Unitario', 'Sub Total'];
-//     const headWidths = [30, 120, 80, 300, 70, 80, 80];
-//     const startY = 50;
-//     const startX = 30;
-//     let currX = startX;
-//     let currY = startY;
-//     header.forEach((title, index) => {
-//         doc.setFontSize(12);
-//         currX += headWidths[index];
-//     });
+    // Agregamos la cabecera manualmente
+    const header = ['No.', 'Modelo', 'Codigo', 'Talla', 'Descripcion','Cantidad',  'Precio Unitario', 'Sub Total'];
+    const headWidths = [30, 120, 80, 300, 70, 80, 80];
+    const startY = 50;
+    const startX = 30;
+    let currX = startX;
+    let currY = startY;
+    header.forEach((title, index) => {
+        doc.setFontSize(12);
+        currX += headWidths[index];
+    });
 
-//     // Opciones de html2canvas
-//     const options = {
-//         background: 'white',
-//         scale: 3,
-//     };
+    // Opciones de html2canvas
+    const options = {
+        background: 'white',
+        scale: 3,
+    };
 
-//     // Convertimos la tabla a imagen con html2canvas
-//     html2canvas(DATA!, {
-//         ignoreElements: (element) => {
-//             return element.classList.contains('no-pdf');
-//         },
-//     }).then((canvas) => {
-//         const img = canvas.toDataURL('image/PNG');
-//         const bufferX = 30;
-//         const bufferY = 100;
-//         const imgProps = (doc as any).getImageProperties(img);
-//         const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
-//         const pdfHeight = totalTableHeight + bufferY * 2;
+    // Convertimos la tabla a imagen con html2canvas
+    html2canvas(DATA!, {
+        ignoreElements: (element) => {
+            return element.classList.contains('no-pdf');
+        },
+    }).then((canvas) => {
+        const img = canvas.toDataURL('image/PNG');
+        const bufferX = 30;
+        const bufferY = 100;
+        const imgProps = (doc as any).getImageProperties(img);
+        const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
+        const pdfHeight = totalTableHeight + bufferY * 2;
 
-//         // Ajustamos el tamaño de la página PDF para que se adapte a la tabla completa
-//         const pageHeight = doc.internal.pageSize.getHeight();
-//         const pageWidth = doc.internal.pageSize.getWidth();
-//         const position = pdfHeight + bufferY * 2;
+        // Ajustamos el tamaño de la página PDF para que se adapte a la tabla completa
+        const pageHeight = doc.internal.pageSize.getHeight();
+        const pageWidth = doc.internal.pageSize.getWidth();
+        const position = pdfHeight + bufferY * 2;
 
-//         if (position < totalTableHeight) {
-//             doc.addPage();
-//         }
+        if (position < totalTableHeight) {
+            doc.addPage();
+        }
 
-//         // Agregamos la imagen al PDF
-//         doc.addImage(
-//             img,
-//             'PNG',
-//             bufferX,
-//             bufferY,
-//             pdfWidth,
-//             pdfHeight,
-//             undefined,
-//             'FAST',
-//             0
-//         );
-//         // Llamamos a la segunda función para imprimir los datos
-//         this.imprimirDatos(doc);
+        // Agregamos la imagen al PDF
+        doc.addImage(
+            img,
+            'PNG',
+            bufferX,
+            bufferY,
+            pdfWidth,
+            pdfHeight,
+            undefined,
+            'FAST',
+            0
+        );
+        // Llamamos a la segunda función para imprimir los datos
+        this.imprimirDatos(doc);
 
-//         // Agregamos el estilo de impresión
-//         const style = document.createElement('style');
-//         style.innerHTML = `
-//             @media print {
-//                 .modal-table{
-//                     max-width: 1300px;
-//                     width: 100%;
-//                     font-size: 5pt;
-//                     font-family: serif;
-//                     background-color: #000;
-//                     color: #fff;
-//                 }
-//             }
-//         `;
-//         document.head.appendChild(style);
-//     });
-// }
-// PARA IMPRIMIR
-imprimir() {
-  // Extraemos la tabla
-  const DATA = document.getElementById('tabla');
-
-  // Obtenemos el alto y ancho de la tabla
-  const totalTableHeight = DATA!.clientHeight;
-  const totalTableWidth = 500;
-
-  // Creamos el documento PDF con las dimensiones de la tabla
-  const doc = new jsPDF('p', 'pt', [totalTableWidth, totalTableHeight]);
-
-  // Agregamos la cabecera manualmente
-  const header = ['No.', 'Modelo', 'Codigo', 'Talla', 'Descripcion', 'Cantidad', 'Precio Unitario', 'Sub Total'];
-  const headWidths = [30, 120, 80, 300, 70, 80, 80];
-  const startY = 50;
-  const startX = 30;
-  let currX = startX;
-  let currY = startY;
-  header.forEach((title, index) => {
-    doc.setFontSize(12);
-    currX += headWidths[index];
-  });
-
-  // Opciones de html2canvas
-  const options = {
-    background: 'white',
-    scale: 3,
-  };
-
-  // Convertimos la tabla a imagen con html2canvas
-  html2canvas(DATA!, {
-    ignoreElements: (element) => {
-      return element.classList.contains('no-pdf');
-    },
-  }).then((canvas) => {
-    const img = canvas.toDataURL('image/PNG');
-    const bufferX = 30;
-    const bufferY = 100;
-    const imgProps = (doc as any).getImageProperties(img);
-    const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
-    const pdfHeight = totalTableHeight + bufferY * 2;
-
-    // Ajustamos el tamaño de la página PDF para que se adapte a la tabla completa
-    const pageHeight = doc.internal.pageSize.getHeight();
-    const pageWidth = doc.internal.pageSize.getWidth();
-    const position = pdfHeight + bufferY * 2;
-
-    if (position < totalTableHeight) {
-      doc.addPage();
-    }
-
-    // Agregamos la imagen al PDF
-    doc.addImage(
-      img,
-      'PNG',
-      bufferX,
-      bufferY,
-      pdfWidth,
-      pdfHeight,
-      undefined,
-      'FAST',
-      0
-    );
-
-    // Llamamos a la segunda función para imprimir los datos
-    this.imprimirDatos(doc);
-
-    // Agregamos el estilo de impresión
-    const style = document.createElement('style');
-    style.innerHTML = `
-      @media print {
-          .modal-table {
-              max-width: 1300px;
-              width: 100%;
-              font-size: 5pt;
-              font-family: serif;
-              background-color: #000;
-              color: #fff;
-          }
-      }
-    `;
-    document.head.appendChild(style);
-  });
+        // Agregamos el estilo de impresión
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @media print {
+                .modal-table{
+                    max-width: 1300px;
+                    width: 100%;
+                    font-size: 5pt;
+                    font-family: serif;
+                    background-color: #000;
+                    color: #fff;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    });
 }
+
 
 // PARA IMPRIMIR DATOS PERSONALES
 imprimirDatos(doc: any) {
