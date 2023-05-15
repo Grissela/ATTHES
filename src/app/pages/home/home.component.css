@@ -45,7 +45,7 @@
 }
 .bg-img{
     animation: image 2s linear infinite alternate;
-    filter: drop-shadow(8px 8px #cad4d0);
+    /* filter: drop-shadow(8px 8px #cad4d0); */
 }
 @keyframes image {
     0%{
