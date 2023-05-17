@@ -15,6 +15,9 @@ export class TableusersComponent {
     data:any[]=[]
     users!:Users[];
     nombre!:string;
+    currentPage = 1;
+    itemsPerPage = 10;
+    totalPages = 1;
   constructor(
     private route:Router, 
     public service:UserService){}
@@ -22,16 +25,17 @@ export class TableusersComponent {
   
   ngOnInit(): void {
     this.mostrar()
+    // this.updatePagination();
   }
 
   // Para mostrar la tabla  y sus registros------------
-  mostrar(){
-    const path = 'users'
-    this.service.getUsers(path).subscribe (res=>{
-     this.data = res
-     
-    }) 
-   }
+  mostrar() {
+    const path = 'users';
+    this.service.getUsers(path).subscribe(res => {
+      this.data = res;
+      this.updatePagination(); // Mover aquí la llamada a updatePagination()
+    });
+  }
 
   //  Para buscar el usuario---------------
    buscar(nombre: string) {
@@ -46,6 +50,7 @@ export class TableusersComponent {
           this.mostrar();
         };
       }
+      this.updatePagination();
     }
 
   // Para redirigir a otro componente donde se editara el producto
@@ -76,4 +81,29 @@ export class TableusersComponent {
       }
     })
    }
+   getPaginatedData(): Users[] {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.data.slice(startIndex, endIndex);
+  }
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.updatePagination();
+    }
+  }
+  
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.updatePagination();
+    }
+  }
+  
+  updatePagination() {
+    this.totalPages = Math.ceil(this.data.length / this.itemsPerPage);
+    if (this.currentPage > this.totalPages) {
+      this.currentPage = this.totalPages;
+    }
+  }
 }

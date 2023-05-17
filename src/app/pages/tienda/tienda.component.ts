@@ -18,6 +18,11 @@ export class TiendaComponent implements OnInit {
 
   precios: number[] = [45.6, 63.8, 69.8];
 
+
+  currentPage = 1;
+  itemsPerPage = 10;
+  totalPages = 0;
+
   constructor(private route: ActivatedRoute, private service: ZapatillasService, private router: Router) {}
 
   ngOnInit(): void {
@@ -25,6 +30,8 @@ export class TiendaComponent implements OnInit {
     this.service.getZapatillas().subscribe(zapatillas => {
       this.zapatillas = zapatillas;
       this.filtrarPorModelo();
+      this.updatePagination();
+
     });
   }
 
@@ -38,6 +45,8 @@ export class TiendaComponent implements OnInit {
     } else {
       this.filteredProducts = this.zapatillas.filter(zap => zap.Modelo === this.modeloSeleccionado);
     }
+    this.updatePagination();
+
   }
   // togglePrecioSeleccionado(precio: number) {
   //   if (this.precioSeleccionado.includes(precio)) {
@@ -74,5 +83,30 @@ export class TiendaComponent implements OnInit {
 
   hayProductosDisponibles() {
     return this.zapatillas.some(zap => zap.Modelo === this.modeloSeleccionado && this.precioSeleccionado.includes(zap.Precio));
+  }
+
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
+
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+    }
+  }
+
+  updatePagination() {
+    this.totalPages = Math.ceil(this.filteredProducts.length / this.itemsPerPage);
+    if (this.currentPage > this.totalPages) {
+      this.currentPage = this.totalPages;
+    }
+  }
+
+  getPaginatedProducts() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.filteredProducts.slice(startIndex, endIndex);
   }
 }

@@ -15,7 +15,9 @@ export class TableproductosComponent {
   zapatillas!:Zapatillas[];
   id!:string;
   nombre!:string;
-
+  currentPage = 1;
+  itemsPerPage = 10;
+  totalPages = 1;
   constructor( 
     private route:Router, 
     private router:ActivatedRoute, 
@@ -28,6 +30,7 @@ export class TableproductosComponent {
     this.id = String(this.router.snapshot.paramMap.get('id'))
     this.service.getZapatillas().subscribe(res => {
       this.zapatillas = res
+      this.updatePagination();
     })
   }
 
@@ -88,4 +91,31 @@ export class TableproductosComponent {
       }
     })
    }
+
+   getPaginatedData(): Zapatillas[] {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.data.slice(startIndex, endIndex);
+  }
+
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.updatePagination();
+    }
+  }
+
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.updatePagination();
+    }
+  }
+
+  updatePagination() {
+    this.totalPages = Math.ceil(this.data.length / this.itemsPerPage);
+    if (this.currentPage > this.totalPages) {
+      this.currentPage = this.totalPages;
+    }
+  }
 }

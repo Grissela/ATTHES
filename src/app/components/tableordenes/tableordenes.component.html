@@ -18,26 +18,31 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="tbody-tr"  *ngFor="let datos of data;let indice = index">
+        <tr class="tbody-tr" *ngFor="let datos of getPaginatedData(); let indice = index">
           <div *ngIf="(datos.Nombres | uppercase) === nombre"></div>
-          <td class="tbody-td" data-titulo="#">{{indice+1}}</td>
+          <td class="tbody-td" data-titulo="#">{{(currentPage - 1) * itemsPerPage + indice + 1}}</td>
           <td class="tbody-td" data-titulo="Nombres">{{datos.Nombres}}</td>
           <td class="tbody-td" data-titulo="Apellidos">{{datos.Apellidos}}</td>
           <td class="tbody-td" data-titulo="Celular">{{datos.Celular}}</td>
           <td class="tbody-td">
-            <!-- <button type="button" > -->
-              <div class="flex">
-                <div class="boton-modal">
-                  <label for="btn-modal" (click)="irpedidos(datos.id)" class="btn-showOrder">
-                    Mostrar pedido
-                  </label>
-                </div>
+            <div class="flex">
+              <div class="boton-modal">
+                <label for="btn-modal" (click)="irpedidos(datos.id)" class="btn-showOrder">
+                  Mostrar pedido
+                </label>
               </div>
+            </div>
           </td>
         </tr>
-
       </tbody>
     </table>
+   
+    <div class="pagination">
+      <button class="btn-pagination" (click)="previousPage()" [disabled]="currentPage === 1">Anterior</button>
+      <span class="current-page">{{ currentPage }}</span>
+      <button class="btn-pagination" (click)="nextPage()" [disabled]="currentPage === totalPages">Siguiente</button>
+    </div>
+    
   </div>
 </div>
 

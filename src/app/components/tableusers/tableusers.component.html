@@ -1,9 +1,7 @@
-<!-- TABLA DE USUARIOS Y SUS DATOS------------------------------------------------------->
 <div class="table-contain container">
   <h2 class="sneaker-title">Usuarios Registrados</h2>
   <div class="table-user">
     <div class="search-contain">
-    
       <div class="form-search">
         <input type="search" class="input-search" placeholder="Buscar Nombre" required [(ngModel)]="nombre">
         <button type="button" class="btn-search" (click)="buscar(nombre)"><i class="bi bi-search"></i>Buscar</button>
@@ -19,31 +17,32 @@
           <th>Celular</th>
           <th>Correo</th>
           <th>Contraseña</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr class="tbody-tr" *ngFor="let datos of data;let indice = index">
-            <td nowrap class="tbody-td" data-titulo="#">{{indice+1}}</td>
-            <td class="tbody-td" data-titulo="Nombre">{{datos.Nombres}}</td>
-            <td class="tbody-td" data-titulo="Apellidos">{{datos.Apellidos}}</td>
-            <td class="tbody-td" data-titulo="Celular">{{datos.Celular}}</td>
-            <td class="tbody-td" data-titulo="Correo">
-              <textarea>{{datos.Correo}}</textarea>
-            </td>
-            <td class="tbody-td" data-titulo="Contraseña">{{datos.Contrasena}}</td>
-            <td class="tbody-td">
-              <div class="flex">
-                <button (click)="eliminar(datos)" class="btn-delete"><i class="bi bi-trash-fill"></i></button>
-              </div>
-            </td>
-          </tr>  
+        <tr class="tbody-tr" *ngFor="let datos of getPaginatedData(); let indice = index">
+          <td nowrap class="tbody-td" data-titulo="#">{{(currentPage - 1) * itemsPerPage + indice + 1}}</td>
+          <td class="tbody-td" data-titulo="Nombre">{{datos.Nombres}}</td>
+          <td class="tbody-td" data-titulo="Apellidos">{{datos.Apellidos}}</td>
+          <td class="tbody-td" data-titulo="Celular">{{datos.Celular}}</td>
+          <td class="tbody-td" data-titulo="Correo">
+            <textarea>{{datos.Correo}}</textarea>
+          </td>
+          <td class="tbody-td" data-titulo="Contraseña">{{datos.Contrasena}}</td>
+          <td class="tbody-td">
+            <div class="flex">
+              <button (click)="eliminar(datos)" class="btn-delete"><i class="bi bi-trash-fill"></i></button>
+            </div>
+          </td>
+        </tr>  
       </tbody>              
-    </table>        
+    </table>
+
+    <div *ngIf="totalPages > 1" class="pagination">
+      <button [disabled]="currentPage === 1" (click)="previousPage()">Anterior</button>
+      <span>{{currentPage}}</span>
+      <button [disabled]="currentPage === totalPages" (click)="nextPage()">Siguiente</button>
+    </div>   
   </div>
-    
 </div>
-  
-
-
-
-  

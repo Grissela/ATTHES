@@ -29,7 +29,7 @@
       </thead>
             
       <tbody>
-        <tr class="tbody-tr" *ngFor="let datos of data;let indice = index" >
+        <tr class="tbody-tr" *ngFor="let datos of getPaginatedData(); let indice = index" >
           <div *ngIf="(datos.Nombre | uppercase) === nombre"></div>
           <td class="tbody-td" data-titulo="#">{{indice+1}}</td>
           <td class="tbody-td" data-titulo="Nombre">{{datos.Nombre}}</td>
@@ -51,6 +51,10 @@
         </tr>  
       </tbody>
     </table>
+    <div *ngIf="totalPages > 1" class="pagination">
+      <button [disabled]="currentPage === 1" (click)="previousPage()">Anterior</button>
+      <button [disabled]="currentPage === totalPages" (click)="nextPage()">Siguiente</button>
+    </div>
   </div>
   
 </div>

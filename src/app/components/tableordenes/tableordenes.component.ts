@@ -35,7 +35,9 @@ export class TableordenesComponent {
   idcp = '';
   pos!: number;
   nombre!:string;
-
+  currentPage = 1;
+  itemsPerPage = 10;
+  totalPages = 1;
   constructor(
     public carrito: CarService,
     private router: Router,
@@ -52,7 +54,9 @@ export class TableordenesComponent {
     this.user.getUsers('users').subscribe((resu) => {
       this.data = resu;
       // console.log('Datos->', this.data);
+      this.updatePagination();
     });
+   
   }
 
   // Buscar por nombre de usuario
@@ -68,6 +72,8 @@ export class TableordenesComponent {
           this.mostrar();
       };
       }
+      this.updatePagination();
+
     }
 
   // Recargar o actualizar los pedidos
@@ -120,4 +126,33 @@ export class TableordenesComponent {
   eliminarPedido(ped: Pedido) {
     this.carrito.deletePedido(ped, this.idc);
   }
+
+  previousPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.updatePagination();
+    }
+  }
+
+  nextPage(): void {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.updatePagination();
+    }
+  }
+
+  updatePagination(): void {
+    this.totalPages = Math.ceil(this.data.length / this.itemsPerPage);
+    if (this.currentPage > this.totalPages) {
+      this.currentPage = this.totalPages;
+    }
+  }
+
+  getPaginatedData(): any[] {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.data.slice(startIndex, endIndex);
+  }
+
+  
 }
