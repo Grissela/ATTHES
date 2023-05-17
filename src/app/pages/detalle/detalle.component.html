@@ -9,17 +9,18 @@
                 <div class="detail-descriptions">
                     <h3 class="detail-brand">{{datos.Marca}}</h3>
                     <h3 class="detail-name">{{nombre}}</h3>
-                    <h3 class="detail-name">Modelo: {{datos.Modelo}}</h3>
-                    <h3 class="detail-name">Código: {{datos.Codigo}}</h3>
-                    <h3 class="detail-name">Serie: {{datos.Serie}}</h3>
+                    <h3 class="detail-name"><small>Modelo:</small> {{datos.Modelo}}</h3>
+                    <h3 class="detail-name"><small>Código:</small> {{datos.Codigo}}</h3>
+                    <h3 class="detail-name"><small>Serie:</small> {{datos.Serie}}</h3>
                     <h3 class="detail-detail">Descripcion:</h3>
                     <p class="detail-description">{{datos.Descripcion}}</p>            
 
                     <h3 class="detail-price">{{datos.Precio | currency}}</h3>
 
-                    <label for="tallas">Tallas:</label>
-                        <select id="tallas" [(ngModel)]="tallaSeleccionada">
-                            <ng-container *ngIf="parseInt(datos.Serie) == 27 && parseInt(datos.Serie) <=32">
+                    <label>Tallas:</label>
+                    <select class="talla" id="tallas" [(ngModel)]="tallaSeleccionada">
+                        
+                        <ng-container *ngIf="parseInt(datos.Serie) == 27 && parseInt(datos.Serie) <=32">
                                 <option value="27">27</option>
                                 <option value="28">28</option>
                                 <option value="29">29</option>
@@ -27,8 +28,8 @@
                                 <option value="31">31</option>
                                 <option value="32">32</option>
                                 
-                              </ng-container>
-                              <ng-container *ngIf="parseInt(datos.Serie) == 37 && parseInt(datos.Serie) <=43">
+                            </ng-container>
+                            <ng-container *ngIf="parseInt(datos.Serie) == 37 && parseInt(datos.Serie) <=43">
                                 <option value="37">37</option>
                                 <option value="38">38</option>
                                 <option value="39">39</option>
@@ -36,20 +37,20 @@
                                 <option value="41">41</option>
                                 <option value="42">42</option>
                                 <option value="43">43</option>
-                              </ng-container>
-                              <ng-container  *ngIf="parseInt(datos.Serie) == 35 && parseInt(datos.Serie) <=39">
+                            </ng-container>
+                            <ng-container  *ngIf="parseInt(datos.Serie) == 35 && parseInt(datos.Serie) <=39">
                                 <option value="35">35</option>
                                 <option value="36">36</option>
                                 <option value="37">37</option>
                                 <option value="38">38</option>
                                 <option value="39">39</option>
-                              </ng-container>
+                            </ng-container>
                               
-                        </select>
+                    </select>
 
                     <div class="amount-flex">
-                        <label for="">Cantidad:</label>
-                        <input class="" type="number" [(ngModel)]="cantidad">
+                        <label for="count">Cantidad:</label>
+                        <input id="count" type="number" [(ngModel)]="cantidad">
                     </div>
 
                     <div class="buton">                 

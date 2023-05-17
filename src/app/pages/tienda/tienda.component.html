@@ -1,22 +1,46 @@
-
 <section class="container">
-    <h2 class="sneaker-title">Productos Destacados</h2>
-        <div class="container-sneakers">
-        
-            <div *ngFor="let datos of zapatillas" class="container-sneaker" (click)="goToDetalle(datos.id)">
-                <div class="card-sneaker">
-                    <h3 class="card-subtitle">{{datos.Marca}}</h3>
-                    <h3 class="card-name">{{datos.Nombre}}</h3>
-                    <div class="sneaker__containImg">
-                        <img src="{{datos.Imagen}}" class="card-image" alt="productos">
-                    </div>
-                    <h3 class="card-price">{{datos.Precio |currency:'S/. '}}</h3>
-                        <div class="card-description">
-                            <button class="btn-add" (click)="goToDetalle(datos.id)"><i class="bi bi-cart-fill px-1"></i>Agregar</button>
-                            <button class="btn-seeMore" (click)="goToDetalle(datos.id)">Ver más</button>
-    
-                    </div> 
-                </div>
-            </div>
+  <h2 class="sneaker-title">Productos Destacados</h2>
+
+  <div class="container-sneakers">
+    <select [(ngModel)]="modeloSeleccionado" (change)="filtrarPorModelo()">
+      <option value="">Todos</option>
+      <option value="Urbano">Urbano</option>
+      <option value="Sport">Sport</option>
+    </select>
+    <label>
+      <input type="checkbox" [checked]="precioSeleccionado.includes(45.6)" (change)="togglePrecioSeleccionado(45.6)">
+      45.60
+    </label>
+    <label>
+      <input type="checkbox" [checked]="precioSeleccionado.includes(63.8)" (change)="togglePrecioSeleccionado(63.8)">
+      63.80
+    </label>
+    <label>
+      <input type="checkbox" [checked]="precioSeleccionado.includes(69.8)" (change)="togglePrecioSeleccionado(69.8)">
+      69.80
+    </label>
+
+    <div *ngIf="filteredProducts.length > 0; else noProductosTemplate">
+      <div *ngFor="let datos of filteredProducts" class="container-sneaker" (click)="goToDetalle(datos.id)">
+        <div class="card-sneaker">
+          <h3 class="card-subtitle">{{datos.Marca}}</h3>
+          <h3 class="card-name">{{datos.Nombre}}</h3>
+          <div class="sneaker__containImg">
+            <img src="{{datos.Imagen}}" class="card-image" alt="productos">
+          </div>
+          <h3 class="card-price">{{datos.Precio | currency:'S/. '}}</h3>
+          <div class="card-description">
+            <button class="btn-add" (click)="goToDetalle(datos.id)">
+              <i class="bi bi-cart-fill px-1"></i>Agregar
+            </button>
+            <button class="btn-seeMore" (click)="goToDetalle(datos.id)">Ver más</button>
+          </div>
         </div>
+      </div>
+    </div>
+
+    <ng-template #noProductosTemplate>
+      <p *ngIf="modeloSeleccionado && precioSeleccionado.length > 0 && !hayProductosDisponibles()">No hay productos disponibles en el modelo y precio seleccionados.</p>
+    </ng-template>
+  </div>
 </section>

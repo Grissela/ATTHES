@@ -6,6 +6,7 @@
     align-items: center;
     min-height: 45rem;
     padding: 2rem 1rem;
+    background-color: rgba(255, 166, 0, 0);
 }
 .bg-text{
     flex-basis: 45%;
@@ -16,7 +17,7 @@
 }
 .title{
     margin: 0 0 1.7rem;
-    font-size: 3.7rem;
+    font-size: 10vw;
     text-align: center;
     font-weight: 700;
     line-height: 1;
@@ -65,7 +66,7 @@
     height: 300px;
     margin-bottom: 1rem;
     background-image: url("../../../assets/IMG/blob.svg");
-    background-size: 600px;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     z-index: 0;
@@ -101,9 +102,20 @@
         text-align: left;
     }
     .title{
-        font-size: 4.4rem;
-        text-align: left;
+        font-size: 7.8vw;
+        margin: 0;
         line-height: .98;
+        text-align: left;
+        
+    }
+    .bg-background{
+        position: relative;
+        width: 350px;
+    }
+    .bg-blob{
+        width: 340px;
+        height: 340px; 
+        margin-bottom: 0;
     }
     
 }
@@ -118,21 +130,15 @@
         padding: 2rem 1rem;
     }
     
-    .title{
-        margin: 0;
-        font-size: 6.6rem;
-        text-align: left;
-        
-    }
     .bg-background{
         position: relative;
-        width: 440px;
+        width: 470px;
     }
     .bg-blob{
-        width: 430px;
-        height: 430px; 
+        width: 460px;
+        height: 460px; 
         margin-bottom: 0;
-        background-size: 700px;
+        background-size: 650px;
     }
 }
 
