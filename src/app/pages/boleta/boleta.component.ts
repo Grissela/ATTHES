@@ -82,7 +82,6 @@ export class BoletaComponent {
     });
     this.show();
     this.mostrar();
-    this.reloadPage()
   }
 
   initForm(): FormGroup {
@@ -251,48 +250,28 @@ imprimirDatos(doc: any) {
     doc.save(`${new Date().toISOString()}_boleta_de_atthes.pdf`);
   });
 }
-  // PARA MOSTRAR
-  mostrar() {
-    this.carrito.getClientesPedido(this.id).subscribe((res) => {
-      this.cliente = res;
-      // console.log(this.cliente);
+//Para mostrar los pedidos por fecha ordenada
+mostrar() {
+  this.carrito.getClientesPedido(this.id).subscribe((res) => {
+    this.cliente = res;
+    this.fechas = []; // Vaciar el arreglo de fechas antes de agregar nuevas fechas
 
-      for (let items of this.cliente) {
-        // console.log('is->', items);
-        this.dato = items;
-        this.clientes = items.carrito;
-        this.suma = items.total;
-        let fech = this.dato.fecha.toDate();
-        console.log('xcxcx->',fech);
-        this.fechas.push(fech);
-      }
-      
-      //esta es la variable para que se ordene la fecha
-      // console.log(this.fechas);
-       let fecr = this.fechas.sort((a, b) => a.getTime() - b.getTime());
-        // console.log('FEchas->',fecr); 
-        for(let f of fecr){
-          // console.log('www->', f);
-          
-          this.fech.push(f.toLocaleTimeString())
-          // console.log('ultimi_>', this.fech);
-      }
-    });
-    // this.reloadPage()
+    for (let items of this.cliente) {
+      this.dato = items;
+      this.clientes = items.carrito;
+      this.suma = items.total;
+      let fech = this.dato.fecha.toDate();
+      this.fechas.push(fech);
+    }
 
-  }
-
-// PARA RECARGAR LA PAGINA Y ACTUALIZAR
-reloadPage() {
-  this.router
-  .navigateByUrl('boleta/' + this.id, { skipLocationChange: true })
-  .then(() => {
-    console.log(decodeURI(this._location.path()));
-
-    this.router.navigate([decodeURI(this._location.path())]);
-    this.carrito.getClientesPedido(this.id);
+    let fecr = this.fechas.sort((a, b) => a.getTime() - b.getTime());
+    this.fech = fecr
+      .filter((value, index, self) => self.indexOf(value) === index) // Eliminar elementos duplicados
+      .map(f => f.toLocaleTimeString()); // Asignar las fechas ordenadas y sin duplicados al arreglo this.fech
   });
-  }
+}
+
+
 
   // PARA MOSTRAR EL CARRITO O PEDIDOS DEL USUARIOS
   show() {

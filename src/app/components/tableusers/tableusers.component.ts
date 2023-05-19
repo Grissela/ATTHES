@@ -16,8 +16,8 @@ export class TableusersComponent {
     users!:Users[];
     nombre!:string;
     currentPage = 1;
-    itemsPerPage = 10;
-    totalPages = 1;
+    itemsPerPage = 10; //items por pagina
+    totalPages = 1; 
   constructor(
     private route:Router, 
     public service:UserService){}
@@ -81,11 +81,15 @@ export class TableusersComponent {
       }
     })
    }
+
+  //  paginacion de data
    getPaginatedData(): Users[] {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
     return this.data.slice(startIndex, endIndex);
   }
+
+  // pagina anterior
   previousPage() {
     if (this.currentPage > 1) {
       this.currentPage--;
@@ -93,6 +97,7 @@ export class TableusersComponent {
     }
   }
   
+  // pagina siguiente
   nextPage() {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
@@ -100,6 +105,7 @@ export class TableusersComponent {
     }
   }
   
+  // actualizar pagina de la paginacion y muestre
   updatePagination() {
     this.totalPages = Math.ceil(this.data.length / this.itemsPerPage);
     if (this.currentPage > this.totalPages) {

@@ -1,66 +1,97 @@
-<section class="store container">
+<section class="store">
   <h2 class="sneaker-title">Productos Destacados</h2>
   <div class="store-contain">
     <div class="store-filter">
       <div class="sticky">
-        
-          <h3>Modelo</h3>
-          <select [(ngModel)]="modeloSeleccionado" (change)="filtrarPorModelo()">
-            <option value="">Todos</option>
-            <option value="Urbano">Urbano</option>
-            <option value="Sport">Sport</option>
-          </select>
+          <div class="sticky-card">
+            <h3 class="sticky-title">Modelo</h3>
+            <select class="select" [(ngModel)]="modeloSeleccionado" (change)="filtrarPorModelo()">
+              <option value="">Todos</option>
+              <option value="Urbano">Urbano</option>
+              <option value="Sport">Sport</option>
+            </select>
+          </div>
+          
     
-        <div>
-          <h3>Precios</h3>
+          <div class="sticky-card">
+            <h3 class="sticky-title">Precios</h3>
+            <div class="sticky-checks">
+              <div class="sticky-check">
+                <input type="checkbox" id="check1" [checked]="precioSeleccionado.includes(45.6)" (change)="togglePrecioSeleccionado(45.6)">
+                <label for="check1">45.60</label>
+              </div>
   
-          <label>
-            <input type="checkbox" [checked]="precioSeleccionado.includes(45.6)" (change)="togglePrecioSeleccionado(45.6)">
-            45.60
-          </label>
-          <label>
-            <input type="checkbox" [checked]="precioSeleccionado.includes(63.8)" (change)="togglePrecioSeleccionado(63.8)">
-            63.80
-          </label>
-          <label>
-            <input type="checkbox" [checked]="precioSeleccionado.includes(69.8)" (change)="togglePrecioSeleccionado(69.8)">
-            69.80
-          </label>
-        </div>
+              <div class="sticky-check">
+                <input type="checkbox" id="check2" [checked]="precioSeleccionado.includes(63.8)" (change)="togglePrecioSeleccionado(63.8)">
+                <label for="check2">63.80</label>
+              </div>
+  
+              <div class="sticky-check">
+                <input type="checkbox" id="check3" [checked]="precioSeleccionado.includes(69.8)" (change)="togglePrecioSeleccionado(69.8)">
+                <label for="check3">69.80</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="sticky-card">
+              <h3 class="sticky-title">Color</h3>
+              <select class="select" [(ngModel)]="colorSeleccionado" (change)="filtrarPorColor()">
+                <option value="">Todos</option>
+                <option value="rojo">Rojo</option>
+                <option value="azul">Azul</option>
+                <option value="verde">Verde</option>
+                <option value="negro">Negro</option>
+                <option value="morado">Morado</option>
+                <option value="fucsia">Fucsia</option>
+                <option value="blanco">Blanco</option>
+                <option value="gris">Gris</option>
+                <option value="celeste">Celeste</option>
+                <option value="naranja">Naranja</option>
+                <option value="rosa">Rosa</option>
+              </select>
+          </div>
+
+          <div class="sticky-card">
+            <h3 class="sticky-title">Serie</h3>
+            <select class="select" [(ngModel)]="serieSeleccionada" (change)="filtrarPorSerie()">
+              <option value="">Todos</option>
+              <option value="27-32">27-32</option>
+              <option value="35-39">35-39</option>
+              <option value="37-43">37-43</option>
+            </select>
+          </div>
       </div>
-      
-      
+    
     </div>
 
-    
-    <div class="container-sneakers" *ngIf="filteredProducts.length > 0; else noProductosTemplate">
+    <div class="store-sneakers">
+      <div class="container-sneakers" *ngIf="filteredProducts.length > 0; else noProductosTemplate">
         <div *ngFor="let datos of getPaginatedProducts()" class="container-sneaker" (click)="goToDetalle(datos.id)">
+          <img src="{{datos.Imagen}}" class="card-image" alt="productos">
           <div class="card-sneaker">
             <h3 class="card-subtitle">{{datos.Marca}}</h3>
             <h3 class="card-name">{{datos.Nombre}}</h3>
-            <div class="sneaker__containImg">
-              <img src="{{datos.Imagen}}" class="card-image" alt="productos">
-            </div>
             <h3 class="card-price">{{datos.Precio | currency:'S/. '}}</h3>
-            <div class="card-description">
-              <button class="btn-add" (click)="goToDetalle(datos.id)">
-                <i class="bi bi-cart-fill px-1"></i>Agregar
-              </button>
-              <button class="btn-seeMore" (click)="goToDetalle(datos.id)">Ver más</button>
-            </div>
           </div>
+          <button class="btn-add" (click)="goToDetalle(datos.id)">
+            <i class="bi bi-cart-fill px-1"></i>Agregar
+          </button>
         </div>
       </div>
+
+      <div *ngIf="totalPages > 1" class="pagination">
+        <button class="btn-pagination" [disabled]="currentPage === 1" (click)="previousPage()">Anterior</button>
+        <span>{{currentPage}}</span>
+        <button class="btn-pagination" [disabled]="currentPage === totalPages" (click)="nextPage()">Siguiente</button>
+      </div>
+    </div>     
       
       <ng-template #noProductosTemplate>
         <p *ngIf="modeloSeleccionado && precioSeleccionado.length > 0 && !hayProductosDisponibles()">No hay productos disponibles en el modelo y precio seleccionados.</p>
       </ng-template>
       
     </div>
-    <div *ngIf="totalPages > 1" class="pagination">
-      <button [disabled]="currentPage === 1" (click)="previousPage()">Anterior</button>
-      <button [disabled]="currentPage === totalPages" (click)="nextPage()">Siguiente</button>
-    </div>
+    
   
  
 </section>

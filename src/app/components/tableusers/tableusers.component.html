@@ -40,9 +40,9 @@
     </table>
 
     <div *ngIf="totalPages > 1" class="pagination">
-      <button [disabled]="currentPage === 1" (click)="previousPage()">Anterior</button>
+      <button class="btn-pagination" [disabled]="currentPage === 1" (click)="previousPage()">Anterior</button>
       <span>{{currentPage}}</span>
-      <button [disabled]="currentPage === totalPages" (click)="nextPage()">Siguiente</button>
+      <button class="btn-pagination" [disabled]="currentPage === totalPages" (click)="nextPage()">Siguiente</button>
     </div>   
   </div>
 </div>

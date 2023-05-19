@@ -1,34 +1,28 @@
-
 <section class="ticket container">
   <!-- REGISTRO DEL PEDIDO DEL CLIENTE -->
   <div class="ticket-contain">
     <form [formGroup]="pedido">
-
       <div class="form-contain">
         <label for="dni">DNI</label>
-        <input type="text" class="" formControlName="dni" id="dni" placeholder="Ingrese su DNI*">
+        <input type="text" formControlName="dni" id="dni" placeholder="Ingrese su DNI*">
       </div>
-
       <div class="form-contain">
         <label for="pass">Direcci&oacute;n</label>
-        <input type="text" class="" formControlName="Direccion" id="direccion" placeholder="Ingresa tu Direccion*">
+        <input type="text" formControlName="Direccion" id="direccion" placeholder="Ingresa tu Direccion*">
       </div>
-      
       <button type="submit" class="btn-add" (click)="agregar()">Enviar</button>
-      
     </form>
   </div>
 
-
-  <!-- Para ver los pedidos y dar click al pedido---------- -->
+  <!-- Para ver los pedidos y dar click al pedido -->
   <h2 class="ticket-subtitle">Tus Pedidos</h2>
   <div class="order-flex">
-    <label for="btn-modal" *ngFor="let xy of fech let j=index" type="button" (click)="mostrarCarrito(xy)" class="btn-yourOrder">
-      Mostrar Pedido {{j+1}}
+    <label for="btn-modal" *ngFor="let fecha of fech; let i=index" type="button" (click)="mostrarCarrito(fecha)" class="btn-yourOrder">
+      Mostrar Pedido {{i+1}}
     </label>
   </div>
-
 </section>
+
 
 
 

@@ -11,16 +11,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class TiendaComponent implements OnInit {
   nombre = "";
   zapatillas: Zapatillas[] = [];
-  filteredProducts: Zapatillas[] = [];
-  id = "";
+  filteredProducts: Zapatillas[] = []; //para que se almacene los productos filtrados
+  id = ""; // para pasar por parametro el id
+
+  // para realizar busqueda 
   modeloSeleccionado: string = '';
   precioSeleccionado: number[] = [];
-
-  precios: number[] = [45.6, 63.8, 69.8];
-
-
-  currentPage = 1;
-  itemsPerPage = 10;
+  colorSeleccionado: string = '';
+  serieSeleccionada: string = '';
+  precios: number[] = [45.6, 63.8, 69.8]; //precios establecidos
+  
+  currentPage = 1; //para que muestre desde la pagina 1
+  itemsPerPage = 10; //cuantos items muestra por pagina
   totalPages = 0;
 
   constructor(private route: ActivatedRoute, private service: ZapatillasService, private router: Router) {}
@@ -35,10 +37,12 @@ export class TiendaComponent implements OnInit {
     });
   }
 
+  // pasar a detalle con parametro
   goToDetalle(id: string) {
     this.router.navigate(['/detalle', id]);
   }
 
+  // filtrar busqueda por modelo
   filtrarPorModelo() {
     if (!this.modeloSeleccionado || this.modeloSeleccionado === '') {
       this.filteredProducts = this.zapatillas;
@@ -48,14 +52,8 @@ export class TiendaComponent implements OnInit {
     this.updatePagination();
 
   }
-  // togglePrecioSeleccionado(precio: number) {
-  //   if (this.precioSeleccionado.includes(precio)) {
-  //     this.precioSeleccionado = this.precioSeleccionado.filter(p => p !== precio);
-  //   } else {
-  //     this.precioSeleccionado.push(precio);
-  //   }
-  //   this.filtrarPorPrecio();
-  // }
+ 
+  // buscar por precio
   filtrarPorPrecio() {
     if (this.precioSeleccionado.length === 0) {
       this.filteredProducts = this.zapatillas;
@@ -66,7 +64,7 @@ export class TiendaComponent implements OnInit {
     }
   }
   
-  // Agrega el siguiente método para controlar la selección y deselección de los precios
+  //  método para controlar la selección y deselección de los precios
   togglePrecioSeleccionado(precio: number) {
     const index = this.precioSeleccionado.indexOf(precio);
     if (index > -1) {
@@ -76,27 +74,34 @@ export class TiendaComponent implements OnInit {
     }
     this.filtrarPorPrecio();
   }
+
+  // el filtro sin precio seleccionado
   resetFiltroPrecio() {
     this.precioSeleccionado = [];
     this.filtrarPorPrecio(); // Aplicar el filtrado sin precios seleccionados
   }
 
+
+  // si hay o no productos
   hayProductosDisponibles() {
     return this.zapatillas.some(zap => zap.Modelo === this.modeloSeleccionado && this.precioSeleccionado.includes(zap.Precio));
   }
 
+  // pagina anterior
   previousPage() {
     if (this.currentPage > 1) {
       this.currentPage--;
     }
   }
 
+  // pagina siguiente
   nextPage() {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
     }
   }
 
+  // actualizar la pagina para que muestre la pagina actual
   updatePagination() {
     this.totalPages = Math.ceil(this.filteredProducts.length / this.itemsPerPage);
     if (this.currentPage > this.totalPages) {
@@ -104,9 +109,40 @@ export class TiendaComponent implements OnInit {
     }
   }
 
+  // paginacion de productos
   getPaginatedProducts() {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
     return this.filteredProducts.slice(startIndex, endIndex);
+  }
+
+  // busqueda por color
+  filtrarPorColor() {
+    if (!this.colorSeleccionado || this.colorSeleccionado === '') {
+      this.filteredProducts = this.zapatillas;
+    } else {
+      const color = this.colorSeleccionado.toLowerCase();
+      this.filteredProducts = this.zapatillas.filter(zap => zap.Descripcion.toLowerCase().includes(color));
+    }
+    this.updatePagination();
+  }
+  
+  // si la descripcion tiene la palabra relacionada al color buscado
+  contieneColor(zap: Zapatillas, color: string): boolean {
+    const keywords = ['rojo', 'azul', 'verde', 'negro', 'morado', 'fucsia', 'blanco', 'gris', 'celeste', 'naranja', 'rosa']; // Lista de palabras clave relacionadas con colores
+    const descripcion = zap.Descripcion.toLowerCase();
+  
+    // Verificar si la descripción contiene alguna palabra clave relacionada con el color
+    return keywords.some(keyword => descripcion.includes(keyword));
+  }
+
+  // buscar por serie si 
+  filtrarPorSerie() {
+    if (!this.serieSeleccionada || this.serieSeleccionada === '') {
+      this.filteredProducts = this.zapatillas;
+    } else {
+      this.filteredProducts = this.zapatillas.filter(zap => zap.Serie === this.serieSeleccionada);
+    }
+    this.updatePagination();
   }
 }

@@ -127,6 +127,7 @@ export class TableordenesComponent {
     this.carrito.deletePedido(ped, this.idc);
   }
 
+  // pagina anterior
   previousPage(): void {
     if (this.currentPage > 1) {
       this.currentPage--;
@@ -134,6 +135,7 @@ export class TableordenesComponent {
     }
   }
 
+  // siguiente pagina
   nextPage(): void {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
@@ -141,6 +143,7 @@ export class TableordenesComponent {
     }
   }
 
+  // actualizar pagina mostrada 
   updatePagination(): void {
     this.totalPages = Math.ceil(this.data.length / this.itemsPerPage);
     if (this.currentPage > this.totalPages) {
@@ -148,6 +151,7 @@ export class TableordenesComponent {
     }
   }
 
+  // mostrar la pagina 
   getPaginatedData(): any[] {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
