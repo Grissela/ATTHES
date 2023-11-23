@@ -47,10 +47,18 @@ export class AuthService {
   }
 
   // Para cerrar sesion
-  logout(){
+  // logout(){
+  //   return signOut(this.auth)
+  // }
+  logout() {
     return signOut(this.auth)
-    
+      .then(() => {
+        // Limpiar localStorage
+        localStorage.clear();
+      })
+      .catch(error => {
+        console.error('Error al cerrar sesión:', error);
+      });
   }
-
   
 }
