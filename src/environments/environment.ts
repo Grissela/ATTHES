@@ -1,10 +1,10 @@
 export const environment = {
   firebase: {
-    projectId: 'basedathes',
-    appId: '1:431305584332:web:a5d1e647813f584c439c69',
-    storageBucket: 'basedathes.appspot.com',
-    apiKey: 'AIzaSyBqYuZaZCqLT_lFuHbh8jujhE7bQF8epts',
-    authDomain: 'basedathes.firebaseapp.com',
-    messagingSenderId: '431305584332',
+    projectId: 'ultiatthes-4a15e',
+    appId: '1:747538839409:web:13b81f1eebf1f66be9a8d0',
+    storageBucket: 'ultiatthes-4a15e.appspot.com',
+    apiKey: 'AIzaSyAxLwEYBTBIw7d8uAXeIdjpYsrHMZwgQLE',
+    authDomain: 'ultiatthes-4a15e.firebaseapp.com',
+    messagingSenderId: '747538839409',
   }
 }
