@@ -38,7 +38,7 @@ export class MicuentaComponent implements OnInit {
       for(let data of this.datos){
         if(data.id == this.id){
           this.cuenta = this.build.group({
-            Nombre:[data.Nombres],
+            Nombres:[data.Nombres],
             Apellidos:[data.Apellidos],
             Celular:[data.Celular],
             Correo:[data.Correo],
