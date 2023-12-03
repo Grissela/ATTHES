@@ -18,11 +18,11 @@
                 </div>
                 <div class="">
                     <label for="">Correo </label>
-                    <input type="text" value={{data.Correo}} placeholder={{data.Correo}} name="Correo" formControlName="Correo">
+                    <input type="text" value={{data.Correo}} placeholder={{data.Correo}} name="Correo" formControlName="Correo" [disabled]="true" readonly style="color: #777; background-color: #eee;">
                 </div>
                 <div class="">
                     <label for="">Contraseña </label>
-                    <input type="text" value={{data.Contrasena}} placeholder={{data.Contrasena}} name="Contrasena" formControlName="Contrasena">
+                    <input type="text" value={{data.Contrasena}} placeholder={{data.Contrasena}} name="Contrasena" formControlName="Contrasena" [disabled]="true" readonly style="color: #777; background-color: #eee;">
                 </div>
                 <button class="btn-send" type="submit" (click)="guardar()">Modificar</button>
             </div>
